@@ -11,7 +11,8 @@ public class FlightSearch{
 
 	//Veit ekki ennþá hvernig við höfum tímasetningar og hvernig við afmörkum tímann, einnig veit ekki hvernig við fáum niðurstöðurnar
 	//spurning að hafa date og svo arrivalTime og departurTime, þa date er dagsetning og hitt eru tímasetningar
-	public List<Flight>search(int peopleCount, String arrivalTime, String aA, String dA){
+	
+	public List<Flight> search(int peopleCount, String arrivalTime, String aA, String dA){
 		ResultSet rs= dbc.getFromDB("Select * from flights WHERE flights.arrivalAirport=" + aA + " and availableSeats>=" + peopleCount+" and " + dA+  "=departureAirport");
 		List<Flight> list = new ArrayList<Flight>();
 		Flight f=null;

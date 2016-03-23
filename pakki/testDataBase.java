@@ -16,11 +16,17 @@ public class testDataBase {
 	
 	@After
 	public void tearDown() throws Exception {
+		db=null;
 	}
-
+	
 	@Test
-	public void testsearch() {
+	public void testSearch() {
 		assertNotNull(db.getFromDB("select * from flights"));
+	}
+	
+	@Test
+	public void testConditionedSearch(){
+		assertNotNull(db.getFromDB("select * from flights where arrivalAirport=RVK"));
 	}
 
 }

@@ -8,13 +8,15 @@ import org.junit.Test;
 
 public class TestFlightSearch {
 	private FlightSearch fs;
+	
 	@Before
 	public void setUp() throws Exception {
-				fs=new FlightSearch();
+		fs=new FlightSearch();
 	}
 
 	@After
 	public void tearDown() throws Exception {
+		fs=null;
 	}
 
 	@Test
