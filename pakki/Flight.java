@@ -1,4 +1,5 @@
 package pakki;
+import pakki.DataBaseConnection;
 //Vantar Seating og Type, þurfum í raun og veru ekki að gera neitt meira við þennan klasa
 
 //fyrr en við förum að gera kvittanir
@@ -49,6 +50,6 @@ public class Flight {
 	public void bookSeat(String s){
 		seats.bookSeat(s);
 		availableSeats--;
+		//update db!
 	}
-
 }
