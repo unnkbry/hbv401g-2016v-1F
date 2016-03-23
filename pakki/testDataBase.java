@@ -21,12 +21,12 @@ public class testDataBase {
 	
 	@Test
 	public void testSearch() {
-		assertNotNull(db.getFromDB("select * from flights"));
+		assertNotNull(db.getFromDB("SELECT * FROM flights"));
 	}
 	
 	@Test
 	public void testConditionedSearch(){
-		assertNotNull(db.getFromDB("select * from flights where arrivalairport='RVK'"));
+		assertNotNull(db.getFromDB("SELECT * FROM flights WHERE arrivalairport='RVK'"));
 	}
 
 }
