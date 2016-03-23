@@ -44,4 +44,9 @@ public class testDataBase {
 			System.exit(0);
 		}
 	}
+	
+	@Test
+	public void testAdd(){
+		assertNotNull(db.updateDB("insert into persons values('nafn','id', true, false, '1A')"));
+	}
 }

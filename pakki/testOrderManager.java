@@ -22,7 +22,7 @@ public class testOrderManager {
 
 	@Test
 	public void testmakePersons() {
-		assertNotNull(om.makePersons("name", "id", "handicapped", boolean specialBaggage, String seat));
+		assertNotNull(om.makePersons("name", "id", false, true, "A1"));
 	}
 
 }

@@ -31,7 +31,7 @@ public class DataBaseConnection {
 			Class.forName("org.postgresql.Driver");
 			c = DriverManager.getConnection(url, user, "Lovisa95");
 			stmt = c.createStatement();
-			stmt.executeQuery(query);
+			stmt.executeUpdate(query);
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
