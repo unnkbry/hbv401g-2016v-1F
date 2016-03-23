@@ -26,7 +26,7 @@ public class testDataBase {
 	
 	@Test
 	public void testConditionedSearch(){
-		assertNotNull(db.getFromDB("select * from flights where arrivalAirport=RVK"));
+		assertNotNull(db.getFromDB("select * from flights where arrivalairport='RVK'"));
 	}
 
 }
