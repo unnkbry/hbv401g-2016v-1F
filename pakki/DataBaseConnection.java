@@ -24,5 +24,19 @@ public class DataBaseConnection{
 		}
 		return rs;
 	}
+	
+	public boolean updateDB(String query){
+		try {
+			Class.forName("org.postgresql.Driver");
+			c = DriverManager.getConnection(url, user, "Lovisa95");
+			stmt = c.createStatement();
+			stmt.executeQuery(query);
+			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.err.println(e.getClass().getName()+": "+e.getMessage());
+			return false;
+		}
+	}
 }
 
