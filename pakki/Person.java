@@ -14,5 +14,9 @@ public class Person {
 		this.specialBaggage = specialBaggage;
 		this.seat = seat;
 	}
+	
+	public String getSeat(){
+		return seat;
+	}
 
 }
