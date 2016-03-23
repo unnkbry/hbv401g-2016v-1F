@@ -1,5 +1,6 @@
 package pakki;
-import pakki.Flight; 
+
+import pakki.Flight;
 import static org.junit.Assert.*;
 
 import org.junit.After;
@@ -11,22 +12,21 @@ public class testFlight {
 
 	@Before
 	public void setUp() throws Exception {
-		f=new Flight("arrivalTime", "departureTime", "arrivalAirport", "departureAirport", 300, 100000 );
+		f = new Flight("arrivalTime", "departureTime", "arrivalAirport", "departureAirport", 300, 100000);
 	}
-	
-	
+
 	@After
 	public void tearDown() throws Exception {
-		f=null;
+		f = null;
 	}
 
 	@Test
 	public void testGetDepartureTime() {
 		assertEquals("departureTime", f.getDepartureTime());
 	}
-	
+
 	@Test
-	public void testGetArrivalTime(){
+	public void testGetArrivalTime() {
 		assertEquals("arrivalTime", f.getArrivalTime());
 	}
 

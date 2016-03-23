@@ -1,4 +1,5 @@
 package pakki;
+
 import static org.junit.Assert.*;
 
 import org.junit.After;
@@ -9,40 +10,38 @@ import java.sql.ResultSet;
 
 public class testDataBase {
 	private DataBaseConnection db;
+
 	@Before
 	public void setUp() throws Exception {
-		db =new DataBaseConnection();
+		db = new DataBaseConnection();
 	}
-	
-	
+
 	@After
 	public void tearDown() throws Exception {
-		db=null;
+		db = null;
 	}
-	
+
 	@Test
 	public void testSearchNotNull() {
 		assertNotNull(db.getFromDB("SELECT * FROM flights"));
 	}
-	
+
 	@Test
-	public void testConditionedSearchNotNull(){
+	public void testConditionedSearchNotNull() {
 		assertNotNull(db.getFromDB("SELECT * FROM flights WHERE arrivalairport='RVK'"));
 	}
-	
+
 	@Test
-	public void testConditionedSearch(){
-		ResultSet rs=db.getFromDB("select * from flights where departureairport='AK'");
-		try{
-			while(rs.next()){
-					assertEquals("AK", rs.getString("departureairport"));
-				}
+	public void testConditionedSearch() {
+		ResultSet rs = db.getFromDB("select * from flights where departureairport='AK'");
+		try {
+			while (rs.next()) {
+				assertEquals("AK", rs.getString("departureairport"));
 			}
-		catch(Exception e){
+		} catch (Exception e) {
 			e.printStackTrace();
-	    	System.err.println(e.getClass().getName()+": "+e.getMessage());
-	    	System.exit(0);
-	    	}
+			System.err.println(e.getClass().getName() + ": " + e.getMessage());
+			System.exit(0);
 		}
 	}
-
+}
