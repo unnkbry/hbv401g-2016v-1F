@@ -4,7 +4,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
-public class DataBaseConnection {
+public class DataBaseConnection{
 	private static Connection c = null;
     private static Statement stmt = null;
     private static String url = "jdbc:postgresql://localhost:5432/Flug";
@@ -17,13 +17,12 @@ public class DataBaseConnection {
 			c = DriverManager.getConnection(url, user, "Lovisa95");
 			stmt = c.createStatement();
 			rs = stmt.executeQuery(query);
-			} 
-		catch (Exception e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 			System.err.println(e.getClass().getName()+": "+e.getMessage());
 			System.exit(0);
-			}
-		return rs;
 		}
+		return rs;
 	}
+}
 
