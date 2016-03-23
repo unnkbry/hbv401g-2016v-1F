@@ -13,12 +13,12 @@ public class FlightSearch{
 	//spurning að hafa date og svo arrivalTime og departurTime, þa date er dagsetning og hitt eru tímasetningar
 	
 	public List<Flight> search(int peopleCount, String arrivalTime, String aA, String dA){
-		ResultSet rs= dbc.getFromDB("Select * from flights WHERE flights.arrivalAirport=" + aA + " and availableSeats>=" + peopleCount+" and " + dA+  "=departureAirport");
+		ResultSet rs= dbc.getFromDB("Select * from flights WHERE flights.arrivalAirport='" + aA + "' and availableSeats>='" + peopleCount+"' and '" + dA+  "'=departureAirport");
 		List<Flight> list = new ArrayList<Flight>();
 		Flight f=null;
 		try{
 			while(rs.next()){
-				f=new Flight(rs.getString("arrivalTime"), rs.getString("departureTime"), rs.getString("arrivalAirport"), rs.getString("departureAirport"), rs.getInt("price"));
+				f=new Flight(rs.getString("arrivalTime"), rs.getString("departureTime"), rs.getString("arrivalAirport"), rs.getString("departureAirport"), rs.getInt("price"), rs.getInt("availableseats"));
 				list.add(f);
 				
 			}

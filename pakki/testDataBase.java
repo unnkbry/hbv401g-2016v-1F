@@ -5,6 +5,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import pakki.DataBaseConnection;
+import java.sql.ResultSet;
 
 public class testDataBase {
 	private DataBaseConnection db;
@@ -20,13 +21,28 @@ public class testDataBase {
 	}
 	
 	@Test
-	public void testSearch() {
+	public void testSearchNotNull() {
 		assertNotNull(db.getFromDB("SELECT * FROM flights"));
 	}
 	
 	@Test
-	public void testConditionedSearch(){
+	public void testConditionedSearchNotNull(){
 		assertNotNull(db.getFromDB("SELECT * FROM flights WHERE arrivalairport='RVK'"));
 	}
+	
+	@Test
+	public void testConditionedSearch(){
+		ResultSet rs=db.getFromDB("select * from flights where departureairport='AK'");
+		try{
+			while(rs.next()){
+					assertEquals("AK", rs.getString("departureairport"));
+				}
+			}
+		catch(Exception e){
+			e.printStackTrace();
+	    	System.err.println(e.getClass().getName()+": "+e.getMessage());
+	    	System.exit(0);
+	    	}
+		}
+	}
 
-}
