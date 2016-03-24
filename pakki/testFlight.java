@@ -12,7 +12,7 @@ public class testFlight {
 
 	@Before
 	public void setUp() throws Exception {
-		f = new Flight("arrivalTime", "departureTime", "arrivalAirport", "departureAirport", 300, 100000);
+		f = new Flight("arrivalTime", "departureTime", "arrivalAirport", "departureAirport", 300, 100000, 5);
 	}
 
 	@After

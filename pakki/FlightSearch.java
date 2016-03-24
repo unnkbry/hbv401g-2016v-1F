@@ -24,7 +24,7 @@ public class FlightSearch {
 			while (rs.next()) {
 				f = new Flight(rs.getString("arrivalTime"), rs.getString("departureTime"),
 						rs.getString("arrivalAirport"), rs.getString("departureAirport"), rs.getInt("price"),
-						rs.getInt("availableseats"));
+						rs.getInt("availableseats"), rs.getInt("flightid"));
 				list.add(f);
 
 			}

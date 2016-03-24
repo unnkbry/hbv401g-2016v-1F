@@ -13,10 +13,11 @@ public class Flight {
 	// private Type type;
 	private int price;
 	private Seating seats;
+	private int flightnr;
 
 	public Flight(String arrivalTime, String departureTime, String arrivalAirport, String departureAirport, int price,
-			int availableSeats // , Type type, int price
-	) {
+			int availableSeats, int flightnr // , Type type
+			) {
 		this.arrivalTime = arrivalTime;
 		this.departureTime = departureTime;
 		this.arrivalAirport = arrivalAirport;
@@ -25,10 +26,14 @@ public class Flight {
 		this.price = price;
 		this.availableSeats = availableSeats;
 		Seating seats=new Seating();
+		this.flightnr=flightnr;
 	}
 
 	public String getArrivalTime() {
 		return arrivalTime;
+	}
+	public int getFlightnr(){
+		return flightnr;
 	}
 
 	public String getDepartureTime() {

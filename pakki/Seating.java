@@ -1,5 +1,9 @@
 package pakki;
 
-public interface Seating {
-	public void bookSeat(String s);
+public class Seating {
+
+	public void bookSeat(String s) {
+		//do nothing yet
+		
+	}
 }
