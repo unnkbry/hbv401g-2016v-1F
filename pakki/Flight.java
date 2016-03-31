@@ -1,12 +1,13 @@
 package pakki;
 import pakki.DataBaseConnection;
+import java.util.Date;
 //Vantar Seating og Type, þurfum í raun og veru ekki að gera neitt meira við þennan klasa
 
 //fyrr en við förum að gera kvittanir
 
 public class Flight {
-	private String arrivalTime;
-	private String departureTime;
+	private Date arrivalTime;
+	private Date departureTime;
 	private String arrivalAirport;
 	private String departureAirport;
 	private int availableSeats;
@@ -15,7 +16,7 @@ public class Flight {
 	private Seating seats;
 	private int flightnr;
 
-	public Flight(String arrivalTime, String departureTime, String arrivalAirport, String departureAirport, int price,
+	public Flight(Date arrivalTime, Date departureTime, String arrivalAirport, String departureAirport, int price,
 			int availableSeats, int flightnr // , Type type
 			) {
 		this.arrivalTime = arrivalTime;
@@ -29,7 +30,7 @@ public class Flight {
 		this.flightnr=flightnr;
 	}
 
-	public String getArrivalTime() {
+	public Date getArrivalTime() {
 		return arrivalTime;
 	}
 	
@@ -37,7 +38,7 @@ public class Flight {
 		return flightnr;
 	}
 
-	public String getDepartureTime() {
+	public Date getDepartureTime() {
 		return departureTime;
 	}
 
@@ -58,4 +59,5 @@ public class Flight {
 		availableSeats--;
 		//update db!
 	}
+	
 }
