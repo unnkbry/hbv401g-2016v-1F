@@ -32,6 +32,7 @@ public class Flight {
 	public String getArrivalTime() {
 		return arrivalTime;
 	}
+	
 	public int getFlightnr(){
 		return flightnr;
 	}
