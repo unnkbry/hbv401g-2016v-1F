@@ -15,7 +15,7 @@ public class DataBaseConnection {
 		ResultSet rs = null;
 		try {
 			Class.forName("org.postgresql.Driver");
-			c = DriverManager.getConnection(url, user, "Lovisa95");
+			c = DriverManager.getConnection(url, user, "linda");
 			stmt = c.createStatement();
 			rs = stmt.executeQuery(query);
 		} catch (Exception e) {
