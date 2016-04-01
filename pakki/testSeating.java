@@ -39,6 +39,14 @@ public class testSeating {
 	
 	@Test
 	public void testGetEmpty() {
-		
+		String [][] e=s.getEmpty();
+		for(int n=0;n<5;n++){
+			for(int m=0;m<5;m++){
+				if(s.getSeatStatus(s.turnToString(n, m)))
+					assertEquals(s.turnToString(n,m), e[n][m]);
+				else
+					assertEquals("   ", e[n][m]);
+			}
+		}
 	}
 }

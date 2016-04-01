@@ -34,7 +34,7 @@ public class Seating {
 		if(row<10){
 			r="0"+r;
 		}
-		r=r+Integer.toString(row-1);
+		r=r+Integer.toString(row+1);
 		r=r+Alphabet[col];
 		return r;
 	}
@@ -51,6 +51,7 @@ public class Seating {
 		return seat;
 	}
 	
+	//too many clients
 	public void makeUnavailable(String s){
 		int [] seat=turnFromString(s);
 		//db.updateDB("update seating set seatstatus=false where flightnr='"+flightnr+"' and colid='"+ seat[0]+"' and rowid='"+seat[1]+"'");
