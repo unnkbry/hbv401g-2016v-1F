@@ -7,6 +7,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import pakki.Flight;
+import java.util.Date;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,7 +33,8 @@ public class testOrderManager {
 	
 	@Test
 	public void testmakeOrder(){
-		Flight f=new Flight("arrivalTime","departureTime","arrivalAirport","departureAirport",50, 10, 3);
+		Date d= new Date();
+		Flight f=new Flight("arrivalTime","departureTime","arrivalAirport","departureAirport",50, 10, 3, d);
 		List<Person> list=new ArrayList<Person>();
 		Person p=null;
 		boolean b=true;

@@ -6,8 +6,8 @@ import java.util.Date;
 //fyrr en við förum að gera kvittanir
 
 public class Flight {
-	private Date arrivalTime;
-	private Date departureTime;
+	private String arrivalTime;
+	private String departureTime;
 	private String arrivalAirport;
 	private String departureAirport;
 	private int availableSeats;
@@ -15,9 +15,10 @@ public class Flight {
 	private int price;
 	private Seating seats;
 	private int flightnr;
+	private Date date;
 
-	public Flight(Date arrivalTime, Date departureTime, String arrivalAirport, String departureAirport, int price,
-			int availableSeats, int flightnr // , Type type
+	public Flight(String arrivalTime, String departureTime, String arrivalAirport, String departureAirport, int price,
+			int availableSeats, int flightnr, Date date // , Type type
 			) {
 		this.arrivalTime = arrivalTime;
 		this.departureTime = departureTime;
@@ -28,17 +29,22 @@ public class Flight {
 		this.availableSeats = availableSeats;
 		Seating seats=new Seating();
 		this.flightnr=flightnr;
+		this.date=date;
 	}
 
-	public Date getArrivalTime() {
+	public String getArrivalTime() {
 		return arrivalTime;
+	}
+	
+	public Date getDate(){
+		return date;
 	}
 	
 	public int getFlightnr(){
 		return flightnr;
 	}
 
-	public Date getDepartureTime() {
+	public String getDepartureTime() {
 		return departureTime;
 	}
 

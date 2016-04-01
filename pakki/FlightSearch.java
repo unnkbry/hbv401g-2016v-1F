@@ -16,6 +16,8 @@ public class FlightSearch {
 	// dagsetning og hitt eru tímasetningar
 
 	public List<Flight> search(int peopleCount, String arrivalTime, String aA, String dA){
+		if(peopleCount<=0)
+			return null;
 		ResultSet rs = dbc.getFromDB("Select * from flights WHERE arrivalAirport='" + aA
 				+ "' and availableSeats>='" + peopleCount + "' and '" + dA + "'=departureAirport");
 		List<Flight> list = new ArrayList<Flight>();
@@ -24,7 +26,7 @@ public class FlightSearch {
 			while (rs.next()) {
 				f = new Flight(rs.getString("arrivalTime"), rs.getString("departureTime"),
 						rs.getString("arrivalAirport"), rs.getString("departureAirport"), rs.getInt("price"),
-						rs.getInt("availableseats"), rs.getInt("flightid"));
+						rs.getInt("availableseats"), rs.getInt("flightid"), rs.getDate("date"));
 				list.add(f);
 			}
 		} catch (Exception e) {

@@ -63,43 +63,45 @@ public class TestFlightSearch {
 		assertFalse(it.hasNext());
 	}
 	
+	
 	@Test
 	public void testTime(){
 		Date d= new Date();
 		String s=d.toLocaleString();
 		String[] i=s.split(" ");
-		s=i[0];
 		String [] a=i[0].split("\\.");
-		List<Flight> list = fs.search(3, s, "AK", "AK");
+		int searchedYear=Integer.parseInt(a[2]);
+		int searchedMonth=Integer.parseInt(a[1]);
+		List<Flight> list = fs.search(3, s, "AK", "RVK");
 		Iterator<Flight> it = list.iterator();
 		while (it.hasNext()) {
 			Flight k=it.next();
-			String p=k.getDate();
+			Date p=k.getDate();
 			s= p.toLocaleString();
-			i=s.split(" ");
-			s=i[0];
-			String [] b=i[0].split("\\.");
-			if(a[1]=="1")
-				boolean bo= a[2]==b[2]&&Math.abs(a[1]-b[1].toString())<=1||b[2]-1==a[2]&&b[1]==12;
-			else if(a[1]=="12")
-				boolean bo= b[2]==a[2]&&Math.abs(b[1]-a[1])<=1||b[2]+1=a[2]&&b[1]==1;			
+			i=s.split("\\.");
+			int foundMonth=Integer.parseInt(i[1]);
+			i=i[2].split(" ");
+			int foundYear = Integer.parseInt(i[0]);
+			boolean bo=false;
+			if(searchedMonth==1)
+				bo= searchedYear==foundYear&&Math.abs(searchedMonth-foundMonth)<=1||foundYear-1==searchedYear&&foundMonth==12;
+			else if(searchedMonth==12)
+				bo= searchedYear==foundYear&&Math.abs(searchedMonth-foundMonth)<=1||foundYear+1==searchedYear&&foundMonth==1;			
 			else
-				boolean bo= b[2]==a[2]&&Math.abs(b[1]-a[1])<=1;
+				bo= searchedYear==foundYear&&Math.abs(searchedMonth-foundMonth)<=1;
 			assertTrue(bo);
 		}
 	}
 	
 	@Test
 	public void testpplCountZero(){
-		List<Flight> list = fs.search(0, "time", "AK", "AK");
+		List<Flight> list = fs.search(0, "time", "AK", "RVK");
 		assertNull(list);
 	}
 	
 	@Test
 	public void testpplCountNegative(){
-		List<Flight> list = fs.search(-2, "time", "AK", "AK");
+		List<Flight> list = fs.search(-2, "time", "AK", "RVK");
 		assertNull(list);
 	}
-	
-
 }
