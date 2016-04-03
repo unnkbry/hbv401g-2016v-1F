@@ -13,7 +13,7 @@ public class Flight {
 	private int availableSeats;
 	// private Type type;
 	private int price;
-	private Seating seats;
+	private Seats seats;
 	private int flightnr;
 	private Date date;
 
@@ -27,7 +27,7 @@ public class Flight {
 		// this.type=type;
 		this.price = price;
 		this.availableSeats = availableSeats;
-		Seating seats=new Seating();
+		seats = new Seats(20,30,1);
 		this.flightnr=flightnr;
 		this.date=date;
 	}

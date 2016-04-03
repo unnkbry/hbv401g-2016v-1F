@@ -6,35 +6,18 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import pakki.Seating;
-import pakki.DataBaseConnection;
 
 public class testSeating {
 	Seating s;
-	DataBaseConnection db=new DataBaseConnection();
 
 	@Before
 	public void setUp() throws Exception {
-			//db.updateDB("delete from seating " );
-			//db.updateDB("insert into seating values('"+1+"','"+0+"','"+5+"','"+true+"')");
-			s=new Seating(6,6,1);
-		}
+			s=new SeatingMock(20, 6, 1);
+			}
 
 	@After
 	public void tearDown() throws Exception {
 		s=null;
-	}
-
-	@Test
-	public void testSeatsStatus() {
-				assertTrue(s.getSeatStatus("01A"));
-				assertTrue(s.getSeatStatus("01B"));
-				assertTrue(s.getSeatStatus("04A"));
-				assertFalse(s.getSeatStatus("01C"));
-				assertTrue(s.getSeatStatus("01D"));
-				assertTrue(s.getSeatStatus("05D"));
-				//assertFalse(s.getSeatStatus("05W"));
-				s.makeUnavailable("01A");
-				assertFalse(s.getSeatStatus("01A"));
 	}
 	
 	@Test
@@ -49,4 +32,45 @@ public class testSeating {
 			}
 		}
 	}
-}
+	
+	@Test (expected = IllegalArgumentException.class)
+	public void test2Long() {
+	    s.turnFromString("Hellú");
+	}
+	
+	@Test (expected = IllegalArgumentException.class)
+	public void test2Short() {
+	    s.turnFromString("ee");
+	}
+	
+	@Test (expected = IllegalArgumentException.class)
+	public void testNotNumber() {
+	    s.turnFromString("AAA");
+	}
+	
+	@Test (expected = IllegalArgumentException.class)
+	public void testWrongString() {
+	    s.turnFromString("01T");
+	}
+	
+	@Test (expected = IllegalArgumentException.class)
+	public void testWrongNumber(){
+		s.turnFromString("21A");
+	}
+	
+	@Test (expected = IllegalArgumentException.class)
+	public void testWithSymbol(){
+		s.turnFromString("-1A");
+	}
+
+	@Test
+	public void testMakeUnavailable(){
+		for(int n=0;n<5;n++){
+			for(int m=0;m<5;m++){
+				if(s.getSeatStatus(s.turnToString(n, m)))
+					s.makeUnavailable(s.turnToString(n, m));
+				assertFalse(s.getSeatStatus(s.turnToString(n, m)));
+				}
+			}
+		}
+	}

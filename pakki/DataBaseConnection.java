@@ -37,6 +37,6 @@ public class DataBaseConnection {
 			e.printStackTrace();
 			System.err.println(e.getClass().getName() + ": " + e.getMessage());
 			return false;
-		}
+		} 
 	}
 }

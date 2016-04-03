@@ -8,10 +8,12 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import java.util.Iterator;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class TestFlightSearch {
 	private FlightSearch fs;
+	SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy");
 
 	@Before
 	public void setUp() throws Exception {
@@ -45,6 +47,52 @@ public class TestFlightSearch {
 	}
 
 	@Test
+	public void testTime(){
+		Date d= new Date();
+		String s = df.format(d);
+		String [] i = s.split("/");
+		int SD=Integer.parseInt(i[0]);
+		int SM=Integer.parseInt(i[1]);
+		int SY=Integer.parseInt(i[2]);
+		List<Flight> list = fs.search(3, s, "AK", "EG");
+		int [] ML={31,28,31,30,31,30,31,31,30,31,30,31};
+		if(SY%4==0)
+			ML[1]=29;
+		Iterator<Flight> it = list.iterator();
+		while (it.hasNext()) {
+			Flight k=it.next();
+			d=k.getDate();
+			s= df.format(d);
+			i=s.split("/");
+			int FD=Integer.parseInt(i[0]);
+			int FM=Integer.parseInt(i[1]);
+			int FY=Integer.parseInt(i[2]);
+			boolean bo=false;
+			int help;
+			if(SM==FM)
+				bo=Math.abs(SD-FD)<=7;
+			else if(SM==FM+1){
+				help=ML[FM-1]-FD;
+				bo=SD+help<=7;
+			}
+			else if(SM==FM-1){
+				help=ML[SM-1]-SD;
+				bo=FD+help<=7;
+			}
+			else if(SY==FY+1&&SM==1&&FM==12){
+				help=ML[FM-1]-FD;
+				bo=SD+help<=7;
+			}
+			else if(SY==FY-1&&SM==12&&FM==1){
+				help=ML[SM-1]-SD;
+				bo=FD+help<=7;
+			}
+			assertTrue(bo);
+		}
+	}
+	
+
+	@Test
 	public void testWrongSearch() {
 		List<Flight> list = fs.search(3, "time", "AK", "RVK");
 		Iterator<Flight> it = list.iterator();
@@ -63,35 +111,6 @@ public class TestFlightSearch {
 		assertFalse(it.hasNext());
 	}
 	
-	
-	@Test
-	public void testTime(){
-		Date d= new Date();
-		String s=d.toLocaleString();
-		String[] i=s.split(" ");
-		String [] a=i[0].split("\\.");
-		int searchedYear=Integer.parseInt(a[2]);
-		int searchedMonth=Integer.parseInt(a[1]);
-		List<Flight> list = fs.search(3, s, "AK", "RVK");
-		Iterator<Flight> it = list.iterator();
-		while (it.hasNext()) {
-			Flight k=it.next();
-			Date p=k.getDate();
-			s= p.toLocaleString();
-			i=s.split("\\.");
-			int foundMonth=Integer.parseInt(i[1]);
-			i=i[2].split(" ");
-			int foundYear = Integer.parseInt(i[0]);
-			boolean bo=false;
-			if(searchedMonth==1)
-				bo= searchedYear==foundYear&&Math.abs(searchedMonth-foundMonth)<=1||foundYear-1==searchedYear&&foundMonth==12;
-			else if(searchedMonth==12)
-				bo= searchedYear==foundYear&&Math.abs(searchedMonth-foundMonth)<=1||foundYear+1==searchedYear&&foundMonth==1;			
-			else
-				bo= searchedYear==foundYear&&Math.abs(searchedMonth-foundMonth)<=1;
-			assertTrue(bo);
-		}
-	}
 	
 	@Test
 	public void testpplCountZero(){
