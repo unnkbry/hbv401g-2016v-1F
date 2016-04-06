@@ -75,6 +75,4 @@ public class Seats implements Seating{
 		//System.out.println("í getseatstatus: " + seat[0] + " " + seat[1]+ " "+ seats[seat[0]][seat[1]]);
 		return seats[seat[0]][seat[1]];
 	}
-	
-
 }

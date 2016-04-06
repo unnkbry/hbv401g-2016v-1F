@@ -1,5 +1,4 @@
 package pakki;
-import pakki.DataBaseConnection;
 import java.util.Date;
 //Vantar Seating og Type, þurfum í raun og veru ekki að gera neitt meira við þennan klasa
 
@@ -60,10 +59,10 @@ public class Flight {
 		return departureAirport;
 	}
 	
-	public void bookSeat(String s){
-		seats.bookSeat(s);
+	public int bookSeat(String s){
+		seats.makeUnavailable(s);
 		availableSeats--;
-		//update db!
+		return availableSeats;
 	}
 	
 }

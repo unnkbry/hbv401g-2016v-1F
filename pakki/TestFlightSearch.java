@@ -14,10 +14,12 @@ import java.util.Date;
 public class TestFlightSearch {
 	private FlightSearch fs;
 	SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy");
-
+	Date d;
+	
 	@Before
 	public void setUp() throws Exception {
 		fs = new FlightSearch();
+		d= new Date();
 	}
 
 	@After
@@ -27,7 +29,7 @@ public class TestFlightSearch {
 
 	@Test
 	public void testDestinationSearch() {
-		List<Flight> list = fs.search(3, "time", "AK", "RVK");
+		List<Flight> list = fs.search(3, d, "AK", "RVK");
 		Iterator<Flight> it = list.iterator();
 		while (it.hasNext()) {
 			Flight k = it.next();
@@ -38,7 +40,7 @@ public class TestFlightSearch {
 
 	@Test
 	public void testAvailableSeats() {
-		List<Flight> list = fs.search(80, "time", "AK", "RVK");
+		List<Flight> list = fs.search(80, d, "AK", "RVK");
 		Iterator<Flight> it = list.iterator();
 		while (it.hasNext()) {
 			Flight k = it.next();
@@ -54,7 +56,7 @@ public class TestFlightSearch {
 		int SD=Integer.parseInt(i[0]);
 		int SM=Integer.parseInt(i[1]);
 		int SY=Integer.parseInt(i[2]);
-		List<Flight> list = fs.search(3, s, "AK", "EG");
+		List<Flight> list = fs.search(3, d, "AK", "EG");
 		int [] ML={31,28,31,30,31,30,31,31,30,31,30,31};
 		if(SY%4==0)
 			ML[1]=29;
@@ -94,7 +96,7 @@ public class TestFlightSearch {
 
 	@Test
 	public void testWrongSearch() {
-		List<Flight> list = fs.search(3, "time", "AK", "RVK");
+		List<Flight> list = fs.search(3, d, "AK", "RVK");
 		Iterator<Flight> it = list.iterator();
 		while (it.hasNext()) {
 			Flight k = it.next();
@@ -106,7 +108,7 @@ public class TestFlightSearch {
 
 	@Test
 	public void testEmpty() {
-		List<Flight> list = fs.search(3, "time", "AK", "AK");
+		List<Flight> list = fs.search(3, d, "AK", "AK");
 		Iterator<Flight> it = list.iterator();
 		assertFalse(it.hasNext());
 	}
@@ -114,13 +116,13 @@ public class TestFlightSearch {
 	
 	@Test
 	public void testpplCountZero(){
-		List<Flight> list = fs.search(0, "time", "AK", "RVK");
+		List<Flight> list = fs.search(0, d, "AK", "RVK");
 		assertNull(list);
 	}
 	
 	@Test
 	public void testpplCountNegative(){
-		List<Flight> list = fs.search(-2, "time", "AK", "RVK");
+		List<Flight> list = fs.search(-2, d, "AK", "RVK");
 		assertNull(list);
 	}
 }

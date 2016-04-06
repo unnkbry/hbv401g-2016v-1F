@@ -18,6 +18,8 @@ public class DataBaseConnection {
 			c = DriverManager.getConnection(url, user, "Lovisa95");
 			stmt = c.createStatement();
 			rs = stmt.executeQuery(query);
+			c.close();
+			c=null;
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.err.println(e.getClass().getName() + ": " + e.getMessage());
@@ -32,6 +34,8 @@ public class DataBaseConnection {
 			c = DriverManager.getConnection(url, user, "Lovisa95");
 			stmt = c.createStatement();
 			stmt.executeUpdate(query);
+			c.close();
+			c=null;
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
