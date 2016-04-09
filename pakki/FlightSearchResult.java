@@ -5,6 +5,10 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JTable;
 import java.awt.BorderLayout;
+import javax.swing.JScrollPane;
+import javax.swing.JLabel;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class FlightSearchResult {
 
@@ -45,9 +49,29 @@ public class FlightSearchResult {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 450, 300);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.getContentPane().setLayout(null);
+		
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent evt) {
+				        int row = table.rowAtPoint(evt.getPoint());
+//				        if () {
+//				        }
+				    }
+				});
+		scrollPane.setBounds(12, 42, 261, 119);
+		frame.getContentPane().add(scrollPane);
 		
 		table = new JTable();
-		frame.getContentPane().add(table, BorderLayout.NORTH);
+		scrollPane.setViewportView(table);
+		
+		JLabel lblDeparture = new JLabel("Departure");
+		lblDeparture.setBounds(12, 13, 67, 16);
+		frame.getContentPane().add(lblDeparture);
+		
+		JLabel lblArrival = new JLabel("Arrival");
+		lblArrival.setBounds(91, 13, 56, 16);
+		frame.getContentPane().add(lblArrival);
 	}
-
 }
