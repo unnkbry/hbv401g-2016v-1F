@@ -3,17 +3,10 @@ package pakki;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
-import javax.swing.JTable;
-import java.awt.BorderLayout;
 
-public class FlightSearchResult {
+public class OrderForm {
 
 	private JFrame frame;
-	private JTable table;
-	
-	public JFrame getFrame() {
-		return frame;
-	}
 
 	/**
 	 * Launch the application.
@@ -22,7 +15,7 @@ public class FlightSearchResult {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					FlightSearchResult window = new FlightSearchResult();
+					OrderForm window = new OrderForm();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -34,7 +27,7 @@ public class FlightSearchResult {
 	/**
 	 * Create the application.
 	 */
-	public FlightSearchResult() {
+	public OrderForm() {
 		initialize();
 	}
 
@@ -45,9 +38,6 @@ public class FlightSearchResult {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 450, 300);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
-		table = new JTable();
-		frame.getContentPane().add(table, BorderLayout.NORTH);
 	}
 
 }
