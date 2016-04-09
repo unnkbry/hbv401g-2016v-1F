@@ -1,6 +1,7 @@
 package pakki;
 
 import java.awt.EventQueue;
+import java.awt.Window;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -101,8 +102,10 @@ public class StartForm {
 		Button SubmitStartFormbutton = new Button("Submit");
 		SubmitStartFormbutton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				FlightSearchResult searchresult = new FlightSearchResult();
-				// searchresult.setVisible(true);
+				frame.dispose();
+				FlightSearchResult searchResult = new FlightSearchResult();
+				JFrame searchResultWindow = searchResult.getFrame();
+				searchResultWindow.setVisible(true);
 			}
 		});
 		SubmitStartFormbutton.setBounds(145, 250, 79, 24);
