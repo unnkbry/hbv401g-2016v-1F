@@ -30,8 +30,8 @@ public class FlightSearch {
 				f = new Flight(rs.getString("arrivalTime"), rs.getString("departureTime"),
 						rs.getString("arrivalAirport"), rs.getString("departureAirport"), rs.getInt("price"),
 						rs.getInt("availableseats"), rs.getInt("flightid"), rs.getDate("date"));
-				//boolean b= checkDate(f, d);
-				if(true)
+				boolean b= checkDate(f, d);
+				if(b)
 					list.add(f);
 			}
 		} catch (Exception e) {
@@ -58,8 +58,10 @@ public class FlightSearch {
 			ML[1]=29;
 		boolean bo=false;
 		int help;
-		if(SM==FM)
+		if(SM==FM){
+			System.out.println("searchday: "+ SD+ " foundday: "+ FD);
 			bo=Math.abs(SD-FD)<=7;
+		}
 		else if(SM==FM+1){
 			help=ML[FM-1]-FD;
 			bo=SD+help<=7;
@@ -78,5 +80,4 @@ public class FlightSearch {
 		}
 		return bo;
 	}
-	
 }
