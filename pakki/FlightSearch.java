@@ -30,8 +30,8 @@ public class FlightSearch {
 				f = new Flight(rs.getString("arrivalTime"), rs.getString("departureTime"),
 						rs.getString("arrivalAirport"), rs.getString("departureAirport"), rs.getInt("price"),
 						rs.getInt("availableseats"), rs.getInt("flightid"), rs.getDate("date"));
-				boolean b= checkDate(f, d);
-				if(b)
+				//boolean b= checkDate(f, d);
+				if(true)
 					list.add(f);
 			}
 		} catch (Exception e) {

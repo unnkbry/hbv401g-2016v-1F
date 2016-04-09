@@ -10,7 +10,7 @@ import com.toedter.calendar.JDateChooser;
 import javax.swing.JCheckBox;
 import java.awt.Button;
 import java.awt.event.ActionListener;
-import java.sql.Date;
+import java.util.Date;
 import java.util.List;
 import java.awt.event.ActionEvent;
 import javax.swing.DefaultComboBoxModel;
@@ -60,13 +60,13 @@ public class StartForm {
 		lblArrival.setBounds(12, 58, 56, 16);
 		frame.getContentPane().add(lblArrival);
 		
-		JComboBox DeparturecomboBox = new JComboBox();
-		DeparturecomboBox.setModel(new DefaultComboBoxModel(new String[] {"RKV", "AEY", "IFJ", "EGS", "VES"}));
+		JComboBox<String> DeparturecomboBox = new JComboBox<String>();
+		DeparturecomboBox.setModel(new DefaultComboBoxModel<String>(new String[] {"RKV", "AEY", "IFJ", "EGS", "VES"}));
 		DeparturecomboBox.setBounds(95, 26, 83, 22);
 		frame.getContentPane().add(DeparturecomboBox);
 		
-		JComboBox ArrivalcomboBox = new JComboBox();
-		ArrivalcomboBox.setModel(new DefaultComboBoxModel(new String[] {"RKV", "AEY", "IFJ", "EGS", "VES"}));
+		JComboBox<String> ArrivalcomboBox = new JComboBox<String>();
+		ArrivalcomboBox.setModel(new DefaultComboBoxModel<String>(new String[] {"RKV", "AEY", "IFJ", "EGS", "VES"}));
 		ArrivalcomboBox.setBounds(95, 55, 83, 22);
 		frame.getContentPane().add(ArrivalcomboBox);
 		
@@ -82,8 +82,8 @@ public class StartForm {
 		lblPeopleCount.setBounds(12, 189, 83, 16);
 		frame.getContentPane().add(lblPeopleCount);
 		
-		JComboBox comboBox = new JComboBox();
-		comboBox.setModel(new DefaultComboBoxModel(new String[] {"1", "2", "3", "4", "5", "6", "7", "8","9"}));
+		JComboBox<String> comboBox = new JComboBox<String>();
+		comboBox.setModel(new DefaultComboBoxModel<String>(new String[] {"1", "2", "3", "4", "5", "6", "7", "8","9"}));
 		comboBox.setBounds(95, 186, 73, 22);
 		frame.getContentPane().add(comboBox);
 		
@@ -108,15 +108,18 @@ public class StartForm {
 			public void actionPerformed(ActionEvent e) {
 				String departureAirport=(String) DeparturecomboBox.getItemAt(DeparturecomboBox.getSelectedIndex());
 				String arrivalAirport=(String) ArrivalcomboBox.getItemAt(ArrivalcomboBox.getSelectedIndex());
-				int peopleCount=(int) comboBox.getItemAt(comboBox.getSelectedIndex());
+				int peopleCount=Integer.parseInt(comboBox.getItemAt(comboBox.getSelectedIndex()));
 				boolean bothWays = chckbxBothWays.isSelected();
-				Date d=(Date) dateChooser1.getDate();
-				Date d2;
-				if(bothWays)
-					d2=(Date) dateChooser2.getDate();
+				Date d= (Date) dateChooser1.getDate();
+				Date d2=null;
 				frame.dispose();
 				List<Flight> list=fs.search(peopleCount,  d, arrivalAirport, departureAirport);
-				FlightSearchResult searchResult = new FlightSearchResult();
+				List<Flight> list2;
+				if(bothWays){
+					d2=(Date) dateChooser2.getDate();
+					list2=fs.search(peopleCount,  d2, departureAirport, arrivalAirport);
+				}
+				FlightSearchResult searchResult = new FlightSearchResult(list);
 				JFrame searchResultWindow = searchResult.getFrame();
 				searchResultWindow.setVisible(true);
 			}
