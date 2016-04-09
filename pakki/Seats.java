@@ -2,7 +2,7 @@ package pakki;
 import pakki.DataBaseConnection;
 import java.sql.ResultSet;
 
-public class Seats implements Seating{
+public class Seats{
 	private boolean [][] seats;
 	private int rows;
 	private int cols;
@@ -51,10 +51,9 @@ public class Seats implements Seating{
 		return seat;
 	}
 	
-	//too many clients
 	public void makeUnavailable(String s){
 		int [] seat=turnFromString(s);
-		//db.updateDB("update seating set seatstatus=false where flightnr='"+flightnr+"' and colid='"+ seat[0]+"' and rowid='"+seat[1]+"'");
+		db.updateDB("update seating set seatstatus='false' where flightnr='"+flightnr+"' and colid='"+seat[0]+"' and rowid='"+seat[1]+"'");
 		seats[seat[0]][seat[1]]=false;
 	}
 	
@@ -72,7 +71,6 @@ public class Seats implements Seating{
 	
 	public boolean getSeatStatus(String s){
 		int [] seat=turnFromString(s);
-		//System.out.println("í getseatstatus: " + seat[0] + " " + seat[1]+ " "+ seats[seat[0]][seat[1]]);
 		return seats[seat[0]][seat[1]];
 	}
 }

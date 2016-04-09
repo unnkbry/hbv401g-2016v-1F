@@ -1,16 +1,17 @@
 package pakki;
 
 import static org.junit.Assert.*;
+
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
 import pakki.OrderManager;
 import pakki.Person;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import pakki.Flight;
-import java.util.Date;
 
-import java.util.ArrayList;
-import java.util.List;
 
 public class testOrderManager {
 	private OrderManager om;
@@ -27,24 +28,23 @@ public class testOrderManager {
 
 	@Test
 	public void testmakePersons() {
-		Person p=om.makePersons("name", "id", false, true, "1A", 1);
-		assertEquals(p.getSeat(),"1A");
+		Person p=om.makePersons("Linda", "0", false, true, "01A", 1);
+		assertEquals(p.getSeat(),"01A");
 	}
 	
 	@Test
 	public void testmakeOrder(){
 		Date d= new Date();
-		Flight f=new Flight("arrivalTime","departureTime","arrivalAirport","departureAirport",50, 10, 3, d);
+		Flight f=new Flight("arrivalTime","departureTime","arrivalAirport","departureAirport",50, 10, 1, d);
 		List<Person> list=new ArrayList<Person>();
 		Person p=null;
 		boolean b=true;
-		for(int n=0; n<5;n++){
-			p=new Person("name","id",b, !b, "seat");
+		for(int n=0; n<1;n++){
+			p=new Person("name","id",b, !b, "02B");
 			b=!b;
 			list.add(p);
 		}
-		Order o=om.makeOrder(list, "email", "phonenumber", "animal", 2, 100, f, 3);
+		Order o=om.makeOrder(list, "email", "phonenumber", "animal", 2, f, 3);
 		assertNotNull(o);
 	}
-
 }

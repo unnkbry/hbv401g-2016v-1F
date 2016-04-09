@@ -1,7 +1,5 @@
 package pakki;
 
-import static org.junit.Assert.assertTrue;
-
 //í db: availableSeats, arrivalAirport, departureAirport, arrivalTime departureTime date? flightId
 import java.sql.ResultSet;
 import java.text.SimpleDateFormat;

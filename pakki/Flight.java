@@ -65,4 +65,7 @@ public class Flight {
 		return availableSeats;
 	}
 	
+	public int getPrice(){
+		return price;
+	}
 }

@@ -1,7 +1,6 @@
 package pakki;
 
 import java.util.List;
-import java.util.ArrayList;
 import pakki.Person;
 import pakki.Flight;
 
@@ -22,5 +21,33 @@ public class Order {
 		this.toddler = toddler;
 		this.price = price;
 		this.flight = flight;
+	}
+	
+	public String getEmail(){
+		return email;
+	}
+	
+	public String getPhonenumber(){
+		return phonenumber;
+	}
+	
+	public String getAnimal(){
+		return animal;
+	}
+	
+	public int getToddler(){
+		return toddler;
+	}
+	
+	public int getPrice(){
+		return price;
+	}
+	
+	public Flight getFlight(){
+		return flight;
+	}
+	
+	public List<Person> getPersonList(){
+		return list;
 	}
 }

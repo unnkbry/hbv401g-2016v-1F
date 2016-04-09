@@ -18,5 +18,21 @@ public class Person {
 	public String getSeat(){
 		return seat;
 	}
+	
+	public String getName(){
+		return name;
+	}
+	
+	public String getId(){
+		return id;
+	}
+	
+	public boolean getHandicapped(){
+		return handicapped;
+	}
+	
+	public boolean getSpecialBaggage(){
+		return specialBaggage;
+	}
 
 }
