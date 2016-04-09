@@ -83,10 +83,16 @@ public class StartForm {
 		comboBox.setBounds(95, 186, 73, 22);
 		frame.getContentPane().add(comboBox);
 		
+		JDateChooser dateChooser2 = new JDateChooser();
+		dateChooser2.setVisible(false);
+		dateChooser2.setBounds(220, 94, 99, 22);
+		frame.getContentPane().add(dateChooser2);
+		
 		JCheckBox chckbxBothWays = new JCheckBox("Both Ways");
 		chckbxBothWays.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-
+				System.out.println(chckbxBothWays.isSelected());
+				dateChooser2.setVisible(chckbxBothWays.isSelected());
 			}
 		});
 		chckbxBothWays.setBounds(12, 140, 113, 25);
@@ -96,21 +102,11 @@ public class StartForm {
 		SubmitStartFormbutton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				FlightSearchResult searchresult = new FlightSearchResult();
-				searchresult.setVisible(true);
-	
+				// searchresult.setVisible(true);
 			}
 		});
 		SubmitStartFormbutton.setBounds(145, 250, 79, 24);
 		frame.getContentPane().add(SubmitStartFormbutton);
 		
-		JDateChooser dateChooser2 = new JDateChooser();
-		dateChooser2.setVisible(false);
-		if(chckbxBothWays.isSelected()) {
-			dateChooser2.setVisible(true);
-		} else {
-			dateChooser2.setVisible(false);
-		}
-		dateChooser2.setBounds(220, 94, 99, 22);
-		frame.getContentPane().add(dateChooser2);
 	}
 }
