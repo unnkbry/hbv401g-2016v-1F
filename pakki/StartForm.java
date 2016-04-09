@@ -58,12 +58,12 @@ public class StartForm {
 		frame.getContentPane().add(lblArrival);
 		
 		JComboBox DeparturecomboBox = new JComboBox();
-		DeparturecomboBox.setModel(new DefaultComboBoxModel(new String[] {"RVK", "AK", "ÍSA"}));
+		DeparturecomboBox.setModel(new DefaultComboBoxModel(new String[] {"RKV", "AEY", "IFJ", "EGS", "VES"}));
 		DeparturecomboBox.setBounds(95, 26, 83, 22);
 		frame.getContentPane().add(DeparturecomboBox);
 		
 		JComboBox ArrivalcomboBox = new JComboBox();
-		ArrivalcomboBox.setModel(new DefaultComboBoxModel(new String[] {"RVK", "AK", "ÍSA"}));
+		ArrivalcomboBox.setModel(new DefaultComboBoxModel(new String[] {"RKV", "AEY", "IFJ", "EGS", "VES"}));
 		ArrivalcomboBox.setBounds(95, 55, 83, 22);
 		frame.getContentPane().add(ArrivalcomboBox);
 		
@@ -80,7 +80,7 @@ public class StartForm {
 		frame.getContentPane().add(lblPeopleCount);
 		
 		JComboBox comboBox = new JComboBox();
-		comboBox.setModel(new DefaultComboBoxModel(new String[] {"1", "2", "3", "4", "5"}));
+		comboBox.setModel(new DefaultComboBoxModel(new String[] {"1", "2", "3", "4", "5", "6", "7", "8","9"}));
 		comboBox.setBounds(95, 186, 73, 22);
 		frame.getContentPane().add(comboBox);
 		
@@ -96,6 +96,7 @@ public class StartForm {
 				dateChooser2.setVisible(chckbxBothWays.isSelected());
 			}
 		});
+		
 		chckbxBothWays.setBounds(12, 140, 113, 25);
 		frame.getContentPane().add(chckbxBothWays);
 		
