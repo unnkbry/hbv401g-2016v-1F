@@ -10,10 +10,13 @@ import com.toedter.calendar.JDateChooser;
 import javax.swing.JCheckBox;
 import java.awt.Button;
 import java.awt.event.ActionListener;
+import java.sql.Date;
+import java.util.List;
 import java.awt.event.ActionEvent;
 import javax.swing.DefaultComboBoxModel;
 
 public class StartForm {
+	private FlightSearch fs = new FlightSearch();
 
 	private JFrame frame;
 
@@ -103,7 +106,16 @@ public class StartForm {
 		Button SubmitStartFormbutton = new Button("Submit");
 		SubmitStartFormbutton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				String departureAirport=(String) DeparturecomboBox.getItemAt(DeparturecomboBox.getSelectedIndex());
+				String arrivalAirport=(String) ArrivalcomboBox.getItemAt(ArrivalcomboBox.getSelectedIndex());
+				int peopleCount=(int) comboBox.getItemAt(comboBox.getSelectedIndex());
+				boolean bothWays = chckbxBothWays.isSelected();
+				Date d=(Date) dateChooser1.getDate();
+				Date d2;
+				if(bothWays)
+					d2=(Date) dateChooser2.getDate();
 				frame.dispose();
+				List<Flight> list=fs.search(peopleCount,  d, arrivalAirport, departureAirport);
 				FlightSearchResult searchResult = new FlightSearchResult();
 				JFrame searchResultWindow = searchResult.getFrame();
 				searchResultWindow.setVisible(true);
