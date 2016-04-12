@@ -19,8 +19,6 @@ public class LastOrderForm {
 	private JTextField SocialtextField;
 	private JTextField SeatingtextField;
 	private OrderManager om;
-	private int counter;
-	private int pplCount;
 	private String flightnr;
 	private String flightnr2;
 	private List<Person> list;
@@ -54,13 +52,16 @@ public class LastOrderForm {
 	 */
 	
 	public LastOrderForm(List<Person> list, String flightnr, String flightnr2, int orderNr){
+		om=new OrderManager()
+		this.flightnr=flightnr;
+		this.flightnr2=flightnr2;
+		this.orderNr=orderNr;
+		this.list=list;
 		initialize();
 	}
 	
 	
 	public LastOrderForm() {
-		om=new OrderManager();
-		initialize();
 	}
 
 
