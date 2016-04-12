@@ -60,10 +60,6 @@ public class LastOrderForm {
 		initialize();
 	}
 	
-	
-	/**
-	 * @wbp.parser.entryPoint
-	 */
 
 
 	/**
@@ -125,21 +121,6 @@ public class LastOrderForm {
 		lblChooseSeat.setBounds(14, 351, 77, 16);
 		frame.getContentPane().add(lblChooseSeat);
 		
-		Button Nextbutton = new Button("Next");
-		Nextbutton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				Person p=om.makePersons(NametextField.getText(), SocialtextField.getText(), chckbxHandicapped.isSelected(), chckbxSpecialBaggage.isSelected(), SeatingtextField.getText(), orderNr);
-				list.add(p);
-	
-				frame.dispose();
-				Receipt receipt = new Receipt();
-				JFrame ReceiptWindow = receipt.getFrame();
-				ReceiptWindow.setVisible(true);
-				
-			}
-		});
-		Nextbutton.setBounds(370, 349, 79, 24);
-		frame.getContentPane().add(Nextbutton);
 		
 		JComboBox PetBox = new JComboBox();
 		PetBox.setVisible(false);
@@ -177,5 +158,30 @@ public class LastOrderForm {
 		PetCheck.setBounds(14, 250, 152, 25);
 		frame.getContentPane().add(PetCheck);		
 		
+	Button Nextbutton = new Button("Next");
+	Nextbutton.addActionListener(new ActionListener() {
+		public void actionPerformed(ActionEvent e) {
+			Person p=om.makePersons(NametextField.getText(), SocialtextField.getText(), chckbxHandicapped.isSelected(), chckbxSpecialBaggage.isSelected(), SeatingtextField.getText(), orderNr);
+			list.add(p);
+			String a;
+			int t;
+			if(PetCheck.isSelected())
+				a=PetBox.getSelectedIndex();
+			if(ToddlerCheck.isSelected())
+				t=ToddlerBox.getSelectedIndex();
+			Order o = om.makeOrder(list, EmailtextField.getText(), PhonenumbertextField.getText(), a, t, flightnr, orderNr);
+			Order o2;
+			if(flightnr2!=null)
+				o = om.makeOrder(list, EmailtextField.getText(), PhonenumbertextField.getText(), a, t, flightnr2, orderNr);
+			frame.dispose();
+			Receipt receipt = new Receipt();
+			JFrame ReceiptWindow = receipt.getFrame();
+			ReceiptWindow.setVisible(true);
+			
+		}
+	});
+	Nextbutton.setBounds(370, 349, 79, 24);
+	frame.getContentPane().add(Nextbutton);
+	
 	}
 }
