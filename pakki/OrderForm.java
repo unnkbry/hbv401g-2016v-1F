@@ -116,7 +116,7 @@ public class OrderForm {
 				if(pplCount==counter-1){
 					frame.dispose();
 					LastOrderForm lof = new LastOrderForm(list, flightnr, flightnr2, orderNr);
-					JFrame LastOrderFormWindow = LastOrderForm.getFrame();
+					JFrame LastOrderFormWindow = lof.getFrame();
 					LastOrderFormWindow.setVisible(true);
 				}
 				else {
