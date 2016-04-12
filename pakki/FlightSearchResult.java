@@ -8,11 +8,8 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
 
-import java.awt.BorderLayout;
 import javax.swing.JScrollPane;
 import javax.swing.JLabel;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -178,9 +175,11 @@ public class FlightSearchResult {
 					JFrame LastOrderFormWindow = LOF.getFrame();
 					LastOrderFormWindow.setVisible(true);
 				}
-				OrderForm OF = new OrderForm(list, fn, fn2, pplCount, 0, 5);
-				JFrame OrderFormWindow = OF.getFrame();
-				OrderFormWindow.setVisible(true);
+				else{
+					OrderForm OF = new OrderForm(list, fn, fn2, pplCount, 0, 5);
+					JFrame OrderFormWindow = OF.getFrame();
+					OrderFormWindow.setVisible(true);
+				}
 			}
 		});
 		btnConfirm.setBounds(351, 495, 104, 40);

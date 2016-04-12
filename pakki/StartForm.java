@@ -15,7 +15,6 @@ import javax.swing.DefaultComboBoxModel;
 
 public class StartForm {
 	private FlightSearch fs = new FlightSearch();
-
 	private JFrame frame;
 
 	/**

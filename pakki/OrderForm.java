@@ -113,7 +113,7 @@ public class OrderForm {
 				Person p=om.makePersons(NametextField.getText(), SocialtextField.getText(), chckbxHandicapped.isSelected(), chckbxSpecialBaggage.isSelected(), SeatingtextField.getText(), orderNr);
 				list.add(p);
 				counter++;
-				if(pplCount==counter-1){
+				if(pplCount==counter+1){
 					frame.dispose();
 					LastOrderForm lof = new LastOrderForm(list, flightnr, flightnr2, orderNr);
 					JFrame LastOrderFormWindow = lof.getFrame();
