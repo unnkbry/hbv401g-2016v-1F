@@ -9,6 +9,11 @@ public class LastOrderForm {
 
 	private JFrame frame;
 
+	
+	public JFrame getFrame() {
+		return frame;
+	}
+	
 	/**
 	 * Launch the application.
 	 */
@@ -37,10 +42,7 @@ public class LastOrderForm {
 	public LastOrderForm() {
 		initialize();
 	}
-	
-	public JFrame getFrame() {
-		return frame;
-	}
+
 
 	/**
 	 * Initialize the contents of the frame.
