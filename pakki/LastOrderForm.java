@@ -52,7 +52,7 @@ public class LastOrderForm {
 	 */
 	
 	public LastOrderForm(List<Person> list, String flightnr, String flightnr2, int orderNr){
-		om=new OrderManager()
+		om=new OrderManager();
 		this.flightnr=flightnr;
 		this.flightnr2=flightnr2;
 		this.orderNr=orderNr;
@@ -61,8 +61,9 @@ public class LastOrderForm {
 	}
 	
 	
-	public LastOrderForm() {
-	}
+	/**
+	 * @wbp.parser.entryPoint
+	 */
 
 
 	/**
