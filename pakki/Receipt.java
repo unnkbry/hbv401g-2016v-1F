@@ -136,19 +136,16 @@ public class Receipt {
 		panel.add(lblFlightPrice);
 		
 		JLabel lblNewLabel = new JLabel("Toddler Price:");
-		lblNewLabel.setVisible(false);
 		lblNewLabel.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblNewLabel.setBounds(12, 42, 128, 16);
 		panel.add(lblNewLabel);
 		
 		JLabel lblAnimalPrice = new JLabel("Animal Price:");
-		lblAnimalPrice.setVisible(false);
 		lblAnimalPrice.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblAnimalPrice.setBounds(12, 71, 128, 16);
 		panel.add(lblAnimalPrice);
 		
 		JLabel lblSpecialBaggagePrice = new JLabel("Special Baggage Price:");
-		lblSpecialBaggagePrice.setVisible(false);
 		lblSpecialBaggagePrice.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblSpecialBaggagePrice.setBounds(0, 98, 140, 16);
 		panel.add(lblSpecialBaggagePrice);
