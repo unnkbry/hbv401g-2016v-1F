@@ -23,7 +23,6 @@ public class FlightSearchResult {
 
 	private JFrame frame;
 	private JTable table;
-	private JTable table_1;
 	private JTable table2;
 	private List<Flight> listi;
 	private List<Flight> listi2;
@@ -113,14 +112,14 @@ public class FlightSearchResult {
 			s[counter][5]=Integer.toString(f.getFlightnr());
 			counter++;
 		}
-		table_1=new JTable(new DefaultTableModel(
+		table=new JTable(new DefaultTableModel(
 			s,
 			new String[] {
 				"Arrival Airport", "Departure Airport", "Date", "Departure Time", "Price", "Flightnr"
 			}
 		));
-		table_1.setFont(new Font("Trebuchet MS", Font.PLAIN, 16));
-		table_1.getSelectionModel().addListSelectionListener(new ListSelectionListener(){
+		table.setFont(new Font("Trebuchet MS", Font.PLAIN, 16));
+		table.getSelectionModel().addListSelectionListener(new ListSelectionListener(){
 			public void valueChanged(ListSelectionEvent event){
 				fn= Integer.parseInt(table.getValueAt(table.getSelectedRow(), 5).toString());
 				Iterator<Flight> it = listi.iterator();
@@ -172,7 +171,7 @@ public class FlightSearchResult {
 			});
 			
 		}
-		scrollPane.setViewportView(table_1);
+		scrollPane.setViewportView(table);
 		scrollPane2.setViewportView(table2);
 		
 		JLabel lblDepartureFlight = new JLabel("Departure Flight:");

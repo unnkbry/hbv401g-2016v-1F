@@ -12,8 +12,9 @@ public class Order {
 	private int toddler;
 	private int price;
 	private Flight flight;
+	private int orderNr;
 	
-	public Order(List<Person> list, String email, String phonenumber, String animal, int toddler, int price, Flight flight){
+	public Order(List<Person> list, String email, String phonenumber, String animal, int toddler, int price, Flight flight, int orderNr){
 		this.list = list;
 		this.email = email;
 		this.phonenumber = phonenumber;
@@ -21,6 +22,7 @@ public class Order {
 		this.toddler = toddler;
 		this.price = price;
 		this.flight = flight;
+		this.orderNr=orderNr;
 	}
 	
 	public String getEmail(){
@@ -50,4 +52,14 @@ public class Order {
 	public List<Person> getPersonList(){
 		return list;
 	}
+	
+	public String getName(){
+		Person p= list.get(list.size()-1);
+		return p.getName();
+	}
+	
+	public int getOrderNr(){
+		return orderNr;
+	}
+	
 }

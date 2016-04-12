@@ -170,26 +170,30 @@ public class Receipt {
 		Image img;
 		JLabel myndlabel = new JLabel("");
 		if(o.getAnimal() == "dog"){
+			System.out.println("Dog");
 			img = new ImageIcon(this.getClass().getResource("dog.png")).getImage();
 		}
-		else if(o.getAnimal() == "cat"){
+		else if(o.getAnimal() == "Cat"){
 			img = new ImageIcon(this.getClass().getResource("cat.png")).getImage();
 		}
-		else if(o.getAnimal() == "fish"){
+		else if(o.getAnimal() == "Fish"){
 			img = new ImageIcon(this.getClass().getResource("fish.png")).getImage();
 		}
-		else if(o.getAnimal() == "bunny"){
+		else if(o.getAnimal() == "Bunny"){
+			System.out.println("bunny");
 			img = new ImageIcon(this.getClass().getResource("bunny.png")).getImage();
 		}
-		else if(o.getAnimal() == "snake"){
+		else if(o.getAnimal() == "Snake"){
 			img = new ImageIcon(this.getClass().getResource("snake.png")).getImage();
 		}
-		else if(o.getAnimal() == "bird"){
+		else if(o.getAnimal() == "Bird"){
 			img = new ImageIcon(this.getClass().getResource("bird.png")).getImage();
 		}
 		
-		else
+		else{
 			img = new ImageIcon(this.getClass().getResource("dog.png")).getImage();
+			System.out.println("else");
+		}
 		myndlabel.setIcon(new ImageIcon(img));
 		myndlabel.setBounds(236, 28, 94, 97);
 		frame.getContentPane().add(myndlabel);
