@@ -156,24 +156,26 @@ public class Receipt {
 		JLabel FlightPriceLabel = new JLabel(Integer.toString(o.getFlight().getPrice()*o.getPPLCount()));
 		FlightPriceLabel.setBounds(152, 13, 56, 16);
 		panel.add(FlightPriceLabel);
-		if(o.getToddler()>0){
-			JLabel ToddlerPriceLabel = new JLabel(Integer.toString(o.getToddler()*5000));
-			ToddlerPriceLabel.setVisible(true);
-			ToddlerPriceLabel.setBounds(152, 42, 56, 16);
-			panel.add(ToddlerPriceLabel);
-		}
-		if(o.getAnimal()!=""){
-			JLabel AnimalPriceLabel = new JLabel(Integer.toString(10000));
-			AnimalPriceLabel.setVisible(true);
-			AnimalPriceLabel.setBounds(152, 71, 56, 16);
-			panel.add(AnimalPriceLabel);
-		}
-		if(o.getSpecialBaggage()>0){
-			JLabel SBPLabel = new JLabel(Integer.toString(o.getSpecialBaggage()*6000));
-			SBPLabel.setVisible(true);
-			SBPLabel.setBounds(152, 98, 56, 16);
-			panel.add(SBPLabel);
-		}
+		
+		JLabel ToddlerPriceLabel = new JLabel(Integer.toString(o.getToddler()*5000));
+		ToddlerPriceLabel.setVisible(true);
+		ToddlerPriceLabel.setBounds(152, 42, 56, 16);
+		panel.add(ToddlerPriceLabel);
+		
+		int s=1;
+		if(o.getAnimal()=="")
+			s=0;
+		
+		JLabel AnimalPriceLabel = new JLabel(Integer.toString(s*10000));
+		AnimalPriceLabel.setVisible(true);
+		AnimalPriceLabel.setBounds(152, 71, 56, 16);
+		panel.add(AnimalPriceLabel);
+		
+		JLabel SBPLabel = new JLabel(Integer.toString(o.getSpecialBaggage()*6000));
+		SBPLabel.setVisible(true);
+		SBPLabel.setBounds(152, 98, 56, 16);
+		panel.add(SBPLabel);
+		
 		Image img;
 		JLabel myndlabel = new JLabel("");
 		if(o.getAnimal() == "dog"){
