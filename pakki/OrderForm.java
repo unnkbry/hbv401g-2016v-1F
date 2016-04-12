@@ -14,6 +14,8 @@ public class OrderForm {
 	private JTextField SocialtextField;
 	private JTextField textField_2;
 
+	
+	
 	public JFrame getFrame() {
 		return frame;
 	}
@@ -25,7 +27,7 @@ public class OrderForm {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					OrderForm window = new OrderForm();
+					OrderForm window = new OrderForm("1","2",3);
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -37,7 +39,7 @@ public class OrderForm {
 	/**
 	 * Create the application.
 	 */
-	public OrderForm() {
+	public OrderForm(String flightNumber, String flightNumber2, int pplCount) {
 		initialize();
 	}
 	

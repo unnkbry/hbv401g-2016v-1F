@@ -171,7 +171,7 @@ public class FlightSearchResult {
 		btnConfirm.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				frame.dispose();
-				OrderForm OF = new OrderForm(fn, fn2, pplCount);
+				OrderForm OF = new OrderForm(fn, fn2, pplCount, 0);
 				JFrame OrderFormWindow = OF.getFrame();
 				OrderFormWindow.setVisible(true);
 			}
