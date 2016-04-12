@@ -85,21 +85,25 @@ public class Receipt {
 		frame.getContentPane().add(SSClabel);
 		
 		JLabel DepartureLabel = new JLabel("Departure:");
-		DepartureLabel.setBounds(35, 151, 73, 16);
+		DepartureLabel.setHorizontalAlignment(SwingConstants.RIGHT);
+		DepartureLabel.setBounds(31, 151, 73, 16);
 		frame.getContentPane().add(DepartureLabel);
 		
 		JLabel ArrivalLabel = new JLabel("Arrival:");
-		ArrivalLabel.setBounds(35, 180, 56, 16);
+		ArrivalLabel.setHorizontalAlignment(SwingConstants.RIGHT);
+		ArrivalLabel.setBounds(35, 180, 69, 16);
 		frame.getContentPane().add(ArrivalLabel);
 		
 		JLabel Departure2Label = new JLabel("Departure:");
+		Departure2Label.setHorizontalAlignment(SwingConstants.RIGHT);
 		Departure2Label.setVisible(false);
-		Departure2Label.setBounds(174, 151, 73, 16);
+		Departure2Label.setBounds(194, 151, 73, 16);
 		frame.getContentPane().add(Departure2Label);
 		
 		JLabel Arrival2Label = new JLabel("Arrival:");
+		Arrival2Label.setHorizontalAlignment(SwingConstants.RIGHT);
 		Arrival2Label.setVisible(false);
-		Arrival2Label.setBounds(174, 180, 56, 16);
+		Arrival2Label.setBounds(204, 180, 63, 16);
 		frame.getContentPane().add(Arrival2Label);
 		
 		JLabel lblPrice = new JLabel("Final Price:");
@@ -122,7 +126,7 @@ public class Receipt {
 		frame.getContentPane().add(Closebutton);
 		
 		JPanel panel = new JPanel();
-		panel.setBounds(35, 239, 282, 142);
+		panel.setBounds(37, 240, 282, 142);
 		frame.getContentPane().add(panel);
 		panel.setLayout(null);
 		
@@ -197,5 +201,21 @@ public class Receipt {
 		myndlabel.setIcon(new ImageIcon(img));
 		myndlabel.setBounds(236, 28, 94, 97);
 		frame.getContentPane().add(myndlabel);
+		
+		JLabel D1 = new JLabel("New label");
+		D1.setBounds(116, 151, 56, 16);
+		frame.getContentPane().add(D1);
+		
+		JLabel A1 = new JLabel("New label");
+		A1.setBounds(116, 180, 56, 16);
+		frame.getContentPane().add(A1);
+		
+		JLabel D2 = new JLabel("New label");
+		D2.setBounds(274, 151, 68, 16);
+		frame.getContentPane().add(D2);
+		
+		JLabel A2 = new JLabel("New label");
+		A2.setBounds(274, 180, 56, 16);
+		frame.getContentPane().add(A2);
 	}
 }
