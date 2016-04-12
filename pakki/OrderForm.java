@@ -11,6 +11,7 @@ import java.awt.event.ActionListener;
 import java.util.List;
 import java.awt.event.ActionEvent;
 import pakki.OrderManager;
+import pakki.Person;
 
 
 public class OrderForm {
@@ -59,6 +60,7 @@ public class OrderForm {
 		this.flightnr2=flightnr2;
 		this.list=list;
 		this.orderNr=orderNr;
+		om=new OrderManager();
 		initialize();
 	}
 	
@@ -129,6 +131,5 @@ public class OrderForm {
 		});
 		Nextbutton.setBounds(356, 222, 79, 24);
 		frame.getContentPane().add(Nextbutton);
-		
 	}
 }

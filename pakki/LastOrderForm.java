@@ -59,6 +59,7 @@ public class LastOrderForm {
 	
 	
 	public LastOrderForm() {
+		om=new OrderManager();
 		initialize();
 	}
 
