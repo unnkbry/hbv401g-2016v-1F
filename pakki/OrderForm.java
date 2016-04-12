@@ -8,14 +8,24 @@ import javax.swing.JTextField;
 import javax.swing.JCheckBox;
 import java.awt.Button;
 import java.awt.event.ActionListener;
+import java.util.List;
 import java.awt.event.ActionEvent;
+import pakki.OrderManager;
+
 
 public class OrderForm {
 
 	private JFrame frame;
 	private JTextField NametextField;
 	private JTextField SocialtextField;
-	private JTextField textField_2;
+	private JTextField SeatingtextField;
+	private OrderManager om;
+	private int counter;
+	private int pplCount;
+	private String flightnr;
+	private String flightnr2;
+	private List<Person> list;
+	private int orderNr;
 
 	
 	
@@ -30,7 +40,7 @@ public class OrderForm {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					OrderForm window = new OrderForm("1","2",3,1);
+					OrderForm window = new OrderForm(null, "1","2",3,1,5);
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -42,7 +52,13 @@ public class OrderForm {
 	/**
 	 * Create the application.
 	 */
-	public OrderForm(String flightNumber, String flightNumber2, int pplCount, int counter) {
+	public OrderForm(List<Person> list, String flightnr, String flightnr2, int pplCount, int counter, int orderNr) {
+		this.pplCount=pplCount;
+		this.counter=counter;
+		this.flightnr=flightnr;
+		this.flightnr2=flightnr2;
+		this.list=list;
+		this.orderNr=orderNr;
 		initialize();
 	}
 	
@@ -82,10 +98,10 @@ public class OrderForm {
 		chckbxSpecialBaggage.setBounds(14, 138, 135, 25);
 		frame.getContentPane().add(chckbxSpecialBaggage);
 		
-		textField_2 = new JTextField();
-		textField_2.setBounds(124, 189, 77, 22);
-		frame.getContentPane().add(textField_2);
-		textField_2.setColumns(10);
+		SeatingtextField = new JTextField();
+		SeatingtextField.setBounds(124, 189, 77, 22);
+		frame.getContentPane().add(SeatingtextField);
+		SeatingtextField.setColumns(10);
 		
 		JLabel lblChooseSeat = new JLabel("Choose Seat:");
 		lblChooseSeat.setBounds(14, 192, 77, 16);
@@ -94,15 +110,18 @@ public class OrderForm {
 		Button Nextbutton = new Button("Next");
 		Nextbutton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if(pplCount==counter){
+				Person p=om.makePersons(NametextField.getText(), SocialtextField.getText(), chckbxHandicapped.isSelected(), chckbxSpecialBaggage.isSelected(), SeatingtextField.getText(), orderNr);
+				list.add(p);
+				counter++;
+				if(pplCount==counter-1){
 					frame.dispose();
-					Receipt receipt = new Receipt(list, list2, peopleCount);
-					JFrame receiptWindow = receipt.getFrame();
-					receiptWindow.setVisible(true);
+					LastOrderForm lof = new LastOrderForm(list, flightnr, flightnr2, orderNr);
+					JFrame LastOrderFormWindow = LastOrderForm.getFrame();
+					LastOrderFormWindow.setVisible(true);
 				}
 				else {
 					frame.dispose();
-					OrderForm OF = new OrderForm(fn, fn2, pplCount, counter++);
+					OrderForm OF = new OrderForm(list, flightnr, flightnr2, pplCount, counter++, orderNr);
 					JFrame OrderFormWindow = OF.getFrame();
 					OrderFormWindow.setVisible(true);
 				}
