@@ -148,13 +148,14 @@ public class OrderForm {
 		table = new JTable(table_model);
 		scrollPane.setViewportView(table);
 		
-		JLabel lblChooseSeat_1 = new JLabel("Choose Arrival Seat:");
-		lblChooseSeat_1.setBounds(278, 192, 135, 16);
-		frame.getContentPane().add(lblChooseSeat_1);
-		
-		ArrivaltextField = new JTextField();
-		ArrivaltextField.setBounds(403, 189, 64, 22);
-		frame.getContentPane().add(ArrivaltextField);
-		ArrivaltextField.setColumns(10);
+		if(f2!=null){
+			JLabel lblChooseSeat_1 = new JLabel("Choose Arrival Seat:");
+			lblChooseSeat_1.setBounds(278, 192, 135, 16);
+			frame.getContentPane().add(lblChooseSeat_1);
+			ArrivaltextField = new JTextField();
+			ArrivaltextField.setBounds(403, 189, 64, 22);
+			frame.getContentPane().add(ArrivaltextField);
+			ArrivaltextField.setColumns(10);
+		}
 	}
 }
