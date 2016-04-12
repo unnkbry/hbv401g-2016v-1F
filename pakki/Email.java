@@ -6,7 +6,7 @@ public class Email {
 		if(EmailSender.sendMail
 				("dreamteam.flightservice@gmail.com", 
 						"0412952019", 
-						"message to reciepents", to)) {
+						"Thank you for using the flight-service from DreamTeam! Here is your receipt!", to)) {
 			System.out.println("email sent successful");
 		}
 		else System.out.println("Some error occured");	
