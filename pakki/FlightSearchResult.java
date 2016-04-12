@@ -60,7 +60,7 @@ public class FlightSearchResult {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 450, 300);
+		frame.setBounds(100, 100, 816, 558);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
@@ -72,7 +72,7 @@ public class FlightSearchResult {
 				       
 				    }
 				});
-		scrollPane.setBounds(12, 42, 261, 119);
+		scrollPane.setBounds(12, 42, 764, 200);
 		frame.getContentPane().add(scrollPane);
 		JScrollPane scrollPane2 = new JScrollPane();
 		scrollPane.addMouseListener(new MouseAdapter() {
@@ -82,7 +82,7 @@ public class FlightSearchResult {
 				       
 				    }
 				});
-		scrollPane2.setBounds(200, 200, 200, 200);
+		scrollPane2.setBounds(12, 284, 764, 200);
 		frame.getContentPane().add(scrollPane2);
 		JTable table = new JTable();
 		int numRows = listi.size();
@@ -135,5 +135,13 @@ public class FlightSearchResult {
 		}
 		scrollPane.setViewportView(table);
 		scrollPane2.setViewportView(table2);
+		
+		JLabel lblDepartureFlight = new JLabel("Departure Flight:");
+		lblDepartureFlight.setBounds(12, 13, 104, 16);
+		frame.getContentPane().add(lblDepartureFlight);
+		
+		JLabel lblReturningFlight = new JLabel("Returning Flight:");
+		lblReturningFlight.setBounds(12, 255, 114, 16);
+		frame.getContentPane().add(lblReturningFlight);
 	}
 }
