@@ -170,9 +170,9 @@ public class LastOrderForm {
 			String a;
 			int t;
 			if(PetCheck.isSelected())
-				a=PetBox.getSelectedIndex();
+				a=(String)PetBox.getItemAt(PetBox.getSelectedIndex());
 			if(ToddlerCheck.isSelected())
-				t=ToddlerBox.getSelectedIndex();
+				t=Integer.parseInt(ToddlerBox.getItemAt(ToddlerBox.getSelectedIndex()));
 			Order o = om.makeOrder(list, EmailtextField.getText(), PhonenumbertextField.getText(), a, t, flightnr, orderNr);
 			Order o2;
 			if(flightnr2!=null)
