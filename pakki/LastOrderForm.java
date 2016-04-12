@@ -4,12 +4,14 @@ import java.awt.Button;
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Date;
 import java.util.List;
 
 import javax.swing.JCheckBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
+import javax.swing.JComboBox;
 
 public class LastOrderForm {
 	
@@ -24,6 +26,7 @@ public class LastOrderForm {
 	private List<Person> list;
 	private int orderNr;
 	private JFrame frame;
+	private JTextField PhoneNrtextField;
 
 	
 	public JFrame getFrame() {
@@ -65,7 +68,7 @@ public class LastOrderForm {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 488, 303);
+		frame.setBounds(100, 100, 486, 430);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		 
@@ -76,6 +79,21 @@ public class LastOrderForm {
 		JLabel lblSocialSecurityNumber = new JLabel("Social Security Number:");
 		lblSocialSecurityNumber.setBounds(14, 78, 152, 16);
 		frame.getContentPane().add(lblSocialSecurityNumber);
+		
+		JLabel ToddlerLabel = new JLabel("How many?");
+		ToddlerLabel.setVisible(false);
+		ToddlerLabel.setBounds(245, 224, 71, 16);
+		frame.getContentPane().add(ToddlerLabel);
+		
+		JComboBox ToddlerBox = new JComboBox();
+		ToddlerBox.setVisible(false);
+		ToddlerBox.setBounds(328, 221, 121, 22);
+		frame.getContentPane().add(ToddlerBox);
+		
+		JLabel PetLabel = new JLabel("What kind?");
+		PetLabel.setVisible(false);
+		PetLabel.setBounds(245, 254, 71, 16);
+		frame.getContentPane().add(PetLabel);
 		
 		NametextField = new JTextField();
 		NametextField.setBounds(218, 41, 231, 22);
@@ -88,20 +106,20 @@ public class LastOrderForm {
 		SocialtextField.setColumns(10);
 		
 		JCheckBox chckbxHandicapped = new JCheckBox("Handicapped");
-		chckbxHandicapped.setBounds(14, 108, 113, 25);
+		chckbxHandicapped.setBounds(14, 160, 113, 25);
 		frame.getContentPane().add(chckbxHandicapped);
 		
 		JCheckBox chckbxSpecialBaggage = new JCheckBox("Special Baggage");
-		chckbxSpecialBaggage.setBounds(14, 138, 135, 25);
+		chckbxSpecialBaggage.setBounds(14, 190, 135, 25);
 		frame.getContentPane().add(chckbxSpecialBaggage);
 		
 		SeatingtextField = new JTextField();
-		SeatingtextField.setBounds(124, 189, 77, 22);
+		SeatingtextField.setBounds(106, 348, 77, 22);
 		frame.getContentPane().add(SeatingtextField);
 		SeatingtextField.setColumns(10);
 		
 		JLabel lblChooseSeat = new JLabel("Choose Seat:");
-		lblChooseSeat.setBounds(14, 192, 77, 16);
+		lblChooseSeat.setBounds(14, 351, 77, 16);
 		frame.getContentPane().add(lblChooseSeat);
 		
 		Button Nextbutton = new Button("Next");
@@ -117,8 +135,44 @@ public class LastOrderForm {
 				
 			}
 		});
-		Nextbutton.setBounds(356, 222, 79, 24);
+		Nextbutton.setBounds(370, 349, 79, 24);
 		frame.getContentPane().add(Nextbutton);
+		
+		JComboBox PetBox = new JComboBox();
+		PetBox.setVisible(false);
+		PetBox.setBounds(328, 251, 121, 22);
+		frame.getContentPane().add(PetBox);
+		
+		JLabel lblPhoneNumber = new JLabel("Phone Number:");
+		lblPhoneNumber.setBounds(14, 114, 113, 16);
+		frame.getContentPane().add(lblPhoneNumber);
+		
+		PhoneNrtextField = new JTextField();
+		PhoneNrtextField.setBounds(218, 111, 231, 22);
+		frame.getContentPane().add(PhoneNrtextField);
+		PhoneNrtextField.setColumns(10);
+		
+		JCheckBox ToddlerCheck = new JCheckBox("Travelling with a Toddler");
+		ToddlerCheck.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ToddlerBox.setVisible(ToddlerCheck.isSelected());
+				ToddlerLabel.setVisible(ToddlerCheck.isSelected());
+			}
+		});
+		
+		ToddlerCheck.setBounds(14, 220, 176, 25);
+		frame.getContentPane().add(ToddlerCheck);
+		
+		JCheckBox PetCheck = new JCheckBox("Travelling with a Pet");
+		PetCheck.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				PetBox.setVisible(PetCheck.isSelected());
+				PetLabel.setVisible(PetCheck.isSelected());
+			}
+		});
+		
+		PetCheck.setBounds(14, 250, 152, 25);
+		frame.getContentPane().add(PetCheck);		
 		
 	}
 }
