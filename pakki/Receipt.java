@@ -223,7 +223,7 @@ public class Receipt {
 		lblFlightNumber.setBounds(15, 156, 89, 16);
 		frame.getContentPane().add(lblFlightNumber);
 		
-		JLabel FN1 = new JLabel("ALLA");
+		JLabel FN1 = new JLabel(Integer.toString(o.getFlight().getFlightnr()));
 		FN1.setBounds(116, 156, 56, 16);
 		frame.getContentPane().add(FN1);
 		
@@ -232,9 +232,11 @@ public class Receipt {
 		lblFlightNumber_1.setBounds(173, 156, 94, 16);
 		frame.getContentPane().add(lblFlightNumber_1);
 		
-		JLabel FN2 = new JLabel("ALLA");
-		FN2.setBounds(274, 156, 56, 16);
-		frame.getContentPane().add(FN2);
+		if(o2!=null){
+			JLabel FN2 = new JLabel(Integer.toString(o2.getFlight().getFlightnr()));
+			FN2.setBounds(274, 156, 56, 16);
+			frame.getContentPane().add(FN2);
+		}
 		
 		if(o2!=null){
 			JLabel D2 = new JLabel(o2.getFlight().getDepartureAirport());
