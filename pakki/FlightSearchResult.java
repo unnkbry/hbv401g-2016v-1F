@@ -75,7 +75,7 @@ public class FlightSearchResult {
 		scrollPane.setBounds(12, 42, 764, 200);
 		frame.getContentPane().add(scrollPane);
 		JScrollPane scrollPane2 = new JScrollPane();
-		scrollPane.addMouseListener(new MouseAdapter() {
+		scrollPane2.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent evt) {
 				        int row = table.rowAtPoint(evt.getPoint());
@@ -114,7 +114,7 @@ public class FlightSearchResult {
 			table2 = new JTable();
 			int numRows2 = listi2.size();
 			String [][] s2= new String [numRows2][5];
-			it = listi.iterator();
+			it = listi2.iterator();
 			counter = 0;
 			while (it.hasNext()) {
 				Flight f=it.next();
