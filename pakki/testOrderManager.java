@@ -44,7 +44,7 @@ public class testOrderManager {
 			b=!b;
 			list.add(p);
 		}
-		Order o=om.makeOrder(list, "email", "phonenumber", "animal", 2, f, 3);
+		Order o=om.makeOrder(list, "sunhun", "phonenumber", "animal", 2, f, 3);
 		assertNotNull(o);
 	}
 }

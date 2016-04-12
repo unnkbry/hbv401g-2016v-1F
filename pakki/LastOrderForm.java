@@ -4,7 +4,6 @@ import java.awt.Button;
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Date;
 import java.util.List;
 
 import javax.swing.DefaultComboBoxModel;
@@ -20,13 +19,12 @@ public class LastOrderForm {
 	private JTextField SocialtextField;
 	private JTextField SeatingtextField;
 	private OrderManager om;
-	private String flightnr;
-	private String flightnr2;
+	private Flight f1;
+	private Flight f2;
 	private List<Person> list;
 	private int orderNr;
 	private JFrame frame;
 	private JTextField PhonenumbertextField;
-	private JComboBox ToddlerBox;
 	private JTextField EmailtextField;
 
 	
@@ -41,7 +39,7 @@ public class LastOrderForm {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					LastOrderForm window = new LastOrderForm(null,"10","12",5);
+					LastOrderForm window = new LastOrderForm(null,null,null,5);
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -54,10 +52,10 @@ public class LastOrderForm {
 	 * Create the application.
 	 */
 	
-	public LastOrderForm(List<Person> list, String flightnr, String flightnr2, int orderNr){
+	public LastOrderForm(List<Person> list, Flight f1, Flight f2, int orderNr){
 		om=new OrderManager();
-		this.flightnr=flightnr;
-		this.flightnr2=flightnr2;
+		this.f1=f1;
+		this.f2=f2;
 		this.orderNr=orderNr;
 		this.list=list;
 		initialize();
@@ -87,8 +85,8 @@ public class LastOrderForm {
 		ToddlerLabel.setBounds(245, 258, 71, 16);
 		frame.getContentPane().add(ToddlerLabel);
 		
-		ToddlerBox = new JComboBox();
-		ToddlerBox.setModel(new DefaultComboBoxModel(new String[] {"1", "2", "3", "4", "5"}));
+		JComboBox<String> ToddlerBox= new JComboBox<String>();
+		ToddlerBox.setModel(new DefaultComboBoxModel<String>(new String[] {"1", "2", "3", "4", "5"}));
 		ToddlerBox.setVisible(false);
 		ToddlerBox.setBounds(328, 255, 121, 22);
 		frame.getContentPane().add(ToddlerBox);
@@ -125,8 +123,8 @@ public class LastOrderForm {
 		lblChooseSeat.setBounds(14, 351, 77, 16);
 		frame.getContentPane().add(lblChooseSeat);
 		
-		JComboBox PetBox = new JComboBox();
-		PetBox.setModel(new DefaultComboBoxModel(new String[] {"Dog", "Cat", "Bunny", "Fish", "Giraffe", "Hamster", "Bird", "Snake"}));
+		JComboBox<String> PetBox = new JComboBox<String>();
+		PetBox.setModel(new DefaultComboBoxModel<String>(new String[] {"Dog", "Cat", "Bunny", "Fish", "Giraffe", "Hamster", "Bird", "Snake"}));
 		PetBox.setVisible(false);
 		PetBox.setBounds(328, 284, 121, 22);
 		frame.getContentPane().add(PetBox);
@@ -167,18 +165,18 @@ public class LastOrderForm {
 		public void actionPerformed(ActionEvent e) {
 			Person p=om.makePersons(NametextField.getText(), SocialtextField.getText(), chckbxHandicapped.isSelected(), chckbxSpecialBaggage.isSelected(), SeatingtextField.getText(), orderNr);
 			list.add(p);
-			String a;
-			int t;
+			String a="";
+			int t=0;
 			if(PetCheck.isSelected())
 				a=(String)PetBox.getItemAt(PetBox.getSelectedIndex());
 			if(ToddlerCheck.isSelected())
 				t=Integer.parseInt(ToddlerBox.getItemAt(ToddlerBox.getSelectedIndex()));
-			Order o = om.makeOrder(list, EmailtextField.getText(), PhonenumbertextField.getText(), a, t, flightnr, orderNr);
-			Order o2;
-			if(flightnr2!=null)
-				o = om.makeOrder(list, EmailtextField.getText(), PhonenumbertextField.getText(), a, t, flightnr2, orderNr);
+			Order o=om.makeOrder(list, EmailtextField.getText(), PhonenumbertextField.getText(), a, t, f1, orderNr);
+			Order o2=null;
+			if(f2!=null)
+				o2 = om.makeOrder(list, EmailtextField.getText(), PhonenumbertextField.getText(), a, t, f2, orderNr);
 			frame.dispose();
-			Receipt receipt = new Receipt();
+			Receipt receipt = new Receipt(/*o,o2*/);
 			JFrame ReceiptWindow = receipt.getFrame();
 			ReceiptWindow.setVisible(true);
 			

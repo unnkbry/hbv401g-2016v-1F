@@ -17,6 +17,7 @@ import java.util.List;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import pakki.Flight;
 
 public class FlightSearchResult {
 
@@ -26,9 +27,11 @@ public class FlightSearchResult {
 	private List<Flight> listi;
 	private List<Flight> listi2;
 	SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy");
-	String fn;
-	String fn2;
+	int fn;
+	int fn2;
 	int pplCount;
+	Flight f2;
+	Flight f1;
 	
 	/**
 	 * Constructors
@@ -117,8 +120,13 @@ public class FlightSearchResult {
 		));
 		table.getSelectionModel().addListSelectionListener(new ListSelectionListener(){
 			public void valueChanged(ListSelectionEvent event){
-				fn= table.getValueAt(table.getSelectedRow(), 5).toString();
-				System.out.println(fn);
+				fn= Integer.parseInt(table.getValueAt(table.getSelectedRow(), 5).toString());
+				Iterator<Flight> it = listi.iterator();
+				while (it.hasNext()) {
+					Flight f=it.next();
+					if(fn==f.getFlightnr())
+						f1=f;
+				}
 			}
 		});
 		frame.getContentPane().add(scrollPane);
@@ -149,10 +157,18 @@ public class FlightSearchResult {
 			));
 			table2.getSelectionModel().addListSelectionListener(new ListSelectionListener(){
 				public void valueChanged(ListSelectionEvent event){
-					fn2= table2.getValueAt(table2.getSelectedRow(), 5).toString();
-					System.out.println(fn2);
+					fn2= Integer.parseInt(table2.getValueAt(table2.getSelectedRow(), 5).toString());
+					if(listi2!=null){
+						Iterator<Flight> it = listi2.iterator();
+						while (it.hasNext()) {
+							Flight f=it.next();
+							if(fn2==f.getFlightnr())
+								f2=f;
+						}
+					}
 				}
 			});
+			
 		}
 		scrollPane.setViewportView(table);
 		scrollPane2.setViewportView(table2);
@@ -171,12 +187,13 @@ public class FlightSearchResult {
 				frame.dispose();
 				List<Person> list=new ArrayList<Person>();
 				if(pplCount==1){
-					LastOrderForm LOF = new LastOrderForm(list, fn, fn2, 5);
+					LastOrderForm LOF = new LastOrderForm(list, f1, f2, 5);
 					JFrame LastOrderFormWindow = LOF.getFrame();
 					LastOrderFormWindow.setVisible(true);
 				}
 				else{
-					OrderForm OF = new OrderForm(list, fn, fn2, pplCount, 0, 5);
+					
+					OrderForm OF = new OrderForm(list, f1, f2, pplCount, 0, 5);
 					JFrame OrderFormWindow = OF.getFrame();
 					OrderFormWindow.setVisible(true);
 				}

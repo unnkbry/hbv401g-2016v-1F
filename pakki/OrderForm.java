@@ -23,8 +23,8 @@ public class OrderForm {
 	private OrderManager om;
 	private int counter;
 	private int pplCount;
-	private String flightnr;
-	private String flightnr2;
+	private Flight f1;
+	private Flight f2;
 	private List<Person> list;
 	private int orderNr;
 
@@ -41,7 +41,7 @@ public class OrderForm {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					OrderForm window = new OrderForm(null, "1","2",3,1,5);
+					OrderForm window = new OrderForm(null, null,null,3,1,5);
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -53,11 +53,11 @@ public class OrderForm {
 	/**
 	 * Create the application.
 	 */
-	public OrderForm(List<Person> list, String flightnr, String flightnr2, int pplCount, int counter, int orderNr) {
+	public OrderForm(List<Person> list, Flight f1, Flight f2, int pplCount, int counter, int orderNr) {
 		this.pplCount=pplCount;
 		this.counter=counter;
-		this.flightnr=flightnr;
-		this.flightnr2=flightnr2;
+		this.f1=f1;
+		this.f2=f2;
 		this.list=list;
 		this.orderNr=orderNr;
 		om=new OrderManager();
@@ -117,13 +117,13 @@ public class OrderForm {
 				counter++;
 				if(pplCount==counter+1){
 					frame.dispose();
-					LastOrderForm lof = new LastOrderForm(list, flightnr, flightnr2, orderNr);
+					LastOrderForm lof = new LastOrderForm(list, f1, f2, orderNr);
 					JFrame LastOrderFormWindow = lof.getFrame();
 					LastOrderFormWindow.setVisible(true);
 				}
 				else {
 					frame.dispose();
-					OrderForm OF = new OrderForm(list, flightnr, flightnr2, pplCount, counter++, orderNr);
+					OrderForm OF = new OrderForm(list, f1, f2, pplCount, counter++, orderNr);
 					JFrame OrderFormWindow = OF.getFrame();
 					OrderFormWindow.setVisible(true);
 				}
