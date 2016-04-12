@@ -7,7 +7,6 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import java.awt.Font;
-import java.awt.Image;
 import java.awt.Button;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -45,9 +44,9 @@ public class Receipt {
 	 */
 	
 	public Receipt(Order o, Order o2) {
-		initialize();
 		this.o=o;
 		this.o2=o2;
+		initialize();
 		
 	}
 
@@ -168,28 +167,30 @@ public class Receipt {
 		SBPLabel.setVisible(false);
 		SBPLabel.setBounds(152, 98, 56, 16);
 		panel.add(SBPLabel);
-		
+		Image img;
 		JLabel myndlabel = new JLabel("");
-		if(o.getAnimal() == "dog"){
-			Image img = new ImageIcon(this.getClass().getResource("/dog.png")).getImage();
+		/*if(o.getAnimal() == "dog"){
+			img = new ImageIcon(this.getClass().getResource("/dog.png")).getImage();
 		}
-		if(o.getAnimal() == "cat"){
-			Image img = new ImageIcon(this.getClass().getResource("/cat.png")).getImage();
+		else if(o.getAnimal() == "cat"){
+			img = new ImageIcon(this.getClass().getResource("/cat.png")).getImage();
 		}
-		if(o.getAnimal() == "fish"){
-			Image img = new ImageIcon(this.getClass().getResource("/fish.png")).getImage();
+		else if(o.getAnimal() == "fish"){
+			img = new ImageIcon(this.getClass().getResource("/fish.png")).getImage();
 		}
-		if(o.getAnimal() == "bunny"){
-			Image img = new ImageIcon(this.getClass().getResource("/bunny.png")).getImage();
+		else if(o.getAnimal() == "bunny"){
+			img = new ImageIcon(this.getClass().getResource("/bunny.png")).getImage();
 		}
-		if(o.getAnimal() == "snake"){
-			Image img = new ImageIcon(this.getClass().getResource("/snake.png")).getImage();
+		else if(o.getAnimal() == "snake"){
+			img = new ImageIcon(this.getClass().getResource("/snake.png")).getImage();
 		}
-		if(o.getAnimal() == "bird"){
-			Image img = new ImageIcon(this.getClass().getResource("/bird.png")).getImage();
+		else if(o.getAnimal() == "bird"){
+			img = new ImageIcon(this.getClass().getResource("/bird.png")).getImage();
 		}
 		
-		Image img = new ImageIcon(this.getClass().getResource("/dog.png")).getImage();
+		else
+			img = new ImageIcon(this.getClass().getResource("/dog.png")).getImage();*/
+		img = new ImageIcon(this.getClass().getResource("/dog.png")).getImage();
 		myndlabel.setIcon(new ImageIcon(img));
 		myndlabel.setBounds(236, 28, 94, 97);
 		frame.getContentPane().add(myndlabel);
