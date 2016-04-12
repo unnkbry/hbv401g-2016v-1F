@@ -20,13 +20,15 @@ public class FlightSearchResult {
 	private JFrame frame;
 	private JTable table;
 	private List<Flight> listi;
+	private List<Flight> listi2;
 	SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy");
 	
 	/**
 	 * Constructors
 	 */
-	public FlightSearchResult(List<Flight> listi){
+	public FlightSearchResult(List<Flight> listi, List<Flight> listi2){
 		this.listi=listi;
+		this.listi2=listi2;
 		initialize();
 	}
 	public FlightSearchResult() {
@@ -72,12 +74,19 @@ public class FlightSearchResult {
 				});
 		scrollPane.setBounds(12, 42, 261, 119);
 		frame.getContentPane().add(scrollPane);
+		JScrollPane scrollPane2 = new JScrollPane();
+		scrollPane.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent evt) {
+				        int row = table.rowAtPoint(evt.getPoint());
+				       
+				    }
+				});
+		scrollPane2.setBounds(200, 200, 200, 200);
+		frame.getContentPane().add(scrollPane2);
 		JTable table = new JTable();
-		String[] colHeadings = {"Arrival Airport", "Departure Airport", "Date", "Departure Time", "Price"};
 		int numRows = listi.size();
-		DefaultTableModel table_model = new DefaultTableModel(colHeadings,numRows);
 		String [][] s= new String [numRows][5];
-		System.out.println("fjöldi raða: " + numRows);
 		Iterator<Flight> it = listi.iterator();
 		int counter = 0;
 		while (it.hasNext()) {
@@ -97,6 +106,34 @@ public class FlightSearchResult {
 				"Arrival Airport", "Departure Airport", "Date", "Departure Time", "Price"
 			}
 		));
+		frame.getContentPane().add(scrollPane);
+		frame.getContentPane().add(scrollPane2);
+		JTable table2=null;
+		System.out.println(listi2);
+		if(listi2!=null){
+			table2 = new JTable();
+			int numRows2 = listi2.size();
+			String [][] s2= new String [numRows2][5];
+			it = listi.iterator();
+			counter = 0;
+			while (it.hasNext()) {
+				Flight f=it.next();
+				String date=df.format(f.getDate());
+				s2[counter][0]=f.getArrivalAirport();
+				s2[counter][1]=f.getDepartureAirport();
+				s2[counter][2]=date;
+				s2[counter][3]=f.getDepartureTime();
+				s2[counter][4]=Integer.toString(f.getPrice());
+				counter++;
+			}
+			table2=new JTable(new DefaultTableModel(
+				s2,
+				new String[] {
+					"Arrival Airport", "Departure Airport", "Date", "Departure Time", "Price"
+				}
+			));
+		}
 		scrollPane.setViewportView(table);
+		scrollPane2.setViewportView(table2);
 	}
 }

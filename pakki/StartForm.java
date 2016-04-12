@@ -1,8 +1,6 @@
 package pakki;
 
 import java.awt.EventQueue;
-import java.awt.Window;
-
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JComboBox;
@@ -114,12 +112,12 @@ public class StartForm {
 				Date d2=null;
 				frame.dispose();
 				List<Flight> list=fs.search(peopleCount,  d, arrivalAirport, departureAirport);
-				List<Flight> list2;
+				List<Flight> list2= null;
 				if(bothWays){
 					d2=(Date) dateChooser2.getDate();
 					list2=fs.search(peopleCount,  d2, departureAirport, arrivalAirport);
 				}
-				FlightSearchResult searchResult = new FlightSearchResult(list);
+				FlightSearchResult searchResult = new FlightSearchResult(list, list2);
 				JFrame searchResultWindow = searchResult.getFrame();
 				searchResultWindow.setVisible(true);
 			}
