@@ -46,7 +46,7 @@ public class StartForm {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 373, 343);
+		frame.setBounds(100, 100, 465, 343);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
@@ -77,12 +77,12 @@ public class StartForm {
 		frame.getContentPane().add(dateChooser1);
 		
 		JLabel lblPeopleCount = new JLabel("People count:");
-		lblPeopleCount.setBounds(12, 189, 83, 16);
+		lblPeopleCount.setBounds(12, 189, 113, 16);
 		frame.getContentPane().add(lblPeopleCount);
 		
 		JComboBox<String> comboBox = new JComboBox<String>();
 		comboBox.setModel(new DefaultComboBoxModel<String>(new String[] {"1", "2", "3", "4", "5", "6", "7", "8","9"}));
-		comboBox.setBounds(95, 186, 73, 22);
+		comboBox.setBounds(127, 186, 73, 22);
 		frame.getContentPane().add(comboBox);
 		
 		JDateChooser dateChooser2 = new JDateChooser();
@@ -122,7 +122,7 @@ public class StartForm {
 				searchResultWindow.setVisible(true);
 			}
 		});
-		SubmitStartFormbutton.setBounds(145, 250, 79, 24);
+		SubmitStartFormbutton.setBounds(169, 253, 79, 24);
 		frame.getContentPane().add(SubmitStartFormbutton);
 		
 	}
