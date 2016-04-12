@@ -22,7 +22,7 @@ public class OrderForm {
 	private JFrame frame;
 	private JTextField NametextField;
 	private JTextField SocialtextField;
-	private JTextField SeatingtextField;
+	private JTextField DeparturetextField;
 	private OrderManager om;
 	private int counter;
 	private int pplCount;
@@ -33,6 +33,7 @@ public class OrderForm {
 	private JTable table;
 
 	int nrOfRows = 99;
+	private JTextField ArrivaltextField;
 	
 	
 	public JFrame getFrame() {
@@ -105,19 +106,19 @@ public class OrderForm {
 		chckbxSpecialBaggage.setBounds(14, 138, 135, 25);
 		frame.getContentPane().add(chckbxSpecialBaggage);
 		
-		SeatingtextField = new JTextField();
-		SeatingtextField.setBounds(124, 189, 77, 22);
-		frame.getContentPane().add(SeatingtextField);
-		SeatingtextField.setColumns(10);
+		DeparturetextField = new JTextField();
+		DeparturetextField.setBounds(158, 189, 62, 22);
+		frame.getContentPane().add(DeparturetextField);
+		DeparturetextField.setColumns(10);
 		
-		JLabel lblChooseSeat = new JLabel("Choose Seat:");
-		lblChooseSeat.setBounds(14, 192, 77, 16);
+		JLabel lblChooseSeat = new JLabel("Choose Departure Seat:");
+		lblChooseSeat.setBounds(14, 192, 152, 16);
 		frame.getContentPane().add(lblChooseSeat);
 		
 		Button Nextbutton = new Button("Next");
 		Nextbutton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Person p=om.makePersons(NametextField.getText(), SocialtextField.getText(), chckbxHandicapped.isSelected(), chckbxSpecialBaggage.isSelected(), SeatingtextField.getText(), orderNr);
+				Person p=om.makePersons(NametextField.getText(), SocialtextField.getText(), chckbxHandicapped.isSelected(), chckbxSpecialBaggage.isSelected(), DeparturetextField.getText(), orderNr);
 				list.add(p);
 				counter++;
 				if(pplCount==counter+1){
@@ -134,7 +135,7 @@ public class OrderForm {
 				}
 			}
 		});
-		Nextbutton.setBounds(356, 222, 79, 24);
+		Nextbutton.setBounds(208, 245, 79, 24);
 		frame.getContentPane().add(Nextbutton);
 		
 		JScrollPane scrollPane = new JScrollPane();
@@ -146,5 +147,14 @@ public class OrderForm {
 		
 		table = new JTable(table_model);
 		scrollPane.setViewportView(table);
+		
+		JLabel lblChooseSeat_1 = new JLabel("Choose Arrival Seat:");
+		lblChooseSeat_1.setBounds(278, 192, 135, 16);
+		frame.getContentPane().add(lblChooseSeat_1);
+		
+		ArrivaltextField = new JTextField();
+		ArrivaltextField.setBounds(403, 189, 64, 22);
+		frame.getContentPane().add(ArrivaltextField);
+		ArrivaltextField.setColumns(10);
 	}
 }
