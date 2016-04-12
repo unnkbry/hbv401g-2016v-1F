@@ -6,6 +6,9 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.JCheckBox;
+import java.awt.Button;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class OrderForm {
 
@@ -27,7 +30,7 @@ public class OrderForm {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					OrderForm window = new OrderForm("1","2",3);
+					OrderForm window = new OrderForm("1","2",3,1);
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -39,7 +42,7 @@ public class OrderForm {
 	/**
 	 * Create the application.
 	 */
-	public OrderForm(String flightNumber, String flightNumber2, int pplCount) {
+	public OrderForm(String flightNumber, String flightNumber2, int pplCount, int counter) {
 		initialize();
 	}
 	
@@ -87,6 +90,26 @@ public class OrderForm {
 		JLabel lblChooseSeat = new JLabel("Choose Seat:");
 		lblChooseSeat.setBounds(14, 192, 77, 16);
 		frame.getContentPane().add(lblChooseSeat);
+		
+		Button Nextbutton = new Button("Next");
+		Nextbutton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(pplCount==counter){
+					frame.dispose();
+					Receipt receipt = new Receipt(list, list2, peopleCount);
+					JFrame receiptWindow = receipt.getFrame();
+					receiptWindow.setVisible(true);
+				}
+				else {
+					frame.dispose();
+					OrderForm OF = new OrderForm(fn, fn2, pplCount, counter++);
+					JFrame OrderFormWindow = OF.getFrame();
+					OrderFormWindow.setVisible(true);
+				}
+			}
+		});
+		Nextbutton.setBounds(356, 222, 79, 24);
+		frame.getContentPane().add(Nextbutton);
 		
 	}
 }
