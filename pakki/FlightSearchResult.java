@@ -14,6 +14,7 @@ import javax.swing.JLabel;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import javax.swing.JButton;
@@ -171,7 +172,13 @@ public class FlightSearchResult {
 		btnConfirm.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				frame.dispose();
-				OrderForm OF = new OrderForm(fn, fn2, pplCount, 0);
+				List<Person> list=new ArrayList<Person>();
+				if(pplCount==1){
+					LastOrderForm LOF = new LastOrderForm(list, fn, fn2, 5);
+					JFrame LastOrderFormWindow = LOF.getFrame();
+					LastOrderFormWindow.setVisible(true);
+				}
+				OrderForm OF = new OrderForm(list, fn, fn2, pplCount, 0, 5);
 				JFrame OrderFormWindow = OF.getFrame();
 				OrderFormWindow.setVisible(true);
 			}
