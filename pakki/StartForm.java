@@ -121,7 +121,7 @@ public class StartForm {
 				searchResultWindow.setVisible(true);
 			}
 		});
-		SubmitStartFormbutton.setBounds(169, 253, 79, 24);
+		SubmitStartFormbutton.setBounds(169, 253, 92, 33);
 		frame.getContentPane().add(SubmitStartFormbutton);
 		
 	}

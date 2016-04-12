@@ -184,7 +184,7 @@ public class FlightSearchResult {
 		lblReturningFlight.setBounds(12, 305, 133, 16);
 		frame.getContentPane().add(lblReturningFlight);
 		
-		JButton btnConfirm = new JButton("Confirm");
+		JButton btnConfirm = new JButton("Choose Flight");
 		btnConfirm.setForeground(new Color(255, 255, 255));
 		btnConfirm.setBackground(new Color(0, 0, 139));
 		btnConfirm.setFont(new Font("Trebuchet MS", Font.PLAIN, 16));
@@ -206,7 +206,7 @@ public class FlightSearchResult {
 				}
 			}
 		});
-		btnConfirm.setBounds(351, 542, 104, 40);
+		btnConfirm.setBounds(311, 542, 144, 40);
 		frame.getContentPane().add(btnConfirm);
 		
 		JLabel lblPickYourFlight = new JLabel("Pick your flight by clicking on it's row in the table.\r\n");

@@ -75,7 +75,7 @@ public class OrderForm {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 549, 875);
+		frame.setBounds(100, 100, 549, 649);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		 
@@ -138,7 +138,7 @@ public class OrderForm {
 		frame.getContentPane().add(Nextbutton);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(290, 309, 183, 482);
+		scrollPane.setBounds(31, 296, 436, 282);
 		frame.getContentPane().add(scrollPane);
 		
 		String column_names[]= {"A","B","C","D","E","F"};
