@@ -17,7 +17,7 @@ public class LastOrderForm {
 	
 	private JTextField NametextField;
 	private JTextField SocialtextField;
-	private JTextField SeatingtextField;
+	private JTextField DeparturetextField;
 	private OrderManager om;
 	private Flight f1;
 	private Flight f2;
@@ -26,6 +26,7 @@ public class LastOrderForm {
 	private JFrame frame;
 	private JTextField PhonenumbertextField;
 	private JTextField EmailtextField;
+	private JTextField ArrivaltextField;
 
 	
 	public JFrame getFrame() {
@@ -68,7 +69,7 @@ public class LastOrderForm {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 486, 430);
+		frame.setBounds(100, 100, 500, 480);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		 
@@ -114,13 +115,13 @@ public class LastOrderForm {
 		chckbxSpecialBaggage.setBounds(14, 220, 135, 25);
 		frame.getContentPane().add(chckbxSpecialBaggage);
 		
-		SeatingtextField = new JTextField();
-		SeatingtextField.setBounds(106, 348, 77, 22);
-		frame.getContentPane().add(SeatingtextField);
-		SeatingtextField.setColumns(10);
+		DeparturetextField = new JTextField();
+		DeparturetextField.setBounds(162, 348, 56, 22);
+		frame.getContentPane().add(DeparturetextField);
+		DeparturetextField.setColumns(10);
 		
-		JLabel lblChooseSeat = new JLabel("Choose Seat:");
-		lblChooseSeat.setBounds(14, 351, 77, 16);
+		JLabel lblChooseSeat = new JLabel("Choose Departure Seat:");
+		lblChooseSeat.setBounds(14, 351, 152, 16);
 		frame.getContentPane().add(lblChooseSeat);
 		
 		JComboBox<String> PetBox = new JComboBox<String>();
@@ -164,7 +165,7 @@ public class LastOrderForm {
 	Button Nextbutton = new Button("Next");
 	Nextbutton.addActionListener(new ActionListener() {
 		public void actionPerformed(ActionEvent e) {
-			Person p=om.makePersons(NametextField.getText(), SocialtextField.getText(), chckbxHandicapped.isSelected(), chckbxSpecialBaggage.isSelected(), SeatingtextField.getText(), orderNr);
+			Person p=om.makePersons(NametextField.getText(), SocialtextField.getText(), chckbxHandicapped.isSelected(), chckbxSpecialBaggage.isSelected(), DeparturetextField.getText(), orderNr);
 			list.add(p);
 			String a="";
 			int t=0;
@@ -182,7 +183,7 @@ public class LastOrderForm {
 			ReceiptWindow.setVisible(true);	
 		}
 	});
-	Nextbutton.setBounds(370, 349, 79, 24);
+	Nextbutton.setBounds(182, 399, 102, 24);
 	frame.getContentPane().add(Nextbutton);
 	
 	JLabel lblEmail = new JLabel("Email:");
@@ -193,6 +194,15 @@ public class LastOrderForm {
 	EmailtextField.setBounds(218, 145, 231, 22);
 	frame.getContentPane().add(EmailtextField);
 	EmailtextField.setColumns(10);
+	
+	JLabel lblNewLabel = new JLabel("Choose Arrival Seat:");
+	lblNewLabel.setBounds(255, 351, 121, 16);
+	frame.getContentPane().add(lblNewLabel);
+	
+	ArrivaltextField = new JTextField();
+	ArrivaltextField.setBounds(388, 348, 61, 22);
+	frame.getContentPane().add(ArrivaltextField);
+	ArrivaltextField.setColumns(10);
 	
 	}
 }
