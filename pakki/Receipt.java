@@ -169,28 +169,27 @@ public class Receipt {
 		panel.add(SBPLabel);
 		Image img;
 		JLabel myndlabel = new JLabel("");
-		/*if(o.getAnimal() == "dog"){
-			img = new ImageIcon(this.getClass().getResource("/dog.png")).getImage();
+		if(o.getAnimal() == "dog"){
+			img = new ImageIcon(this.getClass().getResource("dog.png")).getImage();
 		}
 		else if(o.getAnimal() == "cat"){
-			img = new ImageIcon(this.getClass().getResource("/cat.png")).getImage();
+			img = new ImageIcon(this.getClass().getResource("cat.png")).getImage();
 		}
 		else if(o.getAnimal() == "fish"){
-			img = new ImageIcon(this.getClass().getResource("/fish.png")).getImage();
+			img = new ImageIcon(this.getClass().getResource("fish.png")).getImage();
 		}
 		else if(o.getAnimal() == "bunny"){
-			img = new ImageIcon(this.getClass().getResource("/bunny.png")).getImage();
+			img = new ImageIcon(this.getClass().getResource("bunny.png")).getImage();
 		}
 		else if(o.getAnimal() == "snake"){
-			img = new ImageIcon(this.getClass().getResource("/snake.png")).getImage();
+			img = new ImageIcon(this.getClass().getResource("snake.png")).getImage();
 		}
 		else if(o.getAnimal() == "bird"){
-			img = new ImageIcon(this.getClass().getResource("/bird.png")).getImage();
+			img = new ImageIcon(this.getClass().getResource("bird.png")).getImage();
 		}
 		
 		else
-			img = new ImageIcon(this.getClass().getResource("/dog.png")).getImage();*/
-		img = new ImageIcon(this.getClass().getResource("/dog.png")).getImage();
+			img = new ImageIcon(this.getClass().getResource("dog.png")).getImage();
 		myndlabel.setIcon(new ImageIcon(img));
 		myndlabel.setBounds(236, 28, 94, 97);
 		frame.getContentPane().add(myndlabel);
