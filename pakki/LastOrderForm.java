@@ -195,14 +195,15 @@ public class LastOrderForm {
 	frame.getContentPane().add(EmailtextField);
 	EmailtextField.setColumns(10);
 	
-	JLabel lblNewLabel = new JLabel("Choose Arrival Seat:");
-	lblNewLabel.setBounds(255, 351, 121, 16);
-	frame.getContentPane().add(lblNewLabel);
-	
-	ArrivaltextField = new JTextField();
-	ArrivaltextField.setBounds(388, 348, 61, 22);
-	frame.getContentPane().add(ArrivaltextField);
-	ArrivaltextField.setColumns(10);
+	if(f2!=null){
+		JLabel lblNewLabel = new JLabel("Choose Arrival Seat:");
+		lblNewLabel.setBounds(255, 351, 121, 16);
+		frame.getContentPane().add(lblNewLabel);
+		ArrivaltextField = new JTextField();
+		ArrivaltextField.setBounds(388, 348, 61, 22);
+		frame.getContentPane().add(ArrivaltextField);
+		ArrivaltextField.setColumns(10);
+	}
 	
 	}
 }

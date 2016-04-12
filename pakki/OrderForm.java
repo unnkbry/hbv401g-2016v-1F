@@ -143,9 +143,10 @@ public class OrderForm {
 		frame.getContentPane().add(scrollPane);
 		
 		String column_names[]= {"A","B","C","D","E","F"};
-		DefaultTableModel table_model=new DefaultTableModel(column_names,nrOfRows);
+		//DefaultTableModel table_model=new DefaultTableModel(column_names,nrOfRows);
 		
-		table = new JTable(table_model);
+		String [] [] s=f1.getAvailableSeats();
+		table = new JTable(s, column_names);
 		scrollPane.setViewportView(table);
 		
 		if(f2!=null){
