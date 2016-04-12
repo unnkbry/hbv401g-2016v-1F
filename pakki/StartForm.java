@@ -117,7 +117,7 @@ public class StartForm {
 					d2=(Date) dateChooser2.getDate();
 					list2=fs.search(peopleCount,  d2, departureAirport, arrivalAirport);
 				}
-				FlightSearchResult searchResult = new FlightSearchResult(list, list2);
+				FlightSearchResult searchResult = new FlightSearchResult(list, list2, peopleCount);
 				JFrame searchResultWindow = searchResult.getFrame();
 				searchResultWindow.setVisible(true);
 			}
