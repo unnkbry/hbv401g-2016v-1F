@@ -4,13 +4,9 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 
-public class Receipt {
+public class LastOrderForm {
 
 	private JFrame frame;
-	
-	public JFrame getFrame() {
-		return frame;
-	}
 
 	/**
 	 * Launch the application.
@@ -19,7 +15,7 @@ public class Receipt {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Receipt window = new Receipt();
+					LastOrderForm window = new LastOrderForm();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -31,13 +27,7 @@ public class Receipt {
 	/**
 	 * Create the application.
 	 */
-	
-	public Receipt(String flightNumber, String flightNumber2, int pplCount, int counter) {
-		initialize();
-	}
-	
-	
-	public Receipt() {
+	public LastOrderForm() {
 		initialize();
 	}
 
@@ -48,7 +38,6 @@ public class Receipt {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 450, 300);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.getContentPane().setLayout(null);
 	}
 
 }
