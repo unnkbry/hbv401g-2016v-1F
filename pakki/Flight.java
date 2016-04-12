@@ -39,6 +39,10 @@ public class Flight {
 		return date;
 	}
 	
+	public Seats getSeat(){
+		return seats;
+	}
+
 	public int getFlightnr(){
 		return flightnr;
 	}
@@ -47,8 +51,8 @@ public class Flight {
 		return departureTime;
 	}
 
-	public int getAvailableSeats() {
-		return availableSeats;
+	public String[][] getAvailableSeats() {
+		return seats.getEmpty();
 	}
 
 	public String getArrivalAirport() {

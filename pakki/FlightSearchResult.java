@@ -71,7 +71,7 @@ public class FlightSearchResult {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 816, 654);
+		frame.setBounds(100, 100, 816, 540);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
@@ -83,7 +83,7 @@ public class FlightSearchResult {
 				       
 				    }
 				});*/
-		scrollPane.setBounds(12, 78, 764, 200);
+		scrollPane.setBounds(12, 78, 764, 137);
 		frame.getContentPane().add(scrollPane);
 		JScrollPane scrollPane2 = new JScrollPane();
 		/*scrollPane2.addMouseListener(new MouseAdapter() {
@@ -93,7 +93,7 @@ public class FlightSearchResult {
 				       
 				    }
 				});*/
-		scrollPane2.setBounds(12, 326, 764, 200);
+		scrollPane2.setBounds(12, 275, 764, 137);
 		frame.getContentPane().add(scrollPane2);
 		table = new JTable();
 		int numRows = listi.size();
@@ -181,7 +181,7 @@ public class FlightSearchResult {
 		
 		JLabel lblReturningFlight = new JLabel("Returning Flight:");
 		lblReturningFlight.setForeground(Color.GRAY);
-		lblReturningFlight.setBounds(12, 305, 133, 16);
+		lblReturningFlight.setBounds(12, 246, 133, 16);
 		frame.getContentPane().add(lblReturningFlight);
 		
 		JButton btnConfirm = new JButton("Choose Flight");
@@ -206,7 +206,7 @@ public class FlightSearchResult {
 				}
 			}
 		});
-		btnConfirm.setBounds(311, 542, 144, 40);
+		btnConfirm.setBounds(322, 440, 144, 40);
 		frame.getContentPane().add(btnConfirm);
 		
 		JLabel lblPickYourFlight = new JLabel("Pick your flight by clicking on it's row in the table.\r\n");
