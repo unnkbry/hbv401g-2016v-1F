@@ -7,6 +7,7 @@ import java.awt.event.ActionListener;
 import java.util.Date;
 import java.util.List;
 
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JCheckBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -24,7 +25,9 @@ public class LastOrderForm {
 	private List<Person> list;
 	private int orderNr;
 	private JFrame frame;
-	private JTextField PhoneNrtextField;
+	private JTextField PhonenumbertextField;
+	private JComboBox ToddlerBox;
+	private JTextField EmailtextField;
 
 	
 	public JFrame getFrame() {
@@ -38,7 +41,7 @@ public class LastOrderForm {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					LastOrderForm window = new LastOrderForm();
+					LastOrderForm window = new LastOrderForm(null,"10","12",5);
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -81,17 +84,18 @@ public class LastOrderForm {
 		
 		JLabel ToddlerLabel = new JLabel("How many?");
 		ToddlerLabel.setVisible(false);
-		ToddlerLabel.setBounds(245, 224, 71, 16);
+		ToddlerLabel.setBounds(245, 258, 71, 16);
 		frame.getContentPane().add(ToddlerLabel);
 		
-		JComboBox ToddlerBox = new JComboBox();
+		ToddlerBox = new JComboBox();
+		ToddlerBox.setModel(new DefaultComboBoxModel(new String[] {"1", "2", "3", "4", "5"}));
 		ToddlerBox.setVisible(false);
-		ToddlerBox.setBounds(328, 221, 121, 22);
+		ToddlerBox.setBounds(328, 255, 121, 22);
 		frame.getContentPane().add(ToddlerBox);
-		
+			
 		JLabel PetLabel = new JLabel("What kind?");
 		PetLabel.setVisible(false);
-		PetLabel.setBounds(245, 254, 71, 16);
+		PetLabel.setBounds(245, 287, 71, 16);
 		frame.getContentPane().add(PetLabel);
 		
 		NametextField = new JTextField();
@@ -105,11 +109,11 @@ public class LastOrderForm {
 		SocialtextField.setColumns(10);
 		
 		JCheckBox chckbxHandicapped = new JCheckBox("Handicapped");
-		chckbxHandicapped.setBounds(14, 160, 113, 25);
+		chckbxHandicapped.setBounds(14, 190, 113, 25);
 		frame.getContentPane().add(chckbxHandicapped);
 		
 		JCheckBox chckbxSpecialBaggage = new JCheckBox("Special Baggage");
-		chckbxSpecialBaggage.setBounds(14, 190, 135, 25);
+		chckbxSpecialBaggage.setBounds(14, 220, 135, 25);
 		frame.getContentPane().add(chckbxSpecialBaggage);
 		
 		SeatingtextField = new JTextField();
@@ -121,20 +125,20 @@ public class LastOrderForm {
 		lblChooseSeat.setBounds(14, 351, 77, 16);
 		frame.getContentPane().add(lblChooseSeat);
 		
-		
 		JComboBox PetBox = new JComboBox();
+		PetBox.setModel(new DefaultComboBoxModel(new String[] {"Dog", "Cat", "Bunny", "Fish", "Giraffe", "Hamster", "Bird", "Snake"}));
 		PetBox.setVisible(false);
-		PetBox.setBounds(328, 251, 121, 22);
+		PetBox.setBounds(328, 284, 121, 22);
 		frame.getContentPane().add(PetBox);
 		
 		JLabel lblPhoneNumber = new JLabel("Phone Number:");
 		lblPhoneNumber.setBounds(14, 114, 113, 16);
 		frame.getContentPane().add(lblPhoneNumber);
 		
-		PhoneNrtextField = new JTextField();
-		PhoneNrtextField.setBounds(218, 111, 231, 22);
-		frame.getContentPane().add(PhoneNrtextField);
-		PhoneNrtextField.setColumns(10);
+		PhonenumbertextField = new JTextField();
+		PhonenumbertextField.setBounds(218, 111, 231, 22);
+		frame.getContentPane().add(PhonenumbertextField);
+		PhonenumbertextField.setColumns(10);
 		
 		JCheckBox ToddlerCheck = new JCheckBox("Travelling with a Toddler");
 		ToddlerCheck.addActionListener(new ActionListener() {
@@ -144,7 +148,7 @@ public class LastOrderForm {
 			}
 		});
 		
-		ToddlerCheck.setBounds(14, 220, 176, 25);
+		ToddlerCheck.setBounds(14, 250, 176, 25);
 		frame.getContentPane().add(ToddlerCheck);
 		
 		JCheckBox PetCheck = new JCheckBox("Travelling with a Pet");
@@ -155,7 +159,7 @@ public class LastOrderForm {
 			}
 		});
 		
-		PetCheck.setBounds(14, 250, 152, 25);
+		PetCheck.setBounds(14, 280, 152, 25);
 		frame.getContentPane().add(PetCheck);		
 		
 	Button Nextbutton = new Button("Next");
@@ -182,6 +186,15 @@ public class LastOrderForm {
 	});
 	Nextbutton.setBounds(370, 349, 79, 24);
 	frame.getContentPane().add(Nextbutton);
+	
+	JLabel lblEmail = new JLabel("Email:");
+	lblEmail.setBounds(14, 148, 56, 16);
+	frame.getContentPane().add(lblEmail);
+	
+	EmailtextField = new JTextField();
+	EmailtextField.setBounds(218, 145, 231, 22);
+	frame.getContentPane().add(EmailtextField);
+	EmailtextField.setColumns(10);
 	
 	}
 }
