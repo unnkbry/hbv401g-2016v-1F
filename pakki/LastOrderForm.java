@@ -176,7 +176,7 @@ public class LastOrderForm {
 			if(f2!=null)
 				o2 = om.makeOrder(list, EmailtextField.getText(), PhonenumbertextField.getText(), a, t, f2, orderNr);
 			frame.dispose();
-			Receipt receipt = new Receipt(/*o,o2*/);
+			Receipt receipt = new Receipt(o,o2);
 			JFrame ReceiptWindow = receipt.getFrame();
 			ReceiptWindow.setVisible(true);
 			

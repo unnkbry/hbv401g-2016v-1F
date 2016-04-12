@@ -185,15 +185,16 @@ public class FlightSearchResult {
 		btnConfirm.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				frame.dispose();
+				OrderNr on= new OrderNr();
 				List<Person> list=new ArrayList<Person>();
 				if(pplCount==1){
-					LastOrderForm LOF = new LastOrderForm(list, f1, f2, 5);
+					LastOrderForm LOF = new LastOrderForm(list, f1, f2, on.getOrderNr());
 					JFrame LastOrderFormWindow = LOF.getFrame();
 					LastOrderFormWindow.setVisible(true);
 				}
 				else{
 					
-					OrderForm OF = new OrderForm(list, f1, f2, pplCount, 0, 5);
+					OrderForm OF = new OrderForm(list, f1, f2, pplCount, 0, on.getOrderNr());
 					JFrame OrderFormWindow = OF.getFrame();
 					OrderFormWindow.setVisible(true);
 				}
