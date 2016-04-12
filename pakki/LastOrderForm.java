@@ -1,6 +1,7 @@
 package pakki;
 
 import java.awt.EventQueue;
+import java.util.List;
 
 import javax.swing.JFrame;
 
@@ -27,8 +28,18 @@ public class LastOrderForm {
 	/**
 	 * Create the application.
 	 */
+	
+	public LastOrderForm(List<Person> list, String flightnr, String flightnr2, int orderNr){
+		initialize();
+	}
+	
+	
 	public LastOrderForm() {
 		initialize();
+	}
+	
+	public JFrame getFrame() {
+		return frame;
 	}
 
 	/**
@@ -38,6 +49,7 @@ public class LastOrderForm {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 450, 300);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.getContentPane().setLayout(null);
 	}
 
 }
