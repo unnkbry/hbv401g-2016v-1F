@@ -1,13 +1,11 @@
 package pakki;
 
 import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JTable;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
-
 import javax.swing.JScrollPane;
 import javax.swing.JLabel;
 import java.text.SimpleDateFormat;
@@ -17,12 +15,15 @@ import java.util.List;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.Font;
+import java.awt.Color;
 import pakki.Flight;
 
 public class FlightSearchResult {
 
 	private JFrame frame;
 	private JTable table;
+	private JTable table_1;
 	private JTable table2;
 	private List<Flight> listi;
 	private List<Flight> listi2;
@@ -71,7 +72,7 @@ public class FlightSearchResult {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 816, 584);
+		frame.setBounds(100, 100, 816, 654);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
@@ -83,7 +84,7 @@ public class FlightSearchResult {
 				       
 				    }
 				});*/
-		scrollPane.setBounds(12, 42, 764, 200);
+		scrollPane.setBounds(12, 78, 764, 200);
 		frame.getContentPane().add(scrollPane);
 		JScrollPane scrollPane2 = new JScrollPane();
 		/*scrollPane2.addMouseListener(new MouseAdapter() {
@@ -93,7 +94,7 @@ public class FlightSearchResult {
 				       
 				    }
 				});*/
-		scrollPane2.setBounds(12, 284, 764, 200);
+		scrollPane2.setBounds(12, 326, 764, 200);
 		frame.getContentPane().add(scrollPane2);
 		table = new JTable();
 		int numRows = listi.size();
@@ -112,13 +113,14 @@ public class FlightSearchResult {
 			s[counter][5]=Integer.toString(f.getFlightnr());
 			counter++;
 		}
-		table=new JTable(new DefaultTableModel(
+		table_1=new JTable(new DefaultTableModel(
 			s,
 			new String[] {
 				"Arrival Airport", "Departure Airport", "Date", "Departure Time", "Price", "Flightnr"
 			}
 		));
-		table.getSelectionModel().addListSelectionListener(new ListSelectionListener(){
+		table_1.setFont(new Font("Trebuchet MS", Font.PLAIN, 16));
+		table_1.getSelectionModel().addListSelectionListener(new ListSelectionListener(){
 			public void valueChanged(ListSelectionEvent event){
 				fn= Integer.parseInt(table.getValueAt(table.getSelectedRow(), 5).toString());
 				Iterator<Flight> it = listi.iterator();
@@ -170,18 +172,23 @@ public class FlightSearchResult {
 			});
 			
 		}
-		scrollPane.setViewportView(table);
+		scrollPane.setViewportView(table_1);
 		scrollPane2.setViewportView(table2);
 		
 		JLabel lblDepartureFlight = new JLabel("Departure Flight:");
-		lblDepartureFlight.setBounds(12, 13, 104, 16);
+		lblDepartureFlight.setForeground(Color.GRAY);
+		lblDepartureFlight.setBounds(12, 59, 104, 16);
 		frame.getContentPane().add(lblDepartureFlight);
 		
 		JLabel lblReturningFlight = new JLabel("Returning Flight:");
-		lblReturningFlight.setBounds(12, 255, 114, 16);
+		lblReturningFlight.setForeground(Color.GRAY);
+		lblReturningFlight.setBounds(12, 305, 133, 16);
 		frame.getContentPane().add(lblReturningFlight);
 		
 		JButton btnConfirm = new JButton("Confirm");
+		btnConfirm.setForeground(new Color(255, 255, 255));
+		btnConfirm.setBackground(new Color(0, 0, 139));
+		btnConfirm.setFont(new Font("Trebuchet MS", Font.PLAIN, 16));
 		btnConfirm.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				frame.dispose();
@@ -200,7 +207,12 @@ public class FlightSearchResult {
 				}
 			}
 		});
-		btnConfirm.setBounds(351, 495, 104, 40);
+		btnConfirm.setBounds(351, 542, 104, 40);
 		frame.getContentPane().add(btnConfirm);
+		
+		JLabel lblPickYourFlight = new JLabel("Pick your flight by clicking on it's row in the table.\r\n");
+		lblPickYourFlight.setFont(new Font("Trebuchet MS", Font.PLAIN, 16));
+		lblPickYourFlight.setBounds(15, 16, 386, 20);
+		frame.getContentPane().add(lblPickYourFlight);
 	}
 }
