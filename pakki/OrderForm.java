@@ -5,6 +5,7 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
+import javax.swing.table.DefaultTableModel;
 import javax.swing.JCheckBox;
 import java.awt.Button;
 import java.awt.event.ActionListener;
@@ -12,6 +13,8 @@ import java.util.List;
 import java.awt.event.ActionEvent;
 import pakki.OrderManager;
 import pakki.Person;
+import javax.swing.JTable;
+import javax.swing.JScrollPane;
 
 
 public class OrderForm {
@@ -27,7 +30,9 @@ public class OrderForm {
 	private Flight f2;
 	private List<Person> list;
 	private int orderNr;
+	private JTable table;
 
+	int nrOfRows = 99;
 	
 	
 	public JFrame getFrame() {
@@ -70,7 +75,7 @@ public class OrderForm {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 488, 303);
+		frame.setBounds(100, 100, 549, 875);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		 
@@ -131,5 +136,15 @@ public class OrderForm {
 		});
 		Nextbutton.setBounds(356, 222, 79, 24);
 		frame.getContentPane().add(Nextbutton);
+		
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(290, 309, 183, 482);
+		frame.getContentPane().add(scrollPane);
+		
+		String column_names[]= {"A","B","C","D","E","F"};
+		DefaultTableModel table_model=new DefaultTableModel(column_names,nrOfRows);
+		
+		table = new JTable(table_model);
+		scrollPane.setViewportView(table);
 	}
 }
