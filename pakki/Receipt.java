@@ -94,17 +94,23 @@ public class Receipt {
 		ArrivalLabel.setBounds(35, 197, 69, 16);
 		frame.getContentPane().add(ArrivalLabel);
 		
-		JLabel Departure2Label = new JLabel("Departure:");
-		Departure2Label.setHorizontalAlignment(SwingConstants.RIGHT);
-		Departure2Label.setVisible(false);
-		Departure2Label.setBounds(194, 178, 73, 16);
-		frame.getContentPane().add(Departure2Label);
+		if(o2!=null){
+			JLabel Departure2Label = new JLabel("Departure:");
+			Departure2Label.setHorizontalAlignment(SwingConstants.RIGHT);
+			Departure2Label.setVisible(true);
+			Departure2Label.setBounds(194, 151, 73, 16);
+			frame.getContentPane().add(Departure2Label);
+		}
+
 		
-		JLabel Arrival2Label = new JLabel("Arrival:");
-		Arrival2Label.setHorizontalAlignment(SwingConstants.RIGHT);
-		Arrival2Label.setVisible(false);
-		Arrival2Label.setBounds(204, 197, 63, 16);
-		frame.getContentPane().add(Arrival2Label);
+		if(o2!=null){
+			JLabel Arrival2Label = new JLabel("Arrival:");
+			Arrival2Label.setHorizontalAlignment(SwingConstants.RIGHT);
+			Arrival2Label.setVisible(true);
+			Arrival2Label.setBounds(204, 180, 63, 16);
+			frame.getContentPane().add(Arrival2Label);
+		}
+
 		
 		JLabel lblPrice = new JLabel("Final Price:");
 		lblPrice.setHorizontalAlignment(SwingConstants.RIGHT);

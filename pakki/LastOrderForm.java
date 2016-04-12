@@ -179,8 +179,7 @@ public class LastOrderForm {
 			frame.dispose();
 			Receipt receipt = new Receipt(o,o2);
 			JFrame ReceiptWindow = receipt.getFrame();
-			ReceiptWindow.setVisible(true);
-			
+			ReceiptWindow.setVisible(true);	
 		}
 	});
 	Nextbutton.setBounds(370, 349, 79, 24);

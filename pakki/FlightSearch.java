@@ -59,7 +59,6 @@ public class FlightSearch {
 		boolean bo=false;
 		int help;
 		if(SM==FM){
-			System.out.println("searchday: "+ SD+ " foundday: "+ FD);
 			bo=Math.abs(SD-FD)<=7;
 		}
 		else if(SM==FM+1){
