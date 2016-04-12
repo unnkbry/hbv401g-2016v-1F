@@ -208,7 +208,7 @@ public class Receipt {
 		D1.setBounds(116, 151, 56, 16);
 		frame.getContentPane().add(D1);
 		
-		JLabel A1 = new JLabel(o.getFlight().getDepartureAirport());
+		JLabel A1 = new JLabel(o.getFlight().getArrivalAirport());
 		A1.setBounds(116, 180, 56, 16);
 		frame.getContentPane().add(A1);
 		
