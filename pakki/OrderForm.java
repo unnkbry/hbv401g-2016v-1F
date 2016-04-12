@@ -10,10 +10,14 @@ import javax.swing.JCheckBox;
 public class OrderForm {
 
 	private JFrame frame;
-	private JTextField textField;
-	private JTextField textField_1;
+	private JTextField NametextField;
+	private JTextField SocialtextField;
 	private JTextField textField_2;
 
+	public JFrame getFrame() {
+		return frame;
+	}
+	
 	/**
 	 * Launch the application.
 	 */
@@ -36,6 +40,7 @@ public class OrderForm {
 	public OrderForm() {
 		initialize();
 	}
+	
 
 	/**
 	 * Initialize the contents of the frame.
@@ -54,15 +59,15 @@ public class OrderForm {
 		lblSocialSecurityNumber.setBounds(14, 78, 152, 16);
 		frame.getContentPane().add(lblSocialSecurityNumber);
 		
-		textField = new JTextField();
-		textField.setBounds(218, 41, 231, 22);
-		frame.getContentPane().add(textField);
-		textField.setColumns(10);
+		NametextField = new JTextField();
+		NametextField.setBounds(218, 41, 231, 22);
+		frame.getContentPane().add(NametextField);
+		NametextField.setColumns(10);
 		
-		textField_1 = new JTextField();
-		textField_1.setBounds(218, 75, 231, 22);
-		frame.getContentPane().add(textField_1);
-		textField_1.setColumns(10);
+		SocialtextField = new JTextField();
+		SocialtextField.setBounds(218, 75, 231, 22);
+		frame.getContentPane().add(SocialtextField);
+		SocialtextField.setColumns(10);
 		
 		JCheckBox chckbxHandicapped = new JCheckBox("Handicapped");
 		chckbxHandicapped.setBounds(14, 108, 113, 25);
