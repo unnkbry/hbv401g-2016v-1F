@@ -1,5 +1,6 @@
 package pakki;
 
+import java.util.Iterator;
 import java.util.List;
 import pakki.Person;
 import pakki.Flight;
@@ -23,6 +24,10 @@ public class Order {
 		this.price = price;
 		this.flight = flight;
 		this.orderNr=orderNr;
+	}
+	
+	public int getPPLCount(){
+		return list.size();
 	}
 	
 	public String getEmail(){
@@ -65,6 +70,16 @@ public class Order {
 	
 	public int getOrderNr(){
 		return orderNr;
+	}
+	
+	public int getSpecialBaggage(){
+		int specialBaggage=0;
+		Iterator<Person> it=list.iterator();
+		while(it.hasNext()){
+			if(it.next().getSpecialBaggage())
+				specialBaggage++;
+		}
+		return specialBaggage;
 	}
 	
 }

@@ -153,24 +153,27 @@ public class Receipt {
 		lblSpecialBaggagePrice.setBounds(0, 98, 140, 16);
 		panel.add(lblSpecialBaggagePrice);
 		
-		JLabel FlightPriceLabel = new JLabel("500");
+		JLabel FlightPriceLabel = new JLabel(Integer.toString(o.getFlight().getPrice()*o.getPPLCount()));
 		FlightPriceLabel.setBounds(152, 13, 56, 16);
 		panel.add(FlightPriceLabel);
-		
-		JLabel ToddlerPriceLabel = new JLabel("50");
-		ToddlerPriceLabel.setVisible(false);
-		ToddlerPriceLabel.setBounds(152, 42, 56, 16);
-		panel.add(ToddlerPriceLabel);
-		
-		JLabel AnimalPriceLabel = new JLabel("50");
-		AnimalPriceLabel.setVisible(false);
-		AnimalPriceLabel.setBounds(152, 71, 56, 16);
-		panel.add(AnimalPriceLabel);
-		
-		JLabel SBPLabel = new JLabel("50");
-		SBPLabel.setVisible(false);
-		SBPLabel.setBounds(152, 98, 56, 16);
-		panel.add(SBPLabel);
+		if(o.getToddler()>0){
+			JLabel ToddlerPriceLabel = new JLabel(Integer.toString(o.getToddler()*5000));
+			ToddlerPriceLabel.setVisible(true);
+			ToddlerPriceLabel.setBounds(152, 42, 56, 16);
+			panel.add(ToddlerPriceLabel);
+		}
+		if(o.getAnimal()!=""){
+			JLabel AnimalPriceLabel = new JLabel(Integer.toString(10000));
+			AnimalPriceLabel.setVisible(true);
+			AnimalPriceLabel.setBounds(152, 71, 56, 16);
+			panel.add(AnimalPriceLabel);
+		}
+		if(o.getSpecialBaggage()>0){
+			JLabel SBPLabel = new JLabel(Integer.toString(o.getSpecialBaggage()*6000));
+			SBPLabel.setVisible(true);
+			SBPLabel.setBounds(152, 98, 56, 16);
+			panel.add(SBPLabel);
+		}
 		Image img;
 		JLabel myndlabel = new JLabel("");
 		if(o.getAnimal() == "dog"){
@@ -202,20 +205,22 @@ public class Receipt {
 		myndlabel.setBounds(236, 28, 94, 97);
 		frame.getContentPane().add(myndlabel);
 		
-		JLabel D1 = new JLabel("New label");
+		JLabel D1 = new JLabel(o.getFlight().getDepartureAirport());
 		D1.setBounds(116, 151, 56, 16);
 		frame.getContentPane().add(D1);
 		
-		JLabel A1 = new JLabel("New label");
+		JLabel A1 = new JLabel(o.getFlight().getDepartureAirport());
 		A1.setBounds(116, 180, 56, 16);
 		frame.getContentPane().add(A1);
 		
-		JLabel D2 = new JLabel("New label");
-		D2.setBounds(274, 151, 68, 16);
-		frame.getContentPane().add(D2);
-		
-		JLabel A2 = new JLabel("New label");
-		A2.setBounds(274, 180, 56, 16);
-		frame.getContentPane().add(A2);
+		if(o2!=null){
+			JLabel D2 = new JLabel(o2.getFlight().getDepartureAirport());
+			D2.setBounds(274, 151, 68, 16);
+			frame.getContentPane().add(D2);
+			
+			JLabel A2 = new JLabel(o2.getFlight().getArrivalAirport());
+			A2.setBounds(274, 180, 56, 16);
+			frame.getContentPane().add(A2);
+		}
 	}
 }
