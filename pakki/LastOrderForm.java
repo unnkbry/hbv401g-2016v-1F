@@ -124,7 +124,8 @@ public class LastOrderForm {
 		frame.getContentPane().add(lblChooseSeat);
 		
 		JComboBox<String> PetBox = new JComboBox<String>();
-		PetBox.setModel(new DefaultComboBoxModel<String>(new String[] {"Dog", "Cat", "Bunny", "Fish", "Giraffe", "Hamster", "Bird", "Snake"}));
+		PetBox.setModel(new DefaultComboBoxModel<String>(new String[] {"Dog", "Cat", "Bunny", "Fish", "Bird", "Snake"}));
+		
 		PetBox.setVisible(false);
 		PetBox.setBounds(328, 284, 121, 22);
 		frame.getContentPane().add(PetBox);
