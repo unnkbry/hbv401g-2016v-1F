@@ -67,12 +67,12 @@ public class Receipt {
 		lblOrderNumber.setBounds(35, 28, 87, 16);
 		frame.getContentPane().add(lblOrderNumber);
 		
-		JLabel OrderLabel = new JLabel("XXXXX");
+		JLabel OrderLabel = new JLabel(Integer.toString(o.getOrderNr()));
 		OrderLabel.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		OrderLabel.setBounds(134, 26, 63, 16);
 		frame.getContentPane().add(OrderLabel);
 		
-		JLabel NameLabel = new JLabel("Kalli J\u00F3nsson");
+		JLabel NameLabel = new JLabel(o.getName());
 		NameLabel.setBounds(96, 68, 133, 16);
 		frame.getContentPane().add(NameLabel);
 		
@@ -80,7 +80,7 @@ public class Receipt {
 		lblSocialSecurityNumber.setBounds(35, 97, 49, 16);
 		frame.getContentPane().add(lblSocialSecurityNumber);
 		
-		JLabel SSClabel = new JLabel("020892-2329");
+		JLabel SSClabel = new JLabel(o.getId());
 		SSClabel.setBounds(96, 97, 105, 16);
 		frame.getContentPane().add(SSClabel);
 		
@@ -107,7 +107,7 @@ public class Receipt {
 		lblPrice.setBounds(57, 411, 119, 16);
 		frame.getContentPane().add(lblPrice);
 		
-		JLabel PriceLabel = new JLabel("1.000$");
+		JLabel PriceLabel = new JLabel(Integer.toString(o.getPrice()));
 		PriceLabel.setFont(new Font("Tahoma", Font.BOLD, 16));
 		PriceLabel.setBounds(194, 410, 76, 16);
 		frame.getContentPane().add(PriceLabel);

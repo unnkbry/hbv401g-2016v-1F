@@ -58,6 +58,11 @@ public class Order {
 		return p.getName();
 	}
 	
+	public String getId(){
+		Person p= list.get(list.size()-1);
+		return p.getId();
+	}
+	
 	public int getOrderNr(){
 		return orderNr;
 	}
