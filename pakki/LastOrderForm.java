@@ -111,7 +111,7 @@ public class LastOrderForm {
 				list.add(p);
 	
 				frame.dispose();
-				Receipt receipt = new Receipt(list, flightnr, flightnr2, orderNr);
+				Receipt receipt = new Receipt();
 				JFrame ReceiptWindow = receipt.getFrame();
 				ReceiptWindow.setVisible(true);
 				

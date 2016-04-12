@@ -34,11 +34,6 @@ public class Receipt {
 	 * Create the application.
 	 */
 	
-	public Receipt(String flightNumber, String flightNumber2, int pplCount, int counter) {
-		initialize();
-	}
-	
-	
 	public Receipt() {
 		initialize();
 	}
