@@ -271,7 +271,7 @@ public class LastOrderForm {
 		scrollPane2.setVisible(false);
 		*/
 		
-		if(f2==null){
+		if(f2!=null){
 			lblChooseArrivalSeat.setVisible(true);
 			//scrollPane2.setVisible(true);
 			
