@@ -18,8 +18,6 @@ import pakki.OrderManager;
 import pakki.Person;
 import javax.swing.JTable;
 import javax.swing.JScrollPane;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 
 
 public class OrderForm {
@@ -161,16 +159,15 @@ public class OrderForm {
 						"A","B","C","D","E","F"
 						}
 				));
-		table.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent evt) {
-		        int row = table.rowAtPoint(evt.getPoint());
-		        int col = table.columnAtPoint(evt.getPoint());
-			}
-		});
+
 		scrollPane.setViewportView(table);
 		
 		table.setCellSelectionEnabled(true);
+		
+		JLabel seat1Label = new JLabel(seat1);
+		seat1Label.setBounds(184, 219, 69, 20);
+		frame.getContentPane().add(seat1Label);
+		
 		ListSelectionModel cellSelectionModel = table.getSelectionModel();
 		cellSelectionModel.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 
@@ -210,11 +207,29 @@ public class OrderForm {
 			ArrivaltextField.setBounds(421, 189, 64, 22);
 			frame.getContentPane().add(ArrivaltextField);
 			ArrivaltextField.setColumns(10);
-
-			
 			String [] [] s2=f2.getSeats();
 			table2 = new JTable(s2, column_names);
 			scrollPane2.setViewportView(table2);
+			table.setCellSelectionEnabled(true);
+			ListSelectionModel cellSelectionModel2 = table2.getSelectionModel();
+			cellSelectionModel2.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+			cellSelectionModel2.addListSelectionListener(new ListSelectionListener() {
+				public void valueChanged(ListSelectionEvent e) {
+			        
+			        int[] selectedRow = table2.getSelectedRows();
+			        int[] selectedColumns = table2.getSelectedColumns();
+
+			        for (int i = 0; i < selectedRow.length; i++) {
+			          for (int j = 0; j < selectedColumns.length; j++) {
+			            seat2 = (String) table2.getValueAt(selectedRow[i], selectedColumns[j]);
+			          }
+			        }		        
+			      }
+
+			    });
+			JLabel seat2Label = new JLabel(seat2);
+			seat2Label.setBounds(425, 219, 69, 20);
+			frame.getContentPane().add(seat2Label);
 		}
 	}
 }
