@@ -33,7 +33,7 @@ public class EmailSender {
 				mimeMessage.addRecipient(RecipientType.TO, toAddress[i]);
 			}
 			//add subject
-			mimeMessage.setSubject("mail using javamail api");
+			mimeMessage.setSubject("Flight Confirmation From DreamTeam Services");
 			//set message to mimeMessage
 			mimeMessage.setText(message);
 			Transport transport = session.getTransport("smtp");

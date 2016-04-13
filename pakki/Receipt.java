@@ -122,13 +122,32 @@ public class Receipt {
 		PriceLabel.setBounds(246, 409, 76, 16);
 		frame.getContentPane().add(PriceLabel);
 		
+		String flight2 = "";
+		
+		int cost = o.getPrice();
+		if(o2 != null){
+			cost += o2.getPrice();
+			flight2 = "For your arriving flight your departure airport is" + o2.getFlight().getDepartureAirport() + " and your arrival airport is " + o2.getFlight().getArrivalAirport()
+					+ ". ";
+		}
+		String Cost = Integer.toString(cost);
+		
+		
+		String message="Dear " + o.getName() + ", thank you for choosing our services. This is your email confirmation of your order. Your ordernumber is " 
+				+ o.getId() + ". You are traveling from " + o.getFlight().getDepartureAirport() + "to " + o.getFlight().getArrivalAirport()
+				+ ". Your flightnumber is: " + o.getFlight().getFlightnr() + ". " + flight2 + "The total cost is " + Cost + ". Hope your traveling will be good, DreamTeam FlightServices. ";
+		
+		String receiver[] = new String[1];
+		receiver[0]=o.getEmail();
+		
 		Button Closebutton = new Button("Close");
 		Closebutton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				 System.exit(0);
+				EmailSender.sendMail("dreamteam.flightservice@gmail.com", "0412952019", message, receiver);
+				System.exit(0);
 			}
 		});
-		Closebutton.setBounds(134, 467, 79, 24);
+		Closebutton.setBounds(174, 469, 79, 24);
 		frame.getContentPane().add(Closebutton);
 		
 		JPanel flight1panel = new JPanel();
