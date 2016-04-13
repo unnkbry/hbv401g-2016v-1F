@@ -26,7 +26,7 @@ public class Flight {
 		// this.type=type;
 		this.price = price;
 		this.availableSeats = availableSeats;
-		seats = new Seats(20,30,1);
+		seats = new Seats(5,6,1);
 		this.flightnr=flightnr;
 		this.date=date;
 	}
@@ -51,7 +51,11 @@ public class Flight {
 		return departureTime;
 	}
 
-	public String[][] getAvailableSeats() {
+	public int getAvailableSeats() {
+		return availableSeats;
+	}
+	
+	public String[][] getSeats() {
 		return seats.getEmpty();
 	}
 

@@ -5,10 +5,12 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
-import javax.swing.table.DefaultTableModel;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import javax.swing.JCheckBox;
 import java.awt.Button;
 import java.awt.event.ActionListener;
+import java.util.Iterator;
 import java.util.List;
 import java.awt.event.ActionEvent;
 import pakki.OrderManager;
@@ -31,6 +33,7 @@ public class OrderForm {
 	private List<Person> list;
 	private int orderNr;
 	private JTable table;
+	private JTable table2;
 
 	int nrOfRows = 99;
 	private JTextField ArrivaltextField;
@@ -143,13 +146,22 @@ public class OrderForm {
 		frame.getContentPane().add(scrollPane);
 		
 		String column_names[]= {"A","B","C","D","E","F"};
-		//DefaultTableModel table_model=new DefaultTableModel(column_names,nrOfRows);
 		
-		String [] [] s=f1.getAvailableSeats();
+		String [] [] s=f1.getSeats();
 		table = new JTable(s, column_names);
 		scrollPane.setViewportView(table);
+		table.getSelectionModel().addListSelectionListener(new ListSelectionListener(){
+			public void valueChanged(ListSelectionEvent event){
+				String seat = (String)table.getValueAt(table.getSelectedRow(), table.getSelectedColumn());
+				System.out.println(seat);
+				//f1.bookSeat(seat);
+			}
+		});
 		
 		if(f2!=null){
+			JScrollPane scrollPane2 = new JScrollPane();
+			scrollPane2.setBounds(100, 296, 436, 282);
+			frame.getContentPane().add(scrollPane);
 			JLabel lblChooseSeat_1 = new JLabel("Choose Arrival Seat:");
 			lblChooseSeat_1.setBounds(278, 192, 135, 16);
 			frame.getContentPane().add(lblChooseSeat_1);
@@ -157,6 +169,9 @@ public class OrderForm {
 			ArrivaltextField.setBounds(403, 189, 64, 22);
 			frame.getContentPane().add(ArrivaltextField);
 			ArrivaltextField.setColumns(10);
+			String [] [] s2=f2.getSeats();
+			table2 = new JTable(s2, column_names);
+			scrollPane2.setViewportView(table2);
 		}
 	}
 }

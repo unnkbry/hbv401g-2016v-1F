@@ -8,17 +8,14 @@ import java.util.List;
 import java.util.Iterator;
 
 public class OrderManager{
-	private int personCount;
 	private DataBaseConnection db = new DataBaseConnection();
 	public OrderManager(){
-		personCount=0;
 	}
 
 	public Person makePersons(String name, String id, boolean handicapped, boolean specialBaggage, String seat, int ordernr) {
 		db.updateDB("insert into persons values('" + name + "','" + id + "','" + handicapped + "','" + specialBaggage
 				+ "','" + seat + "','"+ ordernr+"')");
 		Person p = new Person(name, id, handicapped, specialBaggage, seat);
-		personCount++;
 		return p;
 	}
 
@@ -33,15 +30,17 @@ public class OrderManager{
 		Order o = new Order(list, email, phonenumber, animal, toddler, price, f, ordernr);
 		Iterator<Person> it=list.iterator();
 		while(it.hasNext()){
-			f.bookSeat(it.next().getSeat());
+			//f.bookSeat(it.next().getSeat());
 		}
 		return o;
 	}
 	
 	public int calcPrice(int seatPrice, int toddler, List<Person> list, boolean animal){
 		int specialBaggage=0;
+		int personCount=0;
 		Iterator<Person> it=list.iterator();
 		while(it.hasNext()){
+			personCount++;
 			if(it.next().getSpecialBaggage())
 				specialBaggage++;
 		}
