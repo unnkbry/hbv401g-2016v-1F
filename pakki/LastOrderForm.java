@@ -22,6 +22,7 @@ public class LastOrderForm {
 	private Flight f1;
 	private Flight f2;
 	private List<Person> list;
+	private List<Person> list2;
 	private int orderNr;
 	private JFrame frame;
 	private JTextField PhonenumbertextField;
@@ -40,7 +41,7 @@ public class LastOrderForm {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					LastOrderForm window = new LastOrderForm(null,null,null,5);
+					LastOrderForm window = new LastOrderForm(null,null, null, null,5);
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -53,12 +54,13 @@ public class LastOrderForm {
 	 * Create the application.
 	 */
 	
-	public LastOrderForm(List<Person> list, Flight f1, Flight f2, int orderNr){
+	public LastOrderForm(List<Person> list, List<Person> list2, Flight f1, Flight f2, int orderNr){
 		om=new OrderManager();
 		this.f1=f1;
 		this.f2=f2;
 		this.orderNr=orderNr;
 		this.list=list;
+		this.list2=list2;
 		initialize();
 	}
 	
@@ -175,8 +177,11 @@ public class LastOrderForm {
 				t=Integer.parseInt(ToddlerBox.getItemAt(ToddlerBox.getSelectedIndex()));
 			Order o=om.makeOrder(list, EmailtextField.getText(), PhonenumbertextField.getText(), a, t, f1, orderNr);
 			Order o2=null;
-			if(f2!=null)
+			if(f2!=null){
+				Person p2=om.makePersons(NametextField.getText(), SocialtextField.getText(), chckbxHandicapped.isSelected(), chckbxSpecialBaggage.isSelected(), ArrivaltextField.getText(), orderNr);
+				list2.add(p2);
 				o2 = om.makeOrder(list, EmailtextField.getText(), PhonenumbertextField.getText(), a, t, f2, orderNr);
+			}
 			frame.dispose();
 			Receipt receipt = new Receipt(o,o2);
 			JFrame ReceiptWindow = receipt.getFrame();
