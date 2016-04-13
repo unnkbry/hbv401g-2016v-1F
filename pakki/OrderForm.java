@@ -40,8 +40,6 @@ public class OrderForm {
 	
 	int nrOfRows = 99;
 	private JTextField ArrivaltextField;
-	//private JTable table_1;
-	//private JTable table2;
 	
 	
 	public JFrame getFrame() {
@@ -185,8 +183,6 @@ public class OrderForm {
 			scrollPane_1.setBounds(278, 296, 212, 281);
 			frame.getContentPane().add(scrollPane_1);
 			
-			//table_1 = new JTable();
-			//scrollPane_1.setViewportView(table_1);
 			String [] [] s2=f2.getSeats();
 			table2 = new JTable(s2, column_names);
 			scrollPane2.setViewportView(table2);
