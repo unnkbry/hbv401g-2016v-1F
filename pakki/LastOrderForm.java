@@ -122,9 +122,9 @@ public class LastOrderForm {
 		frame.getContentPane().add(DeparturetextField);
 		DeparturetextField.setColumns(10);
 		
-		JLabel lblChooseSeat = new JLabel("Choose Departure Seat:");
-		lblChooseSeat.setBounds(14, 351, 152, 16);
-		frame.getContentPane().add(lblChooseSeat);
+		JLabel lblChooseDepartureSeat = new JLabel("Choose Departure Seat:");
+		lblChooseDepartureSeat.setBounds(14, 351, 152, 16);
+		frame.getContentPane().add(lblChooseDepartureSeat);
 		
 		JComboBox<String> PetBox = new JComboBox<String>();
 		PetBox.setModel(new DefaultComboBoxModel<String>(new String[] {"Dog", "Cat", "Bunny", "Fish", "Bird", "Snake"}));
@@ -180,7 +180,7 @@ public class LastOrderForm {
 			if(f2!=null){
 				Person p2=om.makePersons(NametextField.getText(), SocialtextField.getText(), chckbxHandicapped.isSelected(), chckbxSpecialBaggage.isSelected(), ArrivaltextField.getText(), orderNr);
 				list2.add(p2);
-				o2 = om.makeOrder(list, EmailtextField.getText(), PhonenumbertextField.getText(), a, t, f2, orderNr);
+				o2 = om.makeOrder(list2, EmailtextField.getText(), PhonenumbertextField.getText(), a, t, f2, orderNr);
 			}
 			frame.dispose();
 			Receipt receipt = new Receipt(o,o2);
@@ -201,14 +201,14 @@ public class LastOrderForm {
 	EmailtextField.setColumns(10);
 	
 	if(f2!=null){
-		JLabel lblNewLabel = new JLabel("Choose Arrival Seat:");
-		lblNewLabel.setBounds(255, 351, 121, 16);
-		frame.getContentPane().add(lblNewLabel);
 		ArrivaltextField = new JTextField();
-		ArrivaltextField.setBounds(388, 348, 61, 22);
+		ArrivaltextField.setBounds(355, 349, 78, 20);
 		frame.getContentPane().add(ArrivaltextField);
 		ArrivaltextField.setColumns(10);
-	}
-	
+		
+		JLabel lblChooseArrivalSeat = new JLabel("Choose Arrival Seat:");
+		lblChooseArrivalSeat.setBounds(245, 352, 100, 14);
+		frame.getContentPane().add(lblChooseArrivalSeat);
+		}
 	}
 }
