@@ -11,7 +11,13 @@ import javax.swing.JCheckBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
+import javax.swing.ListSelectionModel;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
+import javax.swing.table.DefaultTableModel;
 import javax.swing.JComboBox;
+import javax.swing.JTable;
+import javax.swing.JScrollPane;
 
 public class LastOrderForm {
 	
@@ -28,6 +34,10 @@ public class LastOrderForm {
 	private JTextField PhonenumbertextField;
 	private JTextField EmailtextField;
 	private JTextField ArrivaltextField;
+	private JTable table;
+	private JTable table2;
+	private String seat1;
+	private String seat2;
 
 	
 	public JFrame getFrame() {
@@ -71,7 +81,7 @@ public class LastOrderForm {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 500, 480);
+		frame.setBounds(100, 100, 500, 941);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		 
@@ -209,9 +219,70 @@ public class LastOrderForm {
 		lblChooseArrivalSeat.setBounds(245, 352, 100, 14);
 		frame.getContentPane().add(lblChooseArrivalSeat);
 		
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(14, 474, 214, 381);
+		frame.getContentPane().add(scrollPane);
+		
+		String [] [] s=f1.getSeats();
+		String column_names[]= {"A","B","C","D","E","F"};
+		table = new JTable(new DefaultTableModel(s, column_names));
+		scrollPane.setViewportView(table);
+		
+		JLabel seat1Label = new JLabel("");
+		seat1Label.setBounds(172, 373, 43, 20);
+		frame.getContentPane().add(seat1Label);
+		
+		JLabel seat2Label = new JLabel("");
+		seat2Label.setBounds(365, 373, 56, 20);
+		frame.getContentPane().add(seat2Label);
+		table.setCellSelectionEnabled(true);
+		ListSelectionModel cellSelectionModel = table.getSelectionModel();
+		cellSelectionModel.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+
+		cellSelectionModel.addListSelectionListener(new ListSelectionListener() {
+			public void valueChanged(ListSelectionEvent e) {
+		        
+		        int[] selectedRow = table.getSelectedRows();
+		        int[] selectedColumns = table.getSelectedColumns();
+
+		        for (int i = 0; i < selectedRow.length; i++) {
+		          for (int j = 0; j < selectedColumns.length; j++) {
+		            seat1 = (String) table.getValueAt(selectedRow[i], selectedColumns[j]);
+		            seat1Label.setText(seat1);
+		          }
+		        }
+		      }
+
+		    });
+
+		
 		if(f2==null){
 			ArrivaltextField.setVisible(false);
 			lblChooseArrivalSeat.setVisible(false);
+			JScrollPane scrollPane2 = new JScrollPane();
+			scrollPane2.setBounds(256, 474, 207, 381);
+			frame.getContentPane().add(scrollPane2);
+			scrollPane2.setViewportView(table2);
+			String [] [] s2=f2.getSeats();
+			table2 = new JTable(s2, column_names);
+			table2.setCellSelectionEnabled(true);
+			ListSelectionModel cellSelectionModel2 = table2.getSelectionModel();
+			cellSelectionModel2.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+			cellSelectionModel2.addListSelectionListener(new ListSelectionListener() {
+				public void valueChanged(ListSelectionEvent e) {
+			        
+			        int[] selectedRow = table2.getSelectedRows();
+			        int[] selectedColumns = table2.getSelectedColumns();
+
+			        for (int i = 0; i < selectedRow.length; i++) {
+			          for (int j = 0; j < selectedColumns.length; j++) {
+			            seat2 = (String) table2.getValueAt(selectedRow[i], selectedColumns[j]);
+			            seat2Label.setText(seat2);
+			          }
+			        }		        
+			      }
+
+			    });
 		}
 	}
 }
