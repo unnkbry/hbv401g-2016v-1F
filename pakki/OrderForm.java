@@ -37,11 +37,6 @@ public class OrderForm {
 	private JTable table2;
 	private String seat1;
 	private String seat2;
-	
-	int nrOfRows = 99;
-	private JTextField ArrivaltextField;
-	
-	
 	public JFrame getFrame() {
 		return frame;
 	}
@@ -184,14 +179,6 @@ public class OrderForm {
 		      }
 
 		    });
-		
-		
-		/*table.setCellSelectionEnabled(true);
-		table.getSelectionModel().addListSelectionListener(new ListSelectionListener(){
-			public void valueChanged(ListSelectionEvent event){
-				seat1 = (String)table.getValueAt(table.getSelectedRow(), table.getSelectedColumn());
-			}
-		});*/
 
 		
 		if(f2!=null){
