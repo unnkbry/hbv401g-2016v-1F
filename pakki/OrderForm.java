@@ -173,9 +173,9 @@ public class OrderForm {
 		        for (int i = 0; i < selectedRow.length; i++) {
 		          for (int j = 0; j < selectedColumns.length; j++) {
 		            seat1 = (String) table.getValueAt(selectedRow[i], selectedColumns[j]);
+		            seat1Label.setText(seat1);
 		          }
 		        }
-		        seat1Label.setText(seat1);
 		      }
 
 		    });
@@ -192,7 +192,7 @@ public class OrderForm {
 			String [] [] s2=f2.getSeats();
 			table2 = new JTable(s2, column_names);
 			scrollPane2.setViewportView(table2);
-			table.setCellSelectionEnabled(true);
+			table2.setCellSelectionEnabled(true);
 			ListSelectionModel cellSelectionModel2 = table2.getSelectionModel();
 			cellSelectionModel2.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 			cellSelectionModel2.addListSelectionListener(new ListSelectionListener() {
@@ -204,12 +204,12 @@ public class OrderForm {
 			        for (int i = 0; i < selectedRow.length; i++) {
 			          for (int j = 0; j < selectedColumns.length; j++) {
 			            seat2 = (String) table2.getValueAt(selectedRow[i], selectedColumns[j]);
+			            seat2Label.setText(seat2);
 			          }
 			        }		        
 			      }
 
 			    });
-			seat2Label.setText(seat2);
 		}
 	}
 }
