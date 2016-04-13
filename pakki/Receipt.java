@@ -306,7 +306,10 @@ public class Receipt {
 		lblSpecialBaggage2Price.setBounds(10, 97, 143, 14);
 		flight2panel.add(lblSpecialBaggage2Price);
 		
-		JLabel FlightPrice2Label = new JLabel(Integer.toString(o2.getFlight().getPrice()*o2.getPPLCount()));
+		JLabel FlightPrice2Label = new JLabel();
+		if(o2 == null){
+			Integer.toString(o2.getFlight().getPrice()*o2.getPPLCount());
+		}
 		FlightPrice2Label.setHorizontalAlignment(SwingConstants.RIGHT);
 		FlightPrice2Label.setBounds(107, 11, 46, 14);
 		flight2panel.add(FlightPrice2Label);
@@ -348,6 +351,7 @@ public class Receipt {
 			Departure2Label.setVisible(false);
 			Arrival2Label.setVisible(false);
 			flight2panel.setVisible(false);
+			
 			
 		}
 	}
