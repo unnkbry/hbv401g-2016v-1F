@@ -7,6 +7,7 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
+import javax.swing.table.DefaultTableModel;
 import javax.swing.JCheckBox;
 import java.awt.Button;
 import java.awt.event.ActionListener;
@@ -149,9 +150,14 @@ public class OrderForm {
 		frame.getContentPane().add(scrollPane);
 		
 		String column_names[]= {"A","B","C","D","E","F"};
-		
+	
 		String [] [] s=f1.getSeats();
-		table = new JTable(s, column_names);
+		table = new JTable(new DefaultTableModel(
+				s, 
+				new String[]{
+						"A","B","C","D","E","F"
+						}
+				));
 		scrollPane.setViewportView(table);
 		table.getSelectionModel().addListSelectionListener(new ListSelectionListener(){
 			public void valueChanged(ListSelectionEvent event){
