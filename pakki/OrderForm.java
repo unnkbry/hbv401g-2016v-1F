@@ -5,6 +5,7 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
+import javax.swing.ListSelectionModel;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
@@ -17,6 +18,8 @@ import pakki.OrderManager;
 import pakki.Person;
 import javax.swing.JTable;
 import javax.swing.JScrollPane;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 
 public class OrderForm {
@@ -158,13 +161,42 @@ public class OrderForm {
 						"A","B","C","D","E","F"
 						}
 				));
+		table.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent evt) {
+		        int row = table.rowAtPoint(evt.getPoint());
+		        int col = table.columnAtPoint(evt.getPoint());
+			}
+		});
 		scrollPane.setViewportView(table);
 		
+		table.setCellSelectionEnabled(true);
+		ListSelectionModel cellSelectionModel = table.getSelectionModel();
+		cellSelectionModel.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+
+		cellSelectionModel.addListSelectionListener(new ListSelectionListener() {
+			public void valueChanged(ListSelectionEvent e) {
+		        
+		        int[] selectedRow = table.getSelectedRows();
+		        int[] selectedColumns = table.getSelectedColumns();
+
+		        for (int i = 0; i < selectedRow.length; i++) {
+		          for (int j = 0; j < selectedColumns.length; j++) {
+		            seat1 = (String) table.getValueAt(selectedRow[i], selectedColumns[j]);
+		          }
+		        }		        
+		      }
+
+		    });
+		
+		
+		/*table.setCellSelectionEnabled(true);
 		table.getSelectionModel().addListSelectionListener(new ListSelectionListener(){
 			public void valueChanged(ListSelectionEvent event){
 				seat1 = (String)table.getValueAt(table.getSelectedRow(), table.getSelectedColumn());
 			}
-		});
+		});*/
+
 		
 		if(f2!=null){
 			JScrollPane scrollPane2 = new JScrollPane();
@@ -178,10 +210,7 @@ public class OrderForm {
 			ArrivaltextField.setBounds(421, 189, 64, 22);
 			frame.getContentPane().add(ArrivaltextField);
 			ArrivaltextField.setColumns(10);
-			
-			JScrollPane scrollPane_1 = new JScrollPane();
-			scrollPane_1.setBounds(278, 296, 212, 281);
-			frame.getContentPane().add(scrollPane_1);
+
 			
 			String [] [] s2=f2.getSeats();
 			table2 = new JTable(s2, column_names);
