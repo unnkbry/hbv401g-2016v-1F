@@ -248,7 +248,7 @@ public class LastOrderForm {
 			lblChooseArrivalSeat.setVisible(true);
 			
 			JScrollPane scrollPane2 = new JScrollPane();
-			scrollPane2.setBounds(245, 399, 207, 381);
+			scrollPane2.setBounds(245, 349, 218, 246);
 			frame.getContentPane().add(scrollPane2);
 			scrollPane2.setViewportView(table2);
 			String [] [] s2=f2.getSeats();
