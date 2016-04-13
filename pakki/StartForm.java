@@ -16,6 +16,8 @@ import javax.swing.DefaultComboBoxModel;
 public class StartForm {
 	private FlightSearch fs = new FlightSearch();
 	private JFrame frame;
+	private List<Flight> list;
+	private List<Flight> list2;
 
 	/**
 	 * Launch the application.
@@ -36,7 +38,9 @@ public class StartForm {
 	/**
 	 * Create the application.
 	 */
-	public StartForm() {
+	public StartForm(){
+		list=null;
+		list2= null;
 		initialize();
 	}
 
@@ -96,8 +100,19 @@ public class StartForm {
 			}
 		});
 		
-		chckbxBothWays.setBounds(12, 140, 113, 25);
+		chckbxBothWays.setBounds(12, 157, 113, 25);
 		frame.getContentPane().add(chckbxBothWays);
+		
+		JLabel wrongFlight1Label = new JLabel("No available departure flight");
+		wrongFlight1Label.setBounds(22, 127, 171, 22);
+		frame.getContentPane().add(wrongFlight1Label);
+		wrongFlight1Label.setVisible(false);
+		
+		
+		JLabel wrongFlight2Label = new JLabel("No available arrival flight");
+		wrongFlight2Label.setBounds(220, 131, 131, 14);
+		frame.getContentPane().add(wrongFlight2Label);
+		wrongFlight2Label.setVisible(false);
 		
 		Button SubmitStartFormbutton = new Button("Submit");
 		SubmitStartFormbutton.addActionListener(new ActionListener() {
@@ -108,20 +123,48 @@ public class StartForm {
 				boolean bothWays = chckbxBothWays.isSelected();
 				Date d= (Date) dateChooser1.getDate();
 				Date d2=null;
-				frame.dispose();
-				List<Flight> list=fs.search(peopleCount,  d, arrivalAirport, departureAirport);
-				List<Flight> list2= null;
-				if(bothWays){
+				boolean work1=false;
+				boolean work2=false;
+				if(d!=null){
+					list=fs.search(peopleCount,  d, arrivalAirport, departureAirport);
+					if(list.size()!=0)
+						work1=true;
+				}
+				if(!bothWays)
+					work2=true;
+				if(bothWays&&dateChooser2.getDate()!=null){
 					d2=(Date) dateChooser2.getDate();
 					list2=fs.search(peopleCount,  d2, departureAirport, arrivalAirport);
+					if(list2.size()!=0)
+						work2=true;
 				}
-				FlightSearchResult searchResult = new FlightSearchResult(list, list2, peopleCount);
-				JFrame searchResultWindow = searchResult.getFrame();
-				searchResultWindow.setVisible(true);
+				if(!work1&&!work2){
+					wrongFlight1Label.setVisible(true);
+					wrongFlight2Label.setVisible(true);
+					list=null;
+					list2=null;
+				}
+				else if(!work2&&work1){
+					wrongFlight2Label.setVisible(true);
+					wrongFlight1Label.setVisible(false);
+					list=null;
+					list2=null;
+				}
+				else if(work2&&!work1){
+					wrongFlight2Label.setVisible(false);
+					wrongFlight1Label.setVisible(true);
+					list=null;
+					list2=null;
+				}
+				else{
+					frame.dispose();
+					FlightSearchResult searchResult = new FlightSearchResult(list, list2, peopleCount);
+					JFrame searchResultWindow = searchResult.getFrame();
+					searchResultWindow.setVisible(true);
+				}
 			}
 		});
 		SubmitStartFormbutton.setBounds(169, 253, 92, 33);
 		frame.getContentPane().add(SubmitStartFormbutton);
-		
 	}
 }

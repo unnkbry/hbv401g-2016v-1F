@@ -164,51 +164,54 @@ public class LastOrderForm {
 		PetCheck.setBounds(14, 280, 152, 25);
 		frame.getContentPane().add(PetCheck);		
 		
-	Button Nextbutton = new Button("Next");
-	Nextbutton.addActionListener(new ActionListener() {
-		public void actionPerformed(ActionEvent e) {
-			Person p=om.makePersons(NametextField.getText(), SocialtextField.getText(), chckbxHandicapped.isSelected(), chckbxSpecialBaggage.isSelected(), DeparturetextField.getText(), orderNr);
-			list.add(p);
-			String a="";
-			int t=0;
-			if(PetCheck.isSelected())
-				a=(String)PetBox.getItemAt(PetBox.getSelectedIndex());
-			if(ToddlerCheck.isSelected())
-				t=Integer.parseInt(ToddlerBox.getItemAt(ToddlerBox.getSelectedIndex()));
-			Order o=om.makeOrder(list, EmailtextField.getText(), PhonenumbertextField.getText(), a, t, f1, orderNr);
-			Order o2=null;
-			if(f2!=null){
-				Person p2=om.makePersons(NametextField.getText(), SocialtextField.getText(), chckbxHandicapped.isSelected(), chckbxSpecialBaggage.isSelected(), ArrivaltextField.getText(), orderNr);
-				list2.add(p2);
-				o2 = om.makeOrder(list2, EmailtextField.getText(), PhonenumbertextField.getText(), a, t, f2, orderNr);
+		Button Nextbutton = new Button("Next");
+		Nextbutton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Person p=om.makePersons(NametextField.getText(), SocialtextField.getText(), chckbxHandicapped.isSelected(), chckbxSpecialBaggage.isSelected(), DeparturetextField.getText(), orderNr);
+				list.add(p);
+				String a="";
+				int t=0;
+				if(PetCheck.isSelected())
+					a=(String)PetBox.getItemAt(PetBox.getSelectedIndex());
+				if(ToddlerCheck.isSelected())
+					t=Integer.parseInt(ToddlerBox.getItemAt(ToddlerBox.getSelectedIndex()));
+				Order o=om.makeOrder(list, EmailtextField.getText(), PhonenumbertextField.getText(), a, t, f1, orderNr);
+				Order o2=null;
+				if(f2!=null){
+					Person p2=om.makePersons(NametextField.getText(), SocialtextField.getText(), chckbxHandicapped.isSelected(), chckbxSpecialBaggage.isSelected(), ArrivaltextField.getText(), orderNr);
+					list2.add(p2);
+					o2 = om.makeOrder(list2, EmailtextField.getText(), PhonenumbertextField.getText(), a, t, f2, orderNr);
+				}
+				frame.dispose();
+				Receipt receipt = new Receipt(o,o2);
+				JFrame ReceiptWindow = receipt.getFrame();
+				ReceiptWindow.setVisible(true);	
 			}
-			frame.dispose();
-			Receipt receipt = new Receipt(o,o2);
-			JFrame ReceiptWindow = receipt.getFrame();
-			ReceiptWindow.setVisible(true);	
-		}
-	});
-	Nextbutton.setBounds(182, 399, 102, 24);
-	frame.getContentPane().add(Nextbutton);
-	
-	JLabel lblEmail = new JLabel("Email:");
-	lblEmail.setBounds(14, 148, 56, 16);
-	frame.getContentPane().add(lblEmail);
-	
-	EmailtextField = new JTextField();
-	EmailtextField.setBounds(218, 145, 231, 22);
-	frame.getContentPane().add(EmailtextField);
-	EmailtextField.setColumns(10);
-	
-	if(f2!=null){
+		});
+		Nextbutton.setBounds(182, 399, 102, 24);
+		frame.getContentPane().add(Nextbutton);
+		
+		JLabel lblEmail = new JLabel("Email:");
+		lblEmail.setBounds(14, 148, 56, 16);
+		frame.getContentPane().add(lblEmail);
+		
+		EmailtextField = new JTextField();
+		EmailtextField.setBounds(218, 145, 231, 22);
+		frame.getContentPane().add(EmailtextField);
+		EmailtextField.setColumns(10);
+		
 		ArrivaltextField = new JTextField();
 		ArrivaltextField.setBounds(355, 349, 78, 20);
 		frame.getContentPane().add(ArrivaltextField);
 		ArrivaltextField.setColumns(10);
-		
+			
 		JLabel lblChooseArrivalSeat = new JLabel("Choose Arrival Seat:");
 		lblChooseArrivalSeat.setBounds(245, 352, 100, 14);
 		frame.getContentPane().add(lblChooseArrivalSeat);
+		
+		if(f2==null){
+			ArrivaltextField.setVisible(false);
+			lblChooseArrivalSeat.setVisible(false);
 		}
 	}
 }
