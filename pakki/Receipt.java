@@ -263,24 +263,15 @@ public class Receipt {
 		FN1.setBounds(116, 156, 56, 16);
 		frame.getContentPane().add(FN1);
 		
-		JLabel FN2 = new JLabel();
-		if(o2 != null){
-			Integer.toString(o2.getFlight().getFlightnr());
-		}
+		JLabel FN2 = new JLabel("0");
 		FN2.setBounds(347, 156, 56, 16);
 		frame.getContentPane().add(FN2);
 		
-		JLabel D2 = new JLabel();
-		if(o2 != null){
-			o2.getFlight().getDepartureAirport();
-		}
+		JLabel D2 = new JLabel("0");
 		D2.setBounds(345, 178, 68, 16);
 		frame.getContentPane().add(D2);
 			
-		JLabel A2 = new JLabel();
-		if(o2 != null){
-			o2.getFlight().getArrivalAirport();
-		}
+		JLabel A2 = new JLabel("0");
 		A2.setBounds(347, 197, 73, 16);
 		frame.getContentPane().add(A2);
 		
@@ -306,15 +297,12 @@ public class Receipt {
 		lblSpecialBaggage2Price.setBounds(10, 97, 143, 14);
 		flight2panel.add(lblSpecialBaggage2Price);
 		
-		JLabel FlightPrice2Label = new JLabel();
-		if(o2 == null){
-			Integer.toString(o2.getFlight().getPrice()*o2.getPPLCount());
-		}
+		JLabel FlightPrice2Label = new JLabel("0");
 		FlightPrice2Label.setHorizontalAlignment(SwingConstants.RIGHT);
 		FlightPrice2Label.setBounds(107, 11, 46, 14);
 		flight2panel.add(FlightPrice2Label);
 		
-		JLabel ToddlerPrice2Label = new JLabel(Integer.toString(o2.getToddler()*5000));
+		JLabel ToddlerPrice2Label = new JLabel("0");
 		ToddlerPrice2Label.setHorizontalAlignment(SwingConstants.RIGHT);
 		ToddlerPrice2Label.setBounds(107, 40, 46, 14);
 		flight2panel.add(ToddlerPrice2Label);
@@ -322,10 +310,10 @@ public class Receipt {
 		int r=1;
 		if(o2.getAnimal()=="")
 			r=0;
-		
-		JLabel AnmialPrice2Label = new JLabel(Integer.toString(r*10000));
-		AnmialPrice2Label.setBounds(148, 71, 46, 14);
-		flight2panel.add(AnmialPrice2Label);
+		  
+		JLabel AnimalPrice2Label = new JLabel("0");
+		AnimalPrice2Label.setBounds(148, 71, 46, 14);
+		flight2panel.add(AnimalPrice2Label);
 		
 		JLabel SBS2Label = new JLabel(Integer.toString(o2.getSpecialBaggage()*6000));
 		SBS2Label.setHorizontalAlignment(SwingConstants.RIGHT);
@@ -352,7 +340,14 @@ public class Receipt {
 			Arrival2Label.setVisible(false);
 			flight2panel.setVisible(false);
 			
-			
+		}
+		if (o2 != null){
+			AnimalPrice2Label.setText(Integer.toString(r*10000));
+			ToddlerPrice2Label.setText(Integer.toString(o2.getToddler()*5000));
+			FlightPrice2Label.setText(Integer.toString(o2.getFlight().getPrice()*o2.getPPLCount()));
+			A2.setText(o2.getFlight().getArrivalAirport());
+			D2.setText(o2.getFlight().getDepartureAirport());
+			FN2.setText(Integer.toString(o2.getFlight().getFlightnr()));
 		}
 	}
 }
