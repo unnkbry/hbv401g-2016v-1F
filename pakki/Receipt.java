@@ -253,24 +253,34 @@ public class Receipt {
 		lblFlightNumber.setBounds(15, 156, 89, 16);
 		frame.getContentPane().add(lblFlightNumber);
 		
-		JLabel FN1 = new JLabel(Integer.toString(o.getFlight().getFlightnr()));
-		FN1.setBounds(116, 156, 56, 16);
-		frame.getContentPane().add(FN1);
-		
 		JLabel lblFlightNumber_1 = new JLabel("Flight Number:");
 		lblFlightNumber_1.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblFlightNumber_1.setBounds(236, 156, 94, 16);
 		frame.getContentPane().add(lblFlightNumber_1);
 		
-		JLabel FN2 = new JLabel(Integer.toString(o2.getFlight().getFlightnr()));
+
+		JLabel FN1 = new JLabel(Integer.toString(o.getFlight().getFlightnr()));
+		FN1.setBounds(116, 156, 56, 16);
+		frame.getContentPane().add(FN1);
+		
+		JLabel FN2 = new JLabel();
+		if(o2 != null){
+			Integer.toString(o2.getFlight().getFlightnr());
+		}
 		FN2.setBounds(347, 156, 56, 16);
 		frame.getContentPane().add(FN2);
 		
-		JLabel D2 = new JLabel(o2.getFlight().getDepartureAirport());
+		JLabel D2 = new JLabel();
+		if(o2 != null){
+			o2.getFlight().getDepartureAirport();
+		}
 		D2.setBounds(345, 178, 68, 16);
 		frame.getContentPane().add(D2);
 			
-		JLabel A2 = new JLabel(o2.getFlight().getArrivalAirport());
+		JLabel A2 = new JLabel();
+		if(o2 != null){
+			o2.getFlight().getArrivalAirport();
+		}
 		A2.setBounds(347, 197, 73, 16);
 		frame.getContentPane().add(A2);
 		
