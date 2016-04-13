@@ -79,7 +79,7 @@ public class LastOrderForm {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 500, 818);
+		frame.setBounds(100, 100, 500, 712);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		 
@@ -191,7 +191,7 @@ public class LastOrderForm {
 				ReceiptWindow.setVisible(true);	
 			}
 		});
-		Nextbutton.setBounds(184, 736, 102, 24);
+		Nextbutton.setBounds(179, 614, 102, 24);
 		frame.getContentPane().add(Nextbutton);
 		
 		JLabel lblEmail = new JLabel("Email:");
@@ -209,7 +209,7 @@ public class LastOrderForm {
 		lblChooseArrivalSeat.setVisible(false);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(14, 349, 214, 381);
+		scrollPane.setBounds(14, 349, 214, 246);
 		frame.getContentPane().add(scrollPane);
 		
 		String [] [] s=f1.getSeats();
