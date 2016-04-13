@@ -307,9 +307,7 @@ public class Receipt {
 		ToddlerPrice2Label.setBounds(107, 40, 46, 14);
 		flight2panel.add(ToddlerPrice2Label);
 		
-		int r=1;
-		if(o2.getAnimal()=="")
-			r=0;
+	
 		  
 		JLabel AnimalPrice2Label = new JLabel("0");
 		AnimalPrice2Label.setBounds(148, 71, 46, 14);
@@ -342,6 +340,9 @@ public class Receipt {
 			
 		}
 		if (o2 != null){
+			int r=1;
+			if(o2.getAnimal()=="")
+				r=0;
 			AnimalPrice2Label.setText(Integer.toString(r*10000));
 			ToddlerPrice2Label.setText(Integer.toString(o2.getToddler()*5000));
 			FlightPrice2Label.setText(Integer.toString(o2.getFlight().getPrice()*o2.getPPLCount()));
