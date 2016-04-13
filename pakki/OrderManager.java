@@ -30,7 +30,7 @@ public class OrderManager{
 		Order o = new Order(list, email, phonenumber, animal, toddler, price, f, ordernr);
 		Iterator<Person> it=list.iterator();
 		while(it.hasNext()){
-			//f.bookSeat(it.next().getSeat());
+			f.bookSeat(it.next().getSeat());
 		}
 		return o;
 	}

@@ -10,7 +10,6 @@ import javax.swing.event.ListSelectionListener;
 import javax.swing.JCheckBox;
 import java.awt.Button;
 import java.awt.event.ActionListener;
-import java.util.Iterator;
 import java.util.List;
 import java.awt.event.ActionEvent;
 import pakki.OrderManager;
@@ -34,7 +33,9 @@ public class OrderForm {
 	private int orderNr;
 	private JTable table;
 	private JTable table2;
-
+	private String seat1;
+	private String seat2;
+	
 	int nrOfRows = 99;
 	private JTextField ArrivaltextField;
 	
@@ -152,9 +153,7 @@ public class OrderForm {
 		scrollPane.setViewportView(table);
 		table.getSelectionModel().addListSelectionListener(new ListSelectionListener(){
 			public void valueChanged(ListSelectionEvent event){
-				String seat = (String)table.getValueAt(table.getSelectedRow(), table.getSelectedColumn());
-				System.out.println(seat);
-				//f1.bookSeat(seat);
+				seat1 = (String)table.getValueAt(table.getSelectedRow(), table.getSelectedColumn());
 			}
 		});
 		

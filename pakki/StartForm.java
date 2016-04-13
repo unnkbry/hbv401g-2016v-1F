@@ -92,7 +92,6 @@ public class StartForm {
 		JCheckBox chckbxBothWays = new JCheckBox("Both Ways");
 		chckbxBothWays.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				System.out.println(chckbxBothWays.isSelected());
 				dateChooser2.setVisible(chckbxBothWays.isSelected());
 			}
 		});
