@@ -23,7 +23,6 @@ public class LastOrderForm {
 	
 	private JTextField NametextField;
 	private JTextField SocialtextField;
-	private JTextField DeparturetextField;
 	private OrderManager om;
 	private Flight f1;
 	private Flight f2;
@@ -33,7 +32,6 @@ public class LastOrderForm {
 	private JFrame frame;
 	private JTextField PhonenumbertextField;
 	private JTextField EmailtextField;
-	private JTextField ArrivaltextField;
 	private JTable table;
 	private JTable table2;
 	private String seat1;
@@ -127,11 +125,6 @@ public class LastOrderForm {
 		chckbxSpecialBaggage.setBounds(14, 220, 135, 25);
 		frame.getContentPane().add(chckbxSpecialBaggage);
 		
-		DeparturetextField = new JTextField();
-		DeparturetextField.setBounds(162, 348, 56, 22);
-		frame.getContentPane().add(DeparturetextField);
-		DeparturetextField.setColumns(10);
-		
 		JLabel lblChooseDepartureSeat = new JLabel("Choose Departure Seat:");
 		lblChooseDepartureSeat.setBounds(14, 351, 152, 16);
 		frame.getContentPane().add(lblChooseDepartureSeat);
@@ -198,7 +191,7 @@ public class LastOrderForm {
 				ReceiptWindow.setVisible(true);	
 			}
 		});
-		Nextbutton.setBounds(182, 399, 102, 24);
+		Nextbutton.setBounds(186, 826, 102, 24);
 		frame.getContentPane().add(Nextbutton);
 		
 		JLabel lblEmail = new JLabel("Email:");
@@ -209,18 +202,13 @@ public class LastOrderForm {
 		EmailtextField.setBounds(218, 145, 231, 22);
 		frame.getContentPane().add(EmailtextField);
 		EmailtextField.setColumns(10);
-		
-		ArrivaltextField = new JTextField();
-		ArrivaltextField.setBounds(355, 349, 78, 20);
-		frame.getContentPane().add(ArrivaltextField);
-		ArrivaltextField.setColumns(10);
 			
 		JLabel lblChooseArrivalSeat = new JLabel("Choose Arrival Seat:");
 		lblChooseArrivalSeat.setBounds(245, 352, 100, 14);
 		frame.getContentPane().add(lblChooseArrivalSeat);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(14, 474, 214, 381);
+		scrollPane.setBounds(14, 399, 214, 381);
 		frame.getContentPane().add(scrollPane);
 		
 		String [] [] s=f1.getSeats();
@@ -229,11 +217,11 @@ public class LastOrderForm {
 		scrollPane.setViewportView(table);
 		
 		JLabel seat1Label = new JLabel("");
-		seat1Label.setBounds(172, 373, 43, 20);
+		seat1Label.setBounds(169, 351, 43, 20);
 		frame.getContentPane().add(seat1Label);
 		
 		JLabel seat2Label = new JLabel("");
-		seat2Label.setBounds(365, 373, 56, 20);
+		seat2Label.setBounds(366, 351, 56, 20);
 		frame.getContentPane().add(seat2Label);
 		table.setCellSelectionEnabled(true);
 		ListSelectionModel cellSelectionModel = table.getSelectionModel();
@@ -255,34 +243,35 @@ public class LastOrderForm {
 
 		    });
 
+		JScrollPane scrollPane2 = new JScrollPane();
+		scrollPane2.setBounds(245, 399, 207, 381);
+		frame.getContentPane().add(scrollPane2);
+		scrollPane2.setViewportView(table2);
+		String [] [] s2=f2.getSeats();
+		table2 = new JTable(s2, column_names);
+		table2.setCellSelectionEnabled(true);
+		ListSelectionModel cellSelectionModel2 = table2.getSelectionModel();
+		cellSelectionModel2.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		cellSelectionModel2.addListSelectionListener(new ListSelectionListener() {
+			public void valueChanged(ListSelectionEvent e) {
+		        
+		        int[] selectedRow = table2.getSelectedRows();
+		        int[] selectedColumns = table2.getSelectedColumns();
+
+		        for (int i = 0; i < selectedRow.length; i++) {
+		          for (int j = 0; j < selectedColumns.length; j++) {
+		            seat2 = (String) table2.getValueAt(selectedRow[i], selectedColumns[j]);
+		            seat2Label.setText(seat2);
+		          }
+		        }		        
+		      }
+
+		    });
+		scrollPane2.setVisible(false);
 		
 		if(f2==null){
-			ArrivaltextField.setVisible(false);
 			lblChooseArrivalSeat.setVisible(false);
-			JScrollPane scrollPane2 = new JScrollPane();
-			scrollPane2.setBounds(256, 474, 207, 381);
-			frame.getContentPane().add(scrollPane2);
-			scrollPane2.setViewportView(table2);
-			String [] [] s2=f2.getSeats();
-			table2 = new JTable(s2, column_names);
-			table2.setCellSelectionEnabled(true);
-			ListSelectionModel cellSelectionModel2 = table2.getSelectionModel();
-			cellSelectionModel2.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-			cellSelectionModel2.addListSelectionListener(new ListSelectionListener() {
-				public void valueChanged(ListSelectionEvent e) {
-			        
-			        int[] selectedRow = table2.getSelectedRows();
-			        int[] selectedColumns = table2.getSelectedColumns();
-
-			        for (int i = 0; i < selectedRow.length; i++) {
-			          for (int j = 0; j < selectedColumns.length; j++) {
-			            seat2 = (String) table2.getValueAt(selectedRow[i], selectedColumns[j]);
-			            seat2Label.setText(seat2);
-			          }
-			        }		        
-			      }
-
-			    });
+			scrollPane2.setVisible(true);
 		}
 	}
 }
