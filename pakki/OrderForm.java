@@ -118,6 +118,10 @@ public class OrderForm {
 				Person p=om.makePersons(NametextField.getText(), SocialtextField.getText(), chckbxHandicapped.isSelected(), chckbxSpecialBaggage.isSelected(), seat1, orderNr);
 				list.add(p);
 				counter++;
+				if(f2!=null){
+					p=om.makePersons(NametextField.getText(), SocialtextField.getText(), chckbxHandicapped.isSelected(), chckbxSpecialBaggage.isSelected(), seat2, orderNr);
+					list2.add(p);
+				}
 				if(pplCount==counter+1){
 					frame.dispose();
 					LastOrderForm lof = new LastOrderForm(list, list2, f1, f2, orderNr);

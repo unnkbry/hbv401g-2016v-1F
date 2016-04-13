@@ -117,7 +117,14 @@ public class Receipt {
 		lblPrice.setBounds(110, 411, 119, 16);
 		frame.getContentPane().add(lblPrice);
 		
-		JLabel PriceLabel = new JLabel(Integer.toString(o.getPrice() + o2.getPrice()));
+		JLabel PriceLabel = new JLabel();
+		if(o2 != null){
+			Integer.toString(o.getPrice() + o2.getPrice());
+		}
+		else{
+			Integer.toString(o.getPrice());
+		}
+//		JLabel PriceLabel = new JLabel(Integer.toString(o.getPrice() + o2.getPrice()));
 		PriceLabel.setFont(new Font("Tahoma", Font.BOLD, 16));
 		PriceLabel.setBounds(246, 409, 76, 16);
 		frame.getContentPane().add(PriceLabel);
@@ -325,14 +332,13 @@ public class Receipt {
 		
 
 		if(o2==null){
-			flight2panel.setVisible(false);
-			/*FN2.setVisible(false);
+			FN2.setVisible(false);
 			D2.setVisible(false);
 			A2.setVisible(false);
 			Departure2Label.setVisible(false);
 			Arrival2Label.setVisible(false);
 			flight2panel.setVisible(false);
-			*/
+			
 		}
 	}
 }

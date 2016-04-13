@@ -104,7 +104,6 @@ public class FlightSearchResult {
 		int counter = 0;
 		while (it.hasNext()) {
 			Flight f=it.next();
-			System.out.println(f.getArrivalAirport());
 			String date=df.format(f.getDate());
 			s[counter][0]=f.getArrivalAirport();
 			s[counter][1]=f.getDepartureAirport();
@@ -134,7 +133,6 @@ public class FlightSearchResult {
 		});
 		frame.getContentPane().add(scrollPane);
 		frame.getContentPane().add(scrollPane2);
-		System.out.println(listi2);
 		if(listi2!=null){
 			table2 = new JTable();
 			int numRows2 = listi2.size();
@@ -186,6 +184,12 @@ public class FlightSearchResult {
 		lblReturningFlight.setBounds(12, 246, 133, 16);
 		frame.getContentPane().add(lblReturningFlight);
 		
+		JLabel ErrorLabel = new JLabel("Please select flight/s");
+		ErrorLabel.setForeground(Color.RED);
+		ErrorLabel.setBounds(44, 413, 144, 29);
+		frame.getContentPane().add(ErrorLabel);
+		ErrorLabel.setVisible(false);
+		
 		JButton btnConfirm = new JButton("Choose Flight");
 		btnConfirm.setForeground(new Color(255, 255, 255));
 		btnConfirm.setBackground(new Color(0, 0, 139));
@@ -195,20 +199,21 @@ public class FlightSearchResult {
 				OrderNr on= new OrderNr();
 				List<Person> list=new ArrayList<Person>();
 				List<Person> list2= new ArrayList<Person>();
-				if(pplCount==1&&f1!=null&&(listi2.size()==0||f2!=null)){
+				if(pplCount==1&&(listi2==null||f2!=null)&&f1!=null){
 					frame.dispose();
 					LastOrderForm LOF = new LastOrderForm(list, list2, f1, f2, on.getOrderNr());
 					JFrame LastOrderFormWindow = LOF.getFrame();
 					LastOrderFormWindow.setVisible(true);
 				}
-				else if(f1!=null&&(listi2.size()==0||f2!=null)){
+				else if(f1!=null&&(listi2==null||f2!=null)&&f1!=null){
 					frame.dispose();
 					OrderForm OF = new OrderForm(list, list2, f1, f2, pplCount, 0, on.getOrderNr());
 					JFrame OrderFormWindow = OF.getFrame();
 					OrderFormWindow.setVisible(true);
 				}
-				else
-					System.out.println("gleymdir að velja allt sucker!");
+				else{
+					ErrorLabel.setVisible(true);
+				}
 			}
 		});
 		btnConfirm.setBounds(322, 440, 144, 40);
@@ -218,5 +223,7 @@ public class FlightSearchResult {
 		lblPickYourFlight.setFont(new Font("Trebuchet MS", Font.PLAIN, 16));
 		lblPickYourFlight.setBounds(15, 16, 386, 20);
 		frame.getContentPane().add(lblPickYourFlight);
+		
+
 	}
 }
