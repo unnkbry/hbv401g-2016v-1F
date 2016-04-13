@@ -170,7 +170,7 @@ public class LastOrderForm {
 		Button Nextbutton = new Button("Next");
 		Nextbutton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Person p=om.makePersons(NametextField.getText(), SocialtextField.getText(), chckbxHandicapped.isSelected(), chckbxSpecialBaggage.isSelected(), DeparturetextField.getText(), orderNr);
+				Person p=om.makePersons(NametextField.getText(), SocialtextField.getText(), chckbxHandicapped.isSelected(), chckbxSpecialBaggage.isSelected(), seat1, orderNr);
 				list.add(p);
 				String a="";
 				int t=0;
@@ -181,7 +181,7 @@ public class LastOrderForm {
 				Order o=om.makeOrder(list, EmailtextField.getText(), PhonenumbertextField.getText(), a, t, f1, orderNr);
 				Order o2=null;
 				if(f2!=null){
-					Person p2=om.makePersons(NametextField.getText(), SocialtextField.getText(), chckbxHandicapped.isSelected(), chckbxSpecialBaggage.isSelected(), ArrivaltextField.getText(), orderNr);
+					Person p2=om.makePersons(NametextField.getText(), SocialtextField.getText(), chckbxHandicapped.isSelected(), chckbxSpecialBaggage.isSelected(), seat2, orderNr);
 					list2.add(p2);
 					o2 = om.makeOrder(list2, EmailtextField.getText(), PhonenumbertextField.getText(), a, t, f2, orderNr);
 				}
