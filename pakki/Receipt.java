@@ -114,12 +114,12 @@ public class Receipt {
 		
 		JLabel lblPrice = new JLabel("Final Price:");
 		lblPrice.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblPrice.setBounds(57, 411, 119, 16);
+		lblPrice.setBounds(110, 411, 119, 16);
 		frame.getContentPane().add(lblPrice);
 		
 		JLabel PriceLabel = new JLabel(Integer.toString(o.getPrice() + o2.getPrice()));
 		PriceLabel.setFont(new Font("Tahoma", Font.BOLD, 16));
-		PriceLabel.setBounds(194, 410, 76, 16);
+		PriceLabel.setBounds(246, 409, 76, 16);
 		frame.getContentPane().add(PriceLabel);
 		
 		Button Closebutton = new Button("Close");
@@ -288,8 +288,7 @@ public class Receipt {
 			r=0;
 		
 		JLabel AnmialPrice2Label = new JLabel(Integer.toString(r*10000));
-		AnmialPrice2Label.setHorizontalAlignment(SwingConstants.RIGHT);
-		AnmialPrice2Label.setBounds(107, 71, 46, 14);
+		AnmialPrice2Label.setBounds(148, 71, 46, 14);
 		flight2panel.add(AnmialPrice2Label);
 		
 		JLabel SBS2Label = new JLabel(Integer.toString(o2.getSpecialBaggage()*6000));
@@ -298,12 +297,12 @@ public class Receipt {
 		flight2panel.add(SBS2Label);
 		
 		JLabel lblFinalPrice2 = new JLabel("Final Price:");
-		lblFinalPrice2.setBounds(38, 125, 56, 14);
+		lblFinalPrice2.setBounds(52, 122, 56, 14);
 		flight2panel.add(lblFinalPrice2);
 		
 		JLabel FinalPrice2Label = new JLabel(Integer.toString(o2.getPrice()));
 		FinalPrice2Label.setHorizontalAlignment(SwingConstants.LEFT);
-		FinalPrice2Label.setBounds(107, 125, 46, 14);
+		FinalPrice2Label.setBounds(128, 122, 46, 14);
 		flight2panel.add(FinalPrice2Label);
 	
 		
