@@ -79,7 +79,7 @@ public class LastOrderForm {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 500, 941);
+		frame.setBounds(100, 100, 500, 818);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		 
@@ -126,7 +126,7 @@ public class LastOrderForm {
 		frame.getContentPane().add(chckbxSpecialBaggage);
 		
 		JLabel lblChooseDepartureSeat = new JLabel("Choose Departure Seat:");
-		lblChooseDepartureSeat.setBounds(14, 351, 152, 16);
+		lblChooseDepartureSeat.setBounds(14, 317, 152, 16);
 		frame.getContentPane().add(lblChooseDepartureSeat);
 		
 		JComboBox<String> PetBox = new JComboBox<String>();
@@ -191,7 +191,7 @@ public class LastOrderForm {
 				ReceiptWindow.setVisible(true);	
 			}
 		});
-		Nextbutton.setBounds(186, 826, 102, 24);
+		Nextbutton.setBounds(184, 736, 102, 24);
 		frame.getContentPane().add(Nextbutton);
 		
 		JLabel lblEmail = new JLabel("Email:");
@@ -204,12 +204,12 @@ public class LastOrderForm {
 		EmailtextField.setColumns(10);
 			
 		JLabel lblChooseArrivalSeat = new JLabel("Choose Arrival Seat:");
-		lblChooseArrivalSeat.setBounds(245, 352, 100, 14);
+		lblChooseArrivalSeat.setBounds(245, 319, 100, 14);
 		frame.getContentPane().add(lblChooseArrivalSeat);
 		lblChooseArrivalSeat.setVisible(false);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(14, 399, 214, 381);
+		scrollPane.setBounds(14, 349, 214, 381);
 		frame.getContentPane().add(scrollPane);
 		
 		String [] [] s=f1.getSeats();
@@ -218,11 +218,11 @@ public class LastOrderForm {
 		scrollPane.setViewportView(table);
 		
 		JLabel seat1Label = new JLabel("");
-		seat1Label.setBounds(169, 351, 43, 20);
+		seat1Label.setBounds(169, 317, 43, 20);
 		frame.getContentPane().add(seat1Label);
 		
 		JLabel seat2Label = new JLabel("");
-		seat2Label.setBounds(366, 351, 56, 20);
+		seat2Label.setBounds(364, 322, 56, 20);
 		frame.getContentPane().add(seat2Label);
 		table.setCellSelectionEnabled(true);
 		ListSelectionModel cellSelectionModel = table.getSelectionModel();
