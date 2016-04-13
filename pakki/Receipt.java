@@ -328,8 +328,7 @@ public class Receipt {
 		flight2panel.add(FinalPrice2Label);
 	
 		
-		
-
+	
 		if(o2==null){
 			FN2.setVisible(false);
 			D2.setVisible(false);
