@@ -56,6 +56,7 @@ public class OrderForm {
 			}
 		});
 	}
+	
 
 	/**
 	 * Create the application.
@@ -87,7 +88,7 @@ public class OrderForm {
 		frame.getContentPane().add(lblName);
 		
 		JLabel lblSocialSecurityNumber = new JLabel("Social Security Number:");
-		lblSocialSecurityNumber.setBounds(14, 78, 189, 16);
+		lblSocialSecurityNumber.setBounds(14, 78, 152, 16);
 		frame.getContentPane().add(lblSocialSecurityNumber);
 		
 		NametextField = new JTextField();
@@ -101,15 +102,15 @@ public class OrderForm {
 		SocialtextField.setColumns(10);
 		
 		JCheckBox chckbxHandicapped = new JCheckBox("Handicapped");
-		chckbxHandicapped.setBounds(14, 108, 135, 25);
+		chckbxHandicapped.setBounds(14, 108, 113, 25);
 		frame.getContentPane().add(chckbxHandicapped);
 		
 		JCheckBox chckbxSpecialBaggage = new JCheckBox("Special Baggage");
-		chckbxSpecialBaggage.setBounds(14, 138, 152, 25);
+		chckbxSpecialBaggage.setBounds(14, 138, 135, 25);
 		frame.getContentPane().add(chckbxSpecialBaggage);
 		
 		JLabel lblChooseSeat = new JLabel("Choose Departure Seat:");
-		lblChooseSeat.setBounds(15, 192, 168, 16);
+		lblChooseSeat.setBounds(14, 192, 152, 16);
 		frame.getContentPane().add(lblChooseSeat);
 		
 		Button Nextbutton = new Button("Next");
@@ -136,7 +137,7 @@ public class OrderForm {
 		frame.getContentPane().add(Nextbutton);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(31, 296, 204, 282);
+		scrollPane.setBounds(31, 296, 200, 282);
 		frame.getContentPane().add(scrollPane);
 		
 		String column_names[]= {"A","B","C","D","E","F"};
@@ -150,7 +151,6 @@ public class OrderForm {
 				));
 
 		scrollPane.setViewportView(table);
-		
 		table.setCellSelectionEnabled(true);
 		
 		JLabel seat1Label = new JLabel("");
@@ -183,12 +183,28 @@ public class OrderForm {
 		
 		if(f2!=null){
 			JScrollPane scrollPane2 = new JScrollPane();
-			scrollPane2.setBounds(281, 296, 204, 281);
-			frame.getContentPane().add(scrollPane2);
-			scrollPane2.setViewportView(table2);
+			scrollPane2.setBounds(100, 296, 436, 282);
+			frame.getContentPane().add(scrollPane);
 			JLabel lblChooseSeat_1 = new JLabel("Choose Arrival Seat:");
-			lblChooseSeat_1.setBounds(273, 192, 152, 16);
+			lblChooseSeat_1.setBounds(278, 192, 135, 16);
 			frame.getContentPane().add(lblChooseSeat_1);
+<<<<<<< .mine
+			ArrivaltextField = new JTextField();
+			ArrivaltextField.setBounds(403, 189, 64, 22);
+			frame.getContentPane().add(ArrivaltextField);
+			ArrivaltextField.setColumns(10);
+||||||| .r109
+			ArrivaltextField = new JTextField();
+			ArrivaltextField.setBounds(421, 189, 64, 22);
+			frame.getContentPane().add(ArrivaltextField);
+			ArrivaltextField.setColumns(10);
+			
+			JScrollPane scrollPane_1 = new JScrollPane();
+			scrollPane_1.setBounds(278, 296, 212, 281);
+			frame.getContentPane().add(scrollPane_1);
+			
+=======
+>>>>>>> .r118
 			String [] [] s2=f2.getSeats();
 			table2 = new JTable(s2, column_names);
 			scrollPane2.setViewportView(table2);

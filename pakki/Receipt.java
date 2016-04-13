@@ -115,7 +115,7 @@ public class Receipt {
 		lblPrice.setBounds(57, 411, 119, 16);
 		frame.getContentPane().add(lblPrice);
 		
-		JLabel PriceLabel = new JLabel(Integer.toString(o.getPrice()));
+		JLabel PriceLabel = new JLabel(Integer.toString(o.getPrice() + o2.getPrice()));
 		PriceLabel.setFont(new Font("Tahoma", Font.BOLD, 16));
 		PriceLabel.setBounds(194, 410, 76, 16);
 		frame.getContentPane().add(PriceLabel);
@@ -181,7 +181,7 @@ public class Receipt {
 		lblFinalPrice1.setBounds(37, 125, 59, 14);
 		flight1panel.add(lblFinalPrice1);
 		
-		JLabel FinalPrice1Label = new JLabel("0");
+		JLabel FinalPrice1Label = new JLabel(Integer.toString(o.getPrice()));
 		FinalPrice1Label.setBounds(106, 125, 46, 14);
 		flight1panel.add(FinalPrice1Label);
 		
@@ -271,19 +271,23 @@ public class Receipt {
 		lblSpecialBaggage2Price.setBounds(10, 97, 108, 14);
 		flight2panel.add(lblSpecialBaggage2Price);
 		
-		JLabel FlightPrice2Label = new JLabel("0");
+		JLabel FlightPrice2Label = new JLabel(Integer.toString(o2.getFlight().getPrice()*o2.getPPLCount()));
 		FlightPrice2Label.setBounds(148, 11, 46, 14);
 		flight2panel.add(FlightPrice2Label);
 		
-		JLabel ToddlerPrice2Label = new JLabel("0");
+		JLabel ToddlerPrice2Label = new JLabel(Integer.toString(o2.getToddler()*5000));
 		ToddlerPrice2Label.setBounds(148, 40, 46, 14);
 		flight2panel.add(ToddlerPrice2Label);
 		
-		JLabel AnmialPrice2Label = new JLabel(Integer.toString(s*10000));
+		int r=1;
+		if(o2.getAnimal()=="")
+			r=0;
+		
+		JLabel AnmialPrice2Label = new JLabel(Integer.toString(r*10000));
 		AnmialPrice2Label.setBounds(128, 71, 46, 14);
 		flight2panel.add(AnmialPrice2Label);
 		
-		JLabel SBS2Label = new JLabel(Integer.toString(o.getSpecialBaggage()*6000));
+		JLabel SBS2Label = new JLabel(Integer.toString(o2.getSpecialBaggage()*6000));
 		SBS2Label.setBounds(148, 97, 46, 14);
 		flight2panel.add(SBS2Label);
 		
@@ -291,18 +295,22 @@ public class Receipt {
 		lblFinalPrice2.setBounds(38, 125, 56, 14);
 		flight2panel.add(lblFinalPrice2);
 		
-		JLabel FinalPrice2Label = new JLabel("0");
+		JLabel FinalPrice2Label = new JLabel(Integer.toString(o2.getPrice()));
 		FinalPrice2Label.setBounds(118, 125, 46, 14);
 		flight2panel.add(FinalPrice2Label);
+	
+		
 		
 		
 		if(o2==null){
-			FN2.setVisible(false);
+			flight2panel.setVisible(false);
+			/*FN2.setVisible(false);
 			D2.setVisible(false);
 			A2.setVisible(false);
 			Departure2Label.setVisible(false);
 			Arrival2Label.setVisible(false);
 			flight2panel.setVisible(false);
+			*/
 		}
 	}
 }
