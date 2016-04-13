@@ -206,6 +206,7 @@ public class LastOrderForm {
 		JLabel lblChooseArrivalSeat = new JLabel("Choose Arrival Seat:");
 		lblChooseArrivalSeat.setBounds(245, 352, 100, 14);
 		frame.getContentPane().add(lblChooseArrivalSeat);
+		lblChooseArrivalSeat.setVisible(false);
 		
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(14, 399, 214, 381);
