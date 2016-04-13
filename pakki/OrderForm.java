@@ -40,6 +40,8 @@ public class OrderForm {
 	
 	int nrOfRows = 99;
 	private JTextField ArrivaltextField;
+	//private JTable table_1;
+	//private JTable table2;
 	
 	
 	public JFrame getFrame() {
@@ -92,7 +94,7 @@ public class OrderForm {
 		frame.getContentPane().add(lblName);
 		
 		JLabel lblSocialSecurityNumber = new JLabel("Social Security Number:");
-		lblSocialSecurityNumber.setBounds(14, 78, 152, 16);
+		lblSocialSecurityNumber.setBounds(14, 78, 189, 16);
 		frame.getContentPane().add(lblSocialSecurityNumber);
 		
 		NametextField = new JTextField();
@@ -106,20 +108,20 @@ public class OrderForm {
 		SocialtextField.setColumns(10);
 		
 		JCheckBox chckbxHandicapped = new JCheckBox("Handicapped");
-		chckbxHandicapped.setBounds(14, 108, 113, 25);
+		chckbxHandicapped.setBounds(14, 108, 135, 25);
 		frame.getContentPane().add(chckbxHandicapped);
 		
 		JCheckBox chckbxSpecialBaggage = new JCheckBox("Special Baggage");
-		chckbxSpecialBaggage.setBounds(14, 138, 135, 25);
+		chckbxSpecialBaggage.setBounds(14, 138, 152, 25);
 		frame.getContentPane().add(chckbxSpecialBaggage);
 		
 		DeparturetextField = new JTextField();
-		DeparturetextField.setBounds(158, 189, 62, 22);
+		DeparturetextField.setBounds(184, 189, 62, 22);
 		frame.getContentPane().add(DeparturetextField);
 		DeparturetextField.setColumns(10);
 		
 		JLabel lblChooseSeat = new JLabel("Choose Departure Seat:");
-		lblChooseSeat.setBounds(14, 192, 152, 16);
+		lblChooseSeat.setBounds(15, 192, 168, 16);
 		frame.getContentPane().add(lblChooseSeat);
 		
 		Button Nextbutton = new Button("Next");
@@ -146,7 +148,7 @@ public class OrderForm {
 		frame.getContentPane().add(Nextbutton);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(31, 296, 436, 282);
+		scrollPane.setBounds(31, 296, 204, 282);
 		frame.getContentPane().add(scrollPane);
 		
 		String column_names[]= {"A","B","C","D","E","F"};
@@ -159,6 +161,7 @@ public class OrderForm {
 						}
 				));
 		scrollPane.setViewportView(table);
+		
 		table.getSelectionModel().addListSelectionListener(new ListSelectionListener(){
 			public void valueChanged(ListSelectionEvent event){
 				seat1 = (String)table.getValueAt(table.getSelectedRow(), table.getSelectedColumn());
@@ -167,15 +170,23 @@ public class OrderForm {
 		
 		if(f2!=null){
 			JScrollPane scrollPane2 = new JScrollPane();
-			scrollPane2.setBounds(100, 296, 436, 282);
-			frame.getContentPane().add(scrollPane);
+			scrollPane2.setBounds(281, 296, 204, 281);
+			frame.getContentPane().add(scrollPane2);
+			scrollPane2.setViewportView(table2);
 			JLabel lblChooseSeat_1 = new JLabel("Choose Arrival Seat:");
-			lblChooseSeat_1.setBounds(278, 192, 135, 16);
+			lblChooseSeat_1.setBounds(273, 192, 152, 16);
 			frame.getContentPane().add(lblChooseSeat_1);
 			ArrivaltextField = new JTextField();
-			ArrivaltextField.setBounds(403, 189, 64, 22);
+			ArrivaltextField.setBounds(421, 189, 64, 22);
 			frame.getContentPane().add(ArrivaltextField);
 			ArrivaltextField.setColumns(10);
+			
+			JScrollPane scrollPane_1 = new JScrollPane();
+			scrollPane_1.setBounds(278, 296, 212, 281);
+			frame.getContentPane().add(scrollPane_1);
+			
+			//table_1 = new JTable();
+			//scrollPane_1.setViewportView(table_1);
 			String [] [] s2=f2.getSeats();
 			table2 = new JTable(s2, column_names);
 			scrollPane2.setViewportView(table2);
