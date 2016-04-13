@@ -80,12 +80,12 @@ public class StartForm {
 		frame.getContentPane().add(dateChooser1);
 		
 		JLabel lblPeopleCount = new JLabel("People count:");
-		lblPeopleCount.setBounds(12, 189, 113, 16);
+		lblPeopleCount.setBounds(12, 214, 113, 16);
 		frame.getContentPane().add(lblPeopleCount);
 		
 		JComboBox<String> comboBox = new JComboBox<String>();
 		comboBox.setModel(new DefaultComboBoxModel<String>(new String[] {"1", "2", "3", "4", "5", "6", "7", "8","9"}));
-		comboBox.setBounds(127, 186, 73, 22);
+		comboBox.setBounds(121, 211, 73, 22);
 		frame.getContentPane().add(comboBox);
 		
 		JDateChooser dateChooser2 = new JDateChooser();
@@ -100,7 +100,7 @@ public class StartForm {
 			}
 		});
 		
-		chckbxBothWays.setBounds(12, 157, 113, 25);
+		chckbxBothWays.setBounds(12, 177, 113, 25);
 		frame.getContentPane().add(chckbxBothWays);
 		
 		JLabel wrongFlight1Label = new JLabel("No available departure flight");
@@ -110,7 +110,7 @@ public class StartForm {
 		
 		
 		JLabel wrongFlight2Label = new JLabel("No available arrival flight");
-		wrongFlight2Label.setBounds(220, 131, 131, 14);
+		wrongFlight2Label.setBounds(220, 131, 171, 14);
 		frame.getContentPane().add(wrongFlight2Label);
 		wrongFlight2Label.setVisible(false);
 		

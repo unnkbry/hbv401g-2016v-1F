@@ -204,7 +204,7 @@ public class LastOrderForm {
 		EmailtextField.setColumns(10);
 			
 		JLabel lblChooseArrivalSeat = new JLabel("Choose Arrival Seat:");
-		lblChooseArrivalSeat.setBounds(245, 319, 100, 14);
+		lblChooseArrivalSeat.setBounds(245, 319, 152, 14);
 		frame.getContentPane().add(lblChooseArrivalSeat);
 		lblChooseArrivalSeat.setVisible(false);
 		
