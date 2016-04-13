@@ -242,7 +242,7 @@ public class LastOrderForm {
 		      }
 
 		    });
-
+/*
 		JScrollPane scrollPane2 = new JScrollPane();
 		scrollPane2.setBounds(245, 399, 207, 381);
 		frame.getContentPane().add(scrollPane2);
@@ -268,10 +268,37 @@ public class LastOrderForm {
 
 		    });
 		scrollPane2.setVisible(false);
+		*/
 		
 		if(f2==null){
-			lblChooseArrivalSeat.setVisible(false);
-			scrollPane2.setVisible(true);
+			lblChooseArrivalSeat.setVisible(true);
+			//scrollPane2.setVisible(true);
+			
+			JScrollPane scrollPane2 = new JScrollPane();
+			scrollPane2.setBounds(245, 399, 207, 381);
+			frame.getContentPane().add(scrollPane2);
+			scrollPane2.setViewportView(table2);
+			String [] [] s2=f2.getSeats();
+			table2 = new JTable(s2, column_names);
+			scrollPane2.setViewportView(table2);
+			table2.setCellSelectionEnabled(true);
+			ListSelectionModel cellSelectionModel2 = table2.getSelectionModel();
+			cellSelectionModel2.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+			cellSelectionModel2.addListSelectionListener(new ListSelectionListener() {
+				public void valueChanged(ListSelectionEvent e) {
+			        
+			        int[] selectedRow = table2.getSelectedRows();
+			        int[] selectedColumns = table2.getSelectedColumns();
+
+			        for (int i = 0; i < selectedRow.length; i++) {
+			          for (int j = 0; j < selectedColumns.length; j++) {
+			            seat2 = (String) table2.getValueAt(selectedRow[i], selectedColumns[j]);
+			            seat2Label.setText(seat2);
+			          }
+			        }		        
+			      }
+
+			    });
 		}
 	}
 }
