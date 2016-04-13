@@ -192,21 +192,23 @@ public class FlightSearchResult {
 		btnConfirm.setFont(new Font("Trebuchet MS", Font.PLAIN, 16));
 		btnConfirm.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				frame.dispose();
 				OrderNr on= new OrderNr();
 				List<Person> list=new ArrayList<Person>();
 				List<Person> list2= new ArrayList<Person>();
-				if(pplCount==1){
+				if(pplCount==1&&f1!=null&&(listi2.size()==0||f2!=null)){
+					frame.dispose();
 					LastOrderForm LOF = new LastOrderForm(list, list2, f1, f2, on.getOrderNr());
 					JFrame LastOrderFormWindow = LOF.getFrame();
 					LastOrderFormWindow.setVisible(true);
 				}
-				else{
-					
+				else if(f1!=null&&(listi2.size()==0||f2!=null)){
+					frame.dispose();
 					OrderForm OF = new OrderForm(list, list2, f1, f2, pplCount, 0, on.getOrderNr());
 					JFrame OrderFormWindow = OF.getFrame();
 					OrderFormWindow.setVisible(true);
 				}
+				else
+					System.out.println("gleymdir að velja allt sucker!");
 			}
 		});
 		btnConfirm.setBounds(322, 440, 144, 40);
