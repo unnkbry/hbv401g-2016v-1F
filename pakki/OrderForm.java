@@ -25,7 +25,6 @@ public class OrderForm {
 	private JFrame frame;
 	private JTextField NametextField;
 	private JTextField SocialtextField;
-	private JTextField DeparturetextField;
 	private OrderManager om;
 	private int counter;
 	private int pplCount;
@@ -114,11 +113,6 @@ public class OrderForm {
 		chckbxSpecialBaggage.setBounds(14, 138, 152, 25);
 		frame.getContentPane().add(chckbxSpecialBaggage);
 		
-		DeparturetextField = new JTextField();
-		DeparturetextField.setBounds(184, 189, 62, 22);
-		frame.getContentPane().add(DeparturetextField);
-		DeparturetextField.setColumns(10);
-		
 		JLabel lblChooseSeat = new JLabel("Choose Departure Seat:");
 		lblChooseSeat.setBounds(15, 192, 168, 16);
 		frame.getContentPane().add(lblChooseSeat);
@@ -165,8 +159,12 @@ public class OrderForm {
 		table.setCellSelectionEnabled(true);
 		
 		JLabel seat1Label = new JLabel("");
-		seat1Label.setBounds(184, 219, 69, 20);
+		seat1Label.setBounds(184, 192, 69, 20);
 		frame.getContentPane().add(seat1Label);
+		
+		JLabel seat2Label = new JLabel("");
+		seat2Label.setBounds(421, 189, 64, 22);
+		frame.getContentPane().add(seat2Label);
 		
 		ListSelectionModel cellSelectionModel = table.getSelectionModel();
 		cellSelectionModel.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
@@ -204,10 +202,6 @@ public class OrderForm {
 			JLabel lblChooseSeat_1 = new JLabel("Choose Arrival Seat:");
 			lblChooseSeat_1.setBounds(273, 192, 152, 16);
 			frame.getContentPane().add(lblChooseSeat_1);
-			ArrivaltextField = new JTextField();
-			ArrivaltextField.setBounds(421, 189, 64, 22);
-			frame.getContentPane().add(ArrivaltextField);
-			ArrivaltextField.setColumns(10);
 			String [] [] s2=f2.getSeats();
 			table2 = new JTable(s2, column_names);
 			scrollPane2.setViewportView(table2);
@@ -228,9 +222,7 @@ public class OrderForm {
 			      }
 
 			    });
-			JLabel seat2Label = new JLabel(seat2);
-			seat2Label.setBounds(425, 219, 69, 20);
-			frame.getContentPane().add(seat2Label);
+			seat2Label.setText(seat2);
 		}
 	}
 }
