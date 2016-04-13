@@ -37,6 +37,8 @@ public class FlightSearchResult {
 	 * Constructors
 	 */
 	public FlightSearchResult(List<Flight> listi, List<Flight> listi2, int pplCount){
+		f1=null;
+		f2=null;
 		this.listi=listi;
 		this.listi2=listi2;
 		this.pplCount=pplCount;

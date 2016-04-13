@@ -126,7 +126,7 @@ public class OrderForm {
 		Button Nextbutton = new Button("Next");
 		Nextbutton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Person p=om.makePersons(NametextField.getText(), SocialtextField.getText(), chckbxHandicapped.isSelected(), chckbxSpecialBaggage.isSelected(), DeparturetextField.getText(), orderNr);
+				Person p=om.makePersons(NametextField.getText(), SocialtextField.getText(), chckbxHandicapped.isSelected(), chckbxSpecialBaggage.isSelected(), seat1, orderNr);
 				list.add(p);
 				counter++;
 				if(pplCount==counter+1){
@@ -164,7 +164,7 @@ public class OrderForm {
 		
 		table.setCellSelectionEnabled(true);
 		
-		JLabel seat1Label = new JLabel(seat1);
+		JLabel seat1Label = new JLabel("");
 		seat1Label.setBounds(184, 219, 69, 20);
 		frame.getContentPane().add(seat1Label);
 		
@@ -181,7 +181,8 @@ public class OrderForm {
 		          for (int j = 0; j < selectedColumns.length; j++) {
 		            seat1 = (String) table.getValueAt(selectedRow[i], selectedColumns[j]);
 		          }
-		        }		        
+		        }
+		        seat1Label.setText(seat1);
 		      }
 
 		    });
