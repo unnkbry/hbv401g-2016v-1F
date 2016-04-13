@@ -57,7 +57,7 @@ public class Receipt {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 382, 559);
+		frame.setBounds(100, 100, 466, 559);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
@@ -99,7 +99,7 @@ public class Receipt {
 		JLabel Departure2Label = new JLabel("Departure:");
 		Departure2Label.setHorizontalAlignment(SwingConstants.RIGHT);
 		Departure2Label.setVisible(true);
-		Departure2Label.setBounds(194, 178, 73, 16);
+		Departure2Label.setBounds(257, 178, 73, 16);
 		frame.getContentPane().add(Departure2Label);
 		
 
@@ -107,7 +107,7 @@ public class Receipt {
 		JLabel Arrival2Label = new JLabel("Arrival:");
 		Arrival2Label.setHorizontalAlignment(SwingConstants.RIGHT);
 		Arrival2Label.setVisible(true);
-		Arrival2Label.setBounds(204, 197, 63, 16);
+		Arrival2Label.setBounds(267, 197, 63, 16);
 		frame.getContentPane().add(Arrival2Label);
 		
 
@@ -133,7 +133,7 @@ public class Receipt {
 		
 		JPanel flight1panel = new JPanel();
 		flight1panel.setBorder(new LineBorder(new Color(192, 192, 192), 2));
-		flight1panel.setBounds(10, 240, 168, 150);
+		flight1panel.setBounds(10, 240, 203, 150);
 		frame.getContentPane().add(flight1panel);
 		flight1panel.setLayout(null);
 		
@@ -158,13 +158,11 @@ public class Receipt {
 		flight1panel.add(lblSpecialBaggage1Price);
 		
 		JLabel FlightPrice1Label = new JLabel(Integer.toString(o.getPrice()*o.getPPLCount()));
-		FlightPrice1Label.setHorizontalAlignment(SwingConstants.RIGHT);
-		FlightPrice1Label.setBounds(96, 13, 62, 16);
+		FlightPrice1Label.setBounds(125, 13, 51, 16);
 		flight1panel.add(FlightPrice1Label);
 		
 		JLabel ToddlerPrice1Label = new JLabel(Integer.toString(o.getToddler()*5000));
-		ToddlerPrice1Label.setHorizontalAlignment(SwingConstants.RIGHT);
-		ToddlerPrice1Label.setBounds(96, 40, 62, 16);
+		ToddlerPrice1Label.setBounds(125, 40, 62, 16);
 		flight1panel.add(ToddlerPrice1Label);
 		
 		int s=1;
@@ -172,22 +170,20 @@ public class Receipt {
 			s=0;
 		
 		JLabel AnimalPrice1Label = new JLabel(Integer.toString(s*10000));
-		AnimalPrice1Label.setHorizontalAlignment(SwingConstants.RIGHT);
-		AnimalPrice1Label.setBounds(96, 67, 62, 16);
+		AnimalPrice1Label.setBounds(125, 67, 62, 16);
 		flight1panel.add(AnimalPrice1Label);
 		
 		JLabel SBP1Label = new JLabel(Integer.toString(o.getSpecialBaggage()*6000));
-		SBP1Label.setHorizontalAlignment(SwingConstants.RIGHT);
 		SBP1Label.setBounds(123, 94, 35, 16);
 		flight1panel.add(SBP1Label);
 		
 		
 		JLabel lblFinalPrice1 = new JLabel("Final Price:");
-		lblFinalPrice1.setBounds(37, 125, 59, 14);
+		lblFinalPrice1.setBounds(54, 125, 59, 14);
 		flight1panel.add(lblFinalPrice1);
 		
 		JLabel FinalPrice1Label = new JLabel(Integer.toString(o.getPrice()));
-		FinalPrice1Label.setBounds(106, 125, 46, 14);
+		FinalPrice1Label.setBounds(130, 125, 46, 14);
 		flight1panel.add(FinalPrice1Label);
 		
 		Image img;
@@ -240,24 +236,24 @@ public class Receipt {
 		
 		JLabel lblFlightNumber_1 = new JLabel("Flight Number:");
 		lblFlightNumber_1.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblFlightNumber_1.setBounds(173, 156, 94, 16);
+		lblFlightNumber_1.setBounds(236, 156, 94, 16);
 		frame.getContentPane().add(lblFlightNumber_1);
 		
 		JLabel FN2 = new JLabel(Integer.toString(o2.getFlight().getFlightnr()));
-		FN2.setBounds(277, 156, 56, 16);
+		FN2.setBounds(347, 156, 56, 16);
 		frame.getContentPane().add(FN2);
 		
 		JLabel D2 = new JLabel(o2.getFlight().getDepartureAirport());
-		D2.setBounds(277, 178, 68, 16);
+		D2.setBounds(345, 178, 68, 16);
 		frame.getContentPane().add(D2);
 			
 		JLabel A2 = new JLabel(o2.getFlight().getArrivalAirport());
-		A2.setBounds(277, 197, 56, 16);
+		A2.setBounds(347, 197, 56, 16);
 		frame.getContentPane().add(A2);
 		
 		JPanel flight2panel = new JPanel();
 		flight2panel.setBorder(new LineBorder(Color.LIGHT_GRAY, 2, true));
-		flight2panel.setBounds(182, 240, 174, 150);
+		flight2panel.setBounds(236, 240, 204, 150);
 		frame.getContentPane().add(flight2panel);
 		flight2panel.setLayout(null);
 		
