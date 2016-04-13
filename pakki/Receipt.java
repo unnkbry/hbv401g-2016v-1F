@@ -94,22 +94,20 @@ public class Receipt {
 		ArrivalLabel.setBounds(35, 197, 69, 16);
 		frame.getContentPane().add(ArrivalLabel);
 		
-		if(o2!=null){
-			JLabel Departure2Label = new JLabel("Departure:");
-			Departure2Label.setHorizontalAlignment(SwingConstants.RIGHT);
-			Departure2Label.setVisible(true);
-			Departure2Label.setBounds(194, 151, 73, 16);
-			frame.getContentPane().add(Departure2Label);
-		}
+		JLabel Departure2Label = new JLabel("Departure:");
+		Departure2Label.setHorizontalAlignment(SwingConstants.RIGHT);
+		Departure2Label.setVisible(true);
+		Departure2Label.setBounds(194, 151, 73, 16);
+		frame.getContentPane().add(Departure2Label);
+		
 
 		
-		if(o2!=null){
-			JLabel Arrival2Label = new JLabel("Arrival:");
-			Arrival2Label.setHorizontalAlignment(SwingConstants.RIGHT);
-			Arrival2Label.setVisible(true);
-			Arrival2Label.setBounds(204, 180, 63, 16);
-			frame.getContentPane().add(Arrival2Label);
-		}
+		JLabel Arrival2Label = new JLabel("Arrival:");
+		Arrival2Label.setHorizontalAlignment(SwingConstants.RIGHT);
+		Arrival2Label.setVisible(true);
+		Arrival2Label.setBounds(204, 180, 63, 16);
+		frame.getContentPane().add(Arrival2Label);
+		
 
 		
 		JLabel lblPrice = new JLabel("Final Price:");
@@ -232,20 +230,25 @@ public class Receipt {
 		lblFlightNumber_1.setBounds(173, 156, 94, 16);
 		frame.getContentPane().add(lblFlightNumber_1);
 		
-		if(o2!=null){
-			JLabel FN2 = new JLabel(Integer.toString(o2.getFlight().getFlightnr()));
-			FN2.setBounds(274, 156, 56, 16);
-			frame.getContentPane().add(FN2);
-		}
+		JLabel FN2 = new JLabel(Integer.toString(o2.getFlight().getFlightnr()));
+		FN2.setBounds(274, 156, 56, 16);
+		frame.getContentPane().add(FN2);
 		
-		if(o2!=null){
-			JLabel D2 = new JLabel(o2.getFlight().getDepartureAirport());
-			D2.setBounds(274, 151, 68, 16);
-			frame.getContentPane().add(D2);
+		JLabel D2 = new JLabel(o2.getFlight().getDepartureAirport());
+		D2.setBounds(274, 151, 68, 16);
+		frame.getContentPane().add(D2);
 			
-			JLabel A2 = new JLabel(o2.getFlight().getArrivalAirport());
-			A2.setBounds(274, 180, 56, 16);
-			frame.getContentPane().add(A2);
+		JLabel A2 = new JLabel(o2.getFlight().getArrivalAirport());
+		A2.setBounds(274, 180, 56, 16);
+		frame.getContentPane().add(A2);
+		
+		
+		if(o2==null){
+			FN2.setVisible(false);
+			D2.setVisible(false);
+			A2.setVisible(false);
+			Departure2Label.setVisible(false);
+			Arrival2Label.setVisible(false);	
 		}
 	}
 }

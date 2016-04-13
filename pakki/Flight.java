@@ -26,8 +26,8 @@ public class Flight {
 		// this.type=type;
 		this.price = price;
 		this.availableSeats = availableSeats;
-		seats = new Seats(5,6,1);
 		this.flightnr=flightnr;
+		seats = new Seats(5,6,flightnr);
 		this.date=date;
 	}
 
