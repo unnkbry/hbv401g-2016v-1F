@@ -78,7 +78,7 @@ public class OrderForm {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 549, 499);
+		frame.setBounds(100, 100, 499, 537);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		 
@@ -136,7 +136,7 @@ public class OrderForm {
 				}
 			}
 		});
-		Nextbutton.setBounds(427, 412, 79, 24);
+		Nextbutton.setBounds(194, 456, 98, 24);
 		frame.getContentPane().add(Nextbutton);
 		
 		JScrollPane scrollPane = new JScrollPane();
@@ -183,11 +183,10 @@ public class OrderForm {
 		      }
 
 		    });
-
 		
 		if(f2!=null){
 			JScrollPane scrollPane2 = new JScrollPane();
-			scrollPane2.setBounds(281, 296, 204, 281);
+			scrollPane2.setBounds(256, 225, 211, 214);
 			frame.getContentPane().add(scrollPane2);
 			scrollPane2.setViewportView(table2);
 			JLabel lblChooseSeat_1 = new JLabel("Choose Arrival Seat:");
