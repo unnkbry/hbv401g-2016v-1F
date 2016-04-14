@@ -29,9 +29,12 @@ public class OrderManager{
 				+ "','" + price + "','"+ f.getFlightnr()+"','"+ordernr+"')");
 		Order o = new Order(list, email, phonenumber, animal, toddler, price, f, ordernr);
 		Iterator<Person> it=list.iterator();
+		int availableSeats=-1;
 		while(it.hasNext()){
-			f.bookSeat(it.next().getSeat());
+			availableSeats=f.bookSeat(it.next().getSeat());
 		}
+		if(availableSeats!=-1)
+			db.updateDB("update flight set availableseats='"+availableSeats+"'where flightid='"+f.getFlightnr()+"'");
 		return o;
 	}
 	
