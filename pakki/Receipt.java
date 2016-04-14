@@ -313,7 +313,7 @@ public class Receipt {
 		AnimalPrice2Label.setBounds(148, 71, 46, 14);
 		flight2panel.add(AnimalPrice2Label);
 		
-		JLabel SBS2Label = new JLabel(Integer.toString(o2.getSpecialBaggage()*6000));
+		JLabel SBS2Label = new JLabel("0");
 		SBS2Label.setHorizontalAlignment(SwingConstants.RIGHT);
 		SBS2Label.setBounds(118, 97, 36, 14);
 		flight2panel.add(SBS2Label);
@@ -322,7 +322,7 @@ public class Receipt {
 		lblFinalPrice2.setBounds(45, 122, 73, 14);
 		flight2panel.add(lblFinalPrice2);
 		
-		JLabel FinalPrice2Label = new JLabel(Integer.toString(o2.getPrice()));
+		JLabel FinalPrice2Label = new JLabel("0");
 		FinalPrice2Label.setHorizontalAlignment(SwingConstants.LEFT);
 		FinalPrice2Label.setBounds(128, 122, 46, 14);
 		flight2panel.add(FinalPrice2Label);
@@ -348,6 +348,8 @@ public class Receipt {
 			A2.setText(o2.getFlight().getArrivalAirport());
 			D2.setText(o2.getFlight().getDepartureAirport());
 			FN2.setText(Integer.toString(o2.getFlight().getFlightnr()));
+			SBS2Label.setText(Integer.toString(o2.getSpecialBaggage()*6000));
+			FinalPrice2Label.setText(Integer.toString(o2.getPrice()));
 		}
 	}
 }
