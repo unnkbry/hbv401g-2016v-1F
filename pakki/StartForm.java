@@ -12,6 +12,9 @@ import java.util.Date;
 import java.util.List;
 import java.awt.event.ActionEvent;
 import javax.swing.DefaultComboBoxModel;
+import java.awt.Color;
+import java.awt.Font;
+import javax.swing.SwingConstants;
 
 public class StartForm {
 	private FlightSearch fs = new FlightSearch();
@@ -49,72 +52,85 @@ public class StartForm {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 465, 343);
+		frame.setBounds(100, 100, 340, 436);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
 		JLabel lblDeparture = new JLabel("Departure:");
-		lblDeparture.setBounds(12, 29, 83, 16);
+		lblDeparture.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblDeparture.setBounds(12, 61, 83, 22);
 		frame.getContentPane().add(lblDeparture);
 		
 		JLabel lblArrival = new JLabel("Arrival:");
-		lblArrival.setBounds(12, 58, 56, 16);
+		lblArrival.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblArrival.setBounds(22, 96, 73, 16);
 		frame.getContentPane().add(lblArrival);
 		
 		JComboBox<String> DeparturecomboBox = new JComboBox<String>();
 		DeparturecomboBox.setModel(new DefaultComboBoxModel<String>(new String[] {"RKV", "AEY", "IFJ", "EGS", "VES"}));
-		DeparturecomboBox.setBounds(95, 26, 83, 22);
+		DeparturecomboBox.setBounds(107, 61, 83, 22);
 		frame.getContentPane().add(DeparturecomboBox);
 		
 		JComboBox<String> ArrivalcomboBox = new JComboBox<String>();
 		ArrivalcomboBox.setModel(new DefaultComboBoxModel<String>(new String[] {"RKV", "AEY", "IFJ", "EGS", "VES"}));
-		ArrivalcomboBox.setBounds(95, 55, 83, 22);
+		ArrivalcomboBox.setBounds(107, 93, 83, 22);
 		frame.getContentPane().add(ArrivalcomboBox);
 		
-		JLabel lblDate = new JLabel("Date:");
-		lblDate.setBounds(12, 100, 56, 16);
+		JLabel lblDate = new JLabel("Pick a date:");
+		lblDate.setBounds(12, 150, 83, 16);
 		frame.getContentPane().add(lblDate);
 		
 		JDateChooser dateChooser1 = new JDateChooser();
-		dateChooser1.setBounds(95, 94, 99, 22);
+		dateChooser1.setBounds(12, 179, 130, 22);
 		frame.getContentPane().add(dateChooser1);
 		
 		JLabel lblPeopleCount = new JLabel("People count:");
-		lblPeopleCount.setBounds(12, 214, 113, 16);
+		lblPeopleCount.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblPeopleCount.setBounds(12, 294, 83, 16);
 		frame.getContentPane().add(lblPeopleCount);
 		
 		JComboBox<String> comboBox = new JComboBox<String>();
 		comboBox.setModel(new DefaultComboBoxModel<String>(new String[] {"1", "2", "3", "4", "5", "6", "7", "8","9"}));
-		comboBox.setBounds(121, 211, 73, 22);
+		comboBox.setBounds(107, 291, 73, 22);
 		frame.getContentPane().add(comboBox);
+		
+		JLabel lblPickAReturn = new JLabel("Pick a return date:");
+		lblPickAReturn.setVisible(false);
+		lblPickAReturn.setBounds(181, 150, 129, 16);
+		frame.getContentPane().add(lblPickAReturn);
 		
 		JDateChooser dateChooser2 = new JDateChooser();
 		dateChooser2.setVisible(false);
-		dateChooser2.setBounds(220, 94, 99, 22);
+		dateChooser2.setBounds(181, 179, 130, 22);
 		frame.getContentPane().add(dateChooser2);
 		
 		JCheckBox chckbxBothWays = new JCheckBox("Both Ways");
 		chckbxBothWays.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dateChooser2.setVisible(chckbxBothWays.isSelected());
+				lblPickAReturn.setVisible(chckbxBothWays.isSelected());
 			}
 		});
 		
-		chckbxBothWays.setBounds(12, 177, 113, 25);
+		chckbxBothWays.setBounds(12, 236, 113, 25);
 		frame.getContentPane().add(chckbxBothWays);
 		
-		JLabel wrongFlight1Label = new JLabel("No available departure flight");
-		wrongFlight1Label.setBounds(22, 127, 171, 22);
+		JLabel wrongFlight1Label = new JLabel("No available departure flights");
+		wrongFlight1Label.setFont(new Font("Tahoma", Font.PLAIN, 11));
+		wrongFlight1Label.setForeground(Color.RED);
+		wrongFlight1Label.setBounds(12, 209, 171, 22);
 		frame.getContentPane().add(wrongFlight1Label);
 		wrongFlight1Label.setVisible(false);
 		
 		
-		JLabel wrongFlight2Label = new JLabel("No available arrival flight");
-		wrongFlight2Label.setBounds(220, 131, 171, 14);
+		JLabel wrongFlight2Label = new JLabel("No available arrival flights");
+		wrongFlight2Label.setFont(new Font("Tahoma", Font.PLAIN, 11));
+		wrongFlight2Label.setForeground(Color.RED);
+		wrongFlight2Label.setBounds(181, 209, 171, 18);
 		frame.getContentPane().add(wrongFlight2Label);
 		wrongFlight2Label.setVisible(false);
 		
-		Button SubmitStartFormbutton = new Button("Submit");
+		Button SubmitStartFormbutton = new Button("Search Flights");
 		SubmitStartFormbutton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String departureAirport=(String) DeparturecomboBox.getItemAt(DeparturecomboBox.getSelectedIndex());
@@ -164,7 +180,14 @@ public class StartForm {
 				}
 			}
 		});
-		SubmitStartFormbutton.setBounds(169, 253, 92, 33);
+		SubmitStartFormbutton.setBounds(115, 346, 92, 33);
 		frame.getContentPane().add(SubmitStartFormbutton);
+		
+		JLabel lblPleaseChooseYour = new JLabel("Welcome, choose your desired vacation");
+		lblPleaseChooseYour.setToolTipText("");
+		lblPleaseChooseYour.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblPleaseChooseYour.setBounds(12, 13, 405, 16);
+		frame.getContentPane().add(lblPleaseChooseYour);
+		
 	}
 }

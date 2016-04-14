@@ -18,6 +18,7 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.JComboBox;
 import javax.swing.JTable;
 import javax.swing.JScrollPane;
+import javax.swing.SwingConstants;
 
 public class LastOrderForm {
 	
@@ -84,11 +85,13 @@ public class LastOrderForm {
 		frame.getContentPane().setLayout(null);
 		 
 		JLabel lblName = new JLabel("Name:");
-		lblName.setBounds(14, 44, 152, 16);
+		lblName.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblName.setBounds(14, 44, 176, 16);
 		frame.getContentPane().add(lblName);
 		
 		JLabel lblSocialSecurityNumber = new JLabel("Social Security Number:");
-		lblSocialSecurityNumber.setBounds(14, 78, 152, 16);
+		lblSocialSecurityNumber.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblSocialSecurityNumber.setBounds(14, 78, 176, 16);
 		frame.getContentPane().add(lblSocialSecurityNumber);
 		
 		JLabel ToddlerLabel = new JLabel("How many?");
@@ -137,7 +140,8 @@ public class LastOrderForm {
 		frame.getContentPane().add(PetBox);
 		
 		JLabel lblPhoneNumber = new JLabel("Phone Number:");
-		lblPhoneNumber.setBounds(14, 114, 113, 16);
+		lblPhoneNumber.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblPhoneNumber.setBounds(14, 114, 176, 16);
 		frame.getContentPane().add(lblPhoneNumber);
 		
 		PhonenumbertextField = new JTextField();
@@ -195,7 +199,8 @@ public class LastOrderForm {
 		frame.getContentPane().add(Nextbutton);
 		
 		JLabel lblEmail = new JLabel("Email:");
-		lblEmail.setBounds(14, 148, 56, 16);
+		lblEmail.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblEmail.setBounds(14, 148, 176, 16);
 		frame.getContentPane().add(lblEmail);
 		
 		EmailtextField = new JTextField();

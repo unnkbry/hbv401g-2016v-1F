@@ -78,6 +78,8 @@ public class FlightSearchResult {
 		frame.getContentPane().setLayout(null);
 		
 		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setForeground(Color.BLACK);
+		scrollPane.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		/*scrollPane.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent evt) {
@@ -88,6 +90,8 @@ public class FlightSearchResult {
 		scrollPane.setBounds(12, 78, 764, 137);
 		frame.getContentPane().add(scrollPane);
 		JScrollPane scrollPane2 = new JScrollPane();
+		scrollPane2.setForeground(Color.BLACK);
+		scrollPane2.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		/*scrollPane2.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent evt) {
@@ -181,10 +185,11 @@ public class FlightSearchResult {
 		
 		JLabel lblReturningFlight = new JLabel("Returning Flight:");
 		lblReturningFlight.setForeground(Color.GRAY);
-		lblReturningFlight.setBounds(12, 246, 133, 16);
+		lblReturningFlight.setBounds(12, 253, 133, 16);
 		frame.getContentPane().add(lblReturningFlight);
 		
 		JLabel ErrorLabel = new JLabel("Please select flight/s");
+		ErrorLabel.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		ErrorLabel.setForeground(Color.RED);
 		ErrorLabel.setBounds(44, 413, 144, 29);
 		frame.getContentPane().add(ErrorLabel);
@@ -220,7 +225,7 @@ public class FlightSearchResult {
 		frame.getContentPane().add(btnConfirm);
 		
 		JLabel lblPickYourFlight = new JLabel("Pick your flight by clicking on it's row in the table.\r\n");
-		lblPickYourFlight.setFont(new Font("Trebuchet MS", Font.PLAIN, 16));
+		lblPickYourFlight.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		lblPickYourFlight.setBounds(15, 16, 386, 20);
 		frame.getContentPane().add(lblPickYourFlight);
 		

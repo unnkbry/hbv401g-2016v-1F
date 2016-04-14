@@ -59,7 +59,7 @@ public class Receipt {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 480, 583);
+		frame.setBounds(100, 100, 480, 551);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
@@ -117,7 +117,7 @@ public class Receipt {
 
 		
 		JLabel lblPrice = new JLabel("Final Price:");
-		lblPrice.setFont(new Font("Tahoma", Font.BOLD, 16));
+		lblPrice.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		lblPrice.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblPrice.setBounds(110, 411, 119, 16);
 		frame.getContentPane().add(lblPrice);
@@ -130,7 +130,7 @@ public class Receipt {
 			Integer.toString(o.getPrice());
 		}
 //		JLabel PriceLabel = new JLabel(Integer.toString(o.getPrice() + o2.getPrice()));
-		PriceLabel.setFont(new Font("Tahoma", Font.BOLD, 16));
+		PriceLabel.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		PriceLabel.setBounds(246, 409, 105, 16);
 		frame.getContentPane().add(PriceLabel);
 		
@@ -159,7 +159,7 @@ public class Receipt {
 				System.exit(0);
 			}
 		});
-		Closebutton.setBounds(192, 502, 79, 24);
+		Closebutton.setBounds(191, 470, 79, 24);
 		frame.getContentPane().add(Closebutton);
 		
 		JPanel flight1panel = new JPanel();
@@ -293,7 +293,7 @@ public class Receipt {
 		
 		JLabel lblFlight2Price = new JLabel("Flight Price:");
 		lblFlight2Price.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblFlight2Price.setBounds(10, 11, 143, 14);
+		lblFlight2Price.setBounds(31, 11, 122, 16);
 		flight2panel.add(lblFlight2Price);
 		
 		JLabel lblToddler2Price = new JLabel("Toddler Price:");
@@ -307,7 +307,7 @@ public class Receipt {
 		flight2panel.add(lblAnimal2Price);
 		
 		JLabel lblSpecialBaggage2Price = new JLabel("Special Baggage Price:");
-		lblSpecialBaggage2Price.setBounds(20, 92, 143, 14);
+		lblSpecialBaggage2Price.setBounds(20, 92, 143, 16);
 		flight2panel.add(lblSpecialBaggage2Price);
 		
 		JLabel FlightPrice2Label = new JLabel("0");

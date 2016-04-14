@@ -18,6 +18,7 @@ import pakki.OrderManager;
 import pakki.Person;
 import javax.swing.JTable;
 import javax.swing.JScrollPane;
+import javax.swing.SwingConstants;
 
 
 public class OrderForm {
@@ -83,11 +84,13 @@ public class OrderForm {
 		frame.getContentPane().setLayout(null);
 		 
 		JLabel lblName = new JLabel("Name:");
-		lblName.setBounds(14, 44, 152, 16);
+		lblName.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblName.setBounds(51, 44, 141, 16);
 		frame.getContentPane().add(lblName);
 		
 		JLabel lblSocialSecurityNumber = new JLabel("Social Security Number:");
-		lblSocialSecurityNumber.setBounds(14, 78, 189, 16);
+		lblSocialSecurityNumber.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblSocialSecurityNumber.setBounds(14, 78, 178, 16);
 		frame.getContentPane().add(lblSocialSecurityNumber);
 		
 		NametextField = new JTextField();
@@ -101,11 +104,11 @@ public class OrderForm {
 		SocialtextField.setColumns(10);
 		
 		JCheckBox chckbxHandicapped = new JCheckBox("Handicapped");
-		chckbxHandicapped.setBounds(14, 108, 135, 25);
+		chckbxHandicapped.setBounds(14, 119, 135, 25);
 		frame.getContentPane().add(chckbxHandicapped);
 		
 		JCheckBox chckbxSpecialBaggage = new JCheckBox("Special Baggage");
-		chckbxSpecialBaggage.setBounds(14, 138, 152, 25);
+		chckbxSpecialBaggage.setBounds(14, 151, 152, 25);
 		frame.getContentPane().add(chckbxSpecialBaggage);
 		
 		JLabel lblChooseSeat = new JLabel("Choose Departure Seat:");
@@ -158,11 +161,11 @@ public class OrderForm {
 		table.setCellSelectionEnabled(true);
 		
 		JLabel seat1Label = new JLabel("");
-		seat1Label.setBounds(184, 192, 69, 20);
+		seat1Label.setBounds(180, 188, 72, 20);
 		frame.getContentPane().add(seat1Label);
 		
 		JLabel seat2Label = new JLabel("");
-		seat2Label.setBounds(421, 189, 64, 22);
+		seat2Label.setBounds(364, 186, 64, 22);
 		frame.getContentPane().add(seat2Label);
 		
 		ListSelectionModel cellSelectionModel = table.getSelectionModel();
