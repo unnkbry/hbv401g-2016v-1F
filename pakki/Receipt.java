@@ -146,7 +146,7 @@ public class Receipt {
 		
 		
 		String message="Dear " + o.getName() + ", thank you for choosing our services. This is your email confirmation of your order. Your ordernumber is " 
-				+ o.getId() + ". You are traveling from " + o.getFlight().getDepartureAirport() + "to " + o.getFlight().getArrivalAirport()
+				+ o.getOrderNr()+ ". You are traveling from " + o.getFlight().getDepartureAirport() + " to " + o.getFlight().getArrivalAirport()
 				+ ". Your flightnumber is: " + o.getFlight().getFlightnr() + ". " + flight2 + "The total cost is " + Cost + ". Hope your traveling will be good, DreamTeam FlightServices. ";
 		
 		String receiver[] = new String[1];

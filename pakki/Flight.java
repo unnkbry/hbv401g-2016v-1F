@@ -27,7 +27,8 @@ public class Flight {
 		this.price = price;
 		this.availableSeats = availableSeats;
 		this.flightnr=flightnr;
-		seats = new Seats(5,6,flightnr);
+		System.out.println(flightnr);
+		seats = new Seats(flightnr);
 		this.date=date;
 	}
 

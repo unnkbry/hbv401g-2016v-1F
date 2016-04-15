@@ -34,7 +34,7 @@ public class OrderManager{
 			availableSeats=f.bookSeat(it.next().getSeat());
 		}
 		if(availableSeats!=-1)
-			db.updateDB("update flight set availableseats='"+availableSeats+"'where flightid='"+f.getFlightnr()+"'");
+			db.updateDB("update flights set availableseats='"+availableSeats+"'where flightid='"+f.getFlightnr()+"'");
 		return o;
 	}
 	

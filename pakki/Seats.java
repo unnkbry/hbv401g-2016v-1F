@@ -9,12 +9,13 @@ public class Seats{
 	private int flightnr;
 	private DataBaseConnection db;
 	
-	public Seats(int rows, int cols, int flightnr){
+	public Seats(int flightnr){
 		db=new DataBaseConnection();
-		seats=new boolean[rows][cols];
-		this.rows=rows;
-		this.cols=cols;
+		rows=0;
+		cols=0;
 		this.flightnr=flightnr;
+		setRowRCols();
+		seats=new boolean [rows][cols];
 		ResultSet rs = db.getFromDB("Select * from seating where flightnr='" + flightnr+"'");
 		try{
 			while(rs.next()){
@@ -28,6 +29,26 @@ public class Seats{
 			}	
 	}
 
+	public void setRowRCols(){
+		ResultSet rs = db.getFromDB("Select * from seating where flightnr='" + flightnr+"'");
+		try{
+			while(rs.next()){
+				if(rows<rs.getInt("rowid"))
+					rows=rs.getInt("rowid");
+				if(cols<rs.getInt("colid"))
+					cols=rs.getInt("colid");
+			}
+			rows++;
+			cols++;
+		}
+		 catch (Exception e) {
+				e.printStackTrace();
+				System.err.println(e.getClass().getName() + ": " + e.getMessage());
+				System.exit(0);
+			}
+	}
+	
+	
 	public String turnToString(int row, int col){
 		String [] Alphabet= {"A","B","C","D","E","F"};
 		String r="";
