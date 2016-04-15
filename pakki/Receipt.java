@@ -121,6 +121,8 @@ public class Receipt {
 		lblPrice.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblPrice.setBounds(110, 411, 119, 16);
 		frame.getContentPane().add(lblPrice);
+		if(o2==null)
+			lblPrice.setVisible(false);
 		
 		JLabel PriceLabel = new JLabel();
 		if(o2 != null){
@@ -188,7 +190,7 @@ public class Receipt {
 		lblSpecialBaggage1Price.setBounds(10, 94, 138, 16);
 		flight1panel.add(lblSpecialBaggage1Price);
 		
-		JLabel FlightPrice1Label = new JLabel(Integer.toString(o.getPrice()*o.getPPLCount()));
+		JLabel FlightPrice1Label = new JLabel(Integer.toString(o.getFlight().getPrice()*o.getPPLCount()));
 		FlightPrice1Label.setBounds(160, 13, 44, 16);
 		flight1panel.add(FlightPrice1Label);
 		
@@ -307,7 +309,7 @@ public class Receipt {
 		flight2panel.add(lblAnimal2Price);
 		
 		JLabel lblSpecialBaggage2Price = new JLabel("Special Baggage Price:");
-		lblSpecialBaggage2Price.setBounds(20, 92, 143, 16);
+		lblSpecialBaggage2Price.setBounds(50, 91, 143, 16);
 		flight2panel.add(lblSpecialBaggage2Price);
 		
 		JLabel FlightPrice2Label = new JLabel("0");
