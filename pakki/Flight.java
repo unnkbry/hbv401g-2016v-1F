@@ -74,6 +74,12 @@ public class Flight {
 		return availableSeats;
 	}
 	
+	public String [][] getWithout(String [][] s, String a){
+		int [] i =seats.turnFromString(a);
+		s[i[0]][i[1]]="Yours";
+		return s;
+	}
+	
 	public int getPrice(){
 		return price;
 	}

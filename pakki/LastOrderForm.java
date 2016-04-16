@@ -4,6 +4,7 @@ import java.awt.Button;
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Iterator;
 import java.util.List;
 
 import javax.swing.DefaultComboBoxModel;
@@ -30,6 +31,7 @@ public class LastOrderForm {
 	private List<Person> list;
 	private List<Person> list2;
 	private int orderNr;
+	private int orderNr2;
 	private JFrame frame;
 	private JTextField PhonenumbertextField;
 	private JTextField EmailtextField;
@@ -50,7 +52,7 @@ public class LastOrderForm {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					LastOrderForm window = new LastOrderForm(null,null, null, null,5);
+					LastOrderForm window = new LastOrderForm(null,null, null, null,5, 4);
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -63,11 +65,12 @@ public class LastOrderForm {
 	 * Create the application.
 	 */
 	
-	public LastOrderForm(List<Person> list, List<Person> list2, Flight f1, Flight f2, int orderNr){
+	public LastOrderForm(List<Person> list, List<Person> list2, Flight f1, Flight f2, int orderNr, int orderNr2){
 		om=new OrderManager();
 		this.f1=f1;
 		this.f2=f2;
 		this.orderNr=orderNr;
+		this.orderNr2=orderNr2;
 		this.list=list;
 		this.list2=list2;
 		initialize();
@@ -174,25 +177,27 @@ public class LastOrderForm {
 		Button Nextbutton = new Button("Next");
 		Nextbutton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Person p=om.makePersons(NametextField.getText(), SocialtextField.getText(), chckbxHandicapped.isSelected(), chckbxSpecialBaggage.isSelected(), seat1, orderNr);
-				list.add(p);
-				String a="";
-				int t=0;
-				if(PetCheck.isSelected())
-					a=(String)PetBox.getItemAt(PetBox.getSelectedIndex());
-				if(ToddlerCheck.isSelected())
-					t=Integer.parseInt(ToddlerBox.getItemAt(ToddlerBox.getSelectedIndex()));
-				Order o=om.makeOrder(list, EmailtextField.getText(), PhonenumbertextField.getText(), a, t, f1, orderNr);
-				Order o2=null;
-				if(f2!=null){
-					Person p2=om.makePersons(NametextField.getText(), SocialtextField.getText(), chckbxHandicapped.isSelected(), chckbxSpecialBaggage.isSelected(), seat2, orderNr);
-					list2.add(p2);
-					o2 = om.makeOrder(list2, EmailtextField.getText(), PhonenumbertextField.getText(), a, t, f2, orderNr);
+				if(seat1!=null&&seat1!=""&&seat1!="Yours"){
+					Person p=om.makePersons(NametextField.getText(), SocialtextField.getText(), chckbxHandicapped.isSelected(), chckbxSpecialBaggage.isSelected(), seat1, orderNr);
+					list.add(p);
+					String a="";
+					int t=0;
+					if(PetCheck.isSelected())
+						a=(String)PetBox.getItemAt(PetBox.getSelectedIndex());
+					if(ToddlerCheck.isSelected())
+						t=Integer.parseInt(ToddlerBox.getItemAt(ToddlerBox.getSelectedIndex()));
+					Order o=om.makeOrder(list, EmailtextField.getText(), PhonenumbertextField.getText(), a, t, f1, orderNr);
+					Order o2=null;
+					if(f2!=null&&seat2!=null&&seat2!=""&&seat2!="Yours"){
+						Person p2=om.makePersons(NametextField.getText(), SocialtextField.getText(), chckbxHandicapped.isSelected(), chckbxSpecialBaggage.isSelected(), seat2, orderNr2);
+						list2.add(p2);
+						o2 = om.makeOrder(list2, EmailtextField.getText(), PhonenumbertextField.getText(), a, t, f2, orderNr2);
+					}
+					frame.dispose();
+					Receipt receipt = new Receipt(o,o2);
+					JFrame ReceiptWindow = receipt.getFrame();
+					ReceiptWindow.setVisible(true);	
 				}
-				frame.dispose();
-				Receipt receipt = new Receipt(o,o2);
-				JFrame ReceiptWindow = receipt.getFrame();
-				ReceiptWindow.setVisible(true);	
 			}
 		});
 		Nextbutton.setBounds(179, 614, 102, 24);
@@ -218,6 +223,10 @@ public class LastOrderForm {
 		frame.getContentPane().add(scrollPane);
 		
 		String [] [] s=f1.getSeats();
+		Iterator<Person> it=list.iterator();
+		while(it.hasNext()){
+			s=f1.getWithout(s, it.next().getSeat());
+		}
 		String column_names[]= {"A","B","C","D","E","F"};
 		table = new JTable(new DefaultTableModel(s, column_names));
 		scrollPane.setViewportView(table);
@@ -257,6 +266,10 @@ public class LastOrderForm {
 			frame.getContentPane().add(scrollPane2);
 			scrollPane2.setViewportView(table2);
 			String [] [] s2=f2.getSeats();
+			it=list2.iterator();
+			while(it.hasNext()){
+				s2=f2.getWithout(s2, it.next().getSeat());
+			}
 			table2 = new JTable(s2, column_names);
 			scrollPane2.setViewportView(table2);
 			table2.setCellSelectionEnabled(true);

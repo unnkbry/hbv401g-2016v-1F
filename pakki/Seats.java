@@ -84,7 +84,7 @@ public class Seats{
 			for(int r=0;r<rows;r++){
 				if(seats[r][c])
 					s[r][c]=turnToString(r,c);
-				else s[r][c]="   ";
+				else s[r][c]="";
 			}
 		}
 		return s;

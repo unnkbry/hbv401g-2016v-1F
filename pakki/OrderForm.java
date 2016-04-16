@@ -12,6 +12,7 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.JCheckBox;
 import java.awt.Button;
 import java.awt.event.ActionListener;
+import java.util.Iterator;
 import java.util.List;
 import java.awt.event.ActionEvent;
 import pakki.OrderManager;
@@ -34,6 +35,7 @@ public class OrderForm {
 	private List<Person> list;
 	private List<Person> list2;
 	private int orderNr;
+	private int orderNr2;
 	private JTable table;
 	private JTable table2;
 	private String seat1;
@@ -49,7 +51,7 @@ public class OrderForm {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					OrderForm window = new OrderForm(null, null,null, null, 3,1,5);
+					OrderForm window = new OrderForm(null, null,null, null, 3,1,5,4);
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -61,7 +63,7 @@ public class OrderForm {
 	/**
 	 * Create the application.
 	 */
-	public OrderForm(List<Person> list, List<Person> list2, Flight f1, Flight f2, int pplCount, int counter, int orderNr) {
+	public OrderForm(List<Person> list, List<Person> list2, Flight f1, Flight f2, int pplCount, int counter, int orderNr, int orderNr2) {
 		this.pplCount=pplCount;
 		this.counter=counter;
 		this.f1=f1;
@@ -69,6 +71,7 @@ public class OrderForm {
 		this.list=list;
 		this.list2=list2;
 		this.orderNr=orderNr;
+		this.orderNr2=orderNr2;
 		om=new OrderManager();
 		initialize();
 	}
@@ -118,25 +121,29 @@ public class OrderForm {
 		Button Nextbutton = new Button("Next");
 		Nextbutton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Person p=om.makePersons(NametextField.getText(), SocialtextField.getText(), chckbxHandicapped.isSelected(), chckbxSpecialBaggage.isSelected(), seat1, orderNr);
-				list.add(p);
-				counter++;
-				if(f2!=null){
-					p=om.makePersons(NametextField.getText(), SocialtextField.getText(), chckbxHandicapped.isSelected(), chckbxSpecialBaggage.isSelected(), seat2, orderNr);
-					list2.add(p);
+				if(seat1!=null&&seat1!=""&&seat1!="Yours"){
+					Person p=om.makePersons(NametextField.getText(), SocialtextField.getText(), chckbxHandicapped.isSelected(), chckbxSpecialBaggage.isSelected(), seat1, orderNr);
+					list.add(p);
+					counter++;
+					if(f2!=null&&seat2!=null&&seat2!=""&&seat2!="Yours"){
+						p=om.makePersons(NametextField.getText(), SocialtextField.getText(), chckbxHandicapped.isSelected(), chckbxSpecialBaggage.isSelected(), seat2, orderNr2);
+						list2.add(p);
+					}
+					if(pplCount==counter+1){
+						frame.dispose();
+						LastOrderForm lof = new LastOrderForm(list, list2, f1, f2, orderNr, orderNr2);
+						JFrame LastOrderFormWindow = lof.getFrame();
+						LastOrderFormWindow.setVisible(true);
+					}
+					else {
+						frame.dispose();
+						OrderForm OF = new OrderForm(list, list2, f1, f2, pplCount, counter++, orderNr, orderNr2);
+						JFrame OrderFormWindow = OF.getFrame();
+						OrderFormWindow.setVisible(true);
+					}
 				}
-				if(pplCount==counter+1){
-					frame.dispose();
-					LastOrderForm lof = new LastOrderForm(list, list2, f1, f2, orderNr);
-					JFrame LastOrderFormWindow = lof.getFrame();
-					LastOrderFormWindow.setVisible(true);
-				}
-				else {
-					frame.dispose();
-					OrderForm OF = new OrderForm(list, list2, f1, f2, pplCount, counter++, orderNr);
-					JFrame OrderFormWindow = OF.getFrame();
-					OrderFormWindow.setVisible(true);
-				}
+				else
+					System.out.println("vinsamlegast veldu þér sæti");
 			}
 		});
 		Nextbutton.setBounds(194, 456, 98, 24);
@@ -149,6 +156,11 @@ public class OrderForm {
 		String column_names[]= {"A","B","C","D","E","F"};
 	
 		String [] [] s=f1.getSeats();
+		
+		Iterator<Person> it=list.iterator();
+		while(it.hasNext()){
+			s=f1.getWithout(s, it.next().getSeat());
+		}
 		table = new JTable(new DefaultTableModel(
 				s, 
 				new String[]{
@@ -157,9 +169,7 @@ public class OrderForm {
 				));
 
 		scrollPane.setViewportView(table);
-		
-		table.setCellSelectionEnabled(true);
-		
+		table.setCellSelectionEnabled(true);	
 		JLabel seat1Label = new JLabel("");
 		seat1Label.setBounds(180, 188, 72, 20);
 		frame.getContentPane().add(seat1Label);
@@ -196,17 +206,19 @@ public class OrderForm {
 			lblChooseSeat_1.setBounds(273, 192, 152, 16);
 			frame.getContentPane().add(lblChooseSeat_1);
 			String [] [] s2=f2.getSeats();
+			it=list2.iterator();
+			while(it.hasNext()){
+				s2=f2.getWithout(s2, it.next().getSeat());
+			}
 			table2 = new JTable(s2, column_names);
 			scrollPane2.setViewportView(table2);
 			table2.setCellSelectionEnabled(true);
 			ListSelectionModel cellSelectionModel2 = table2.getSelectionModel();
 			cellSelectionModel2.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 			cellSelectionModel2.addListSelectionListener(new ListSelectionListener() {
-				public void valueChanged(ListSelectionEvent e) {
-			        
+				public void valueChanged(ListSelectionEvent e) { 
 			        int[] selectedRow = table2.getSelectedRows();
 			        int[] selectedColumns = table2.getSelectedColumns();
-
 			        for (int i = 0; i < selectedRow.length; i++) {
 			          for (int j = 0; j < selectedColumns.length; j++) {
 			            seat2 = (String) table2.getValueAt(selectedRow[i], selectedColumns[j]);
@@ -214,8 +226,7 @@ public class OrderForm {
 			          }
 			        }		        
 			      }
-
-			    });
+				});
 		}
 	}
 }

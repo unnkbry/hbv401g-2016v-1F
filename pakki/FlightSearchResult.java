@@ -204,15 +204,19 @@ public class FlightSearchResult {
 				OrderNr on= new OrderNr();
 				List<Person> list=new ArrayList<Person>();
 				List<Person> list2= new ArrayList<Person>();
+				int ordernr=on.getOrderNr();
+				int ordernr2=0;
+				if(listi2!=null)
+					ordernr2=on.getOrderNr();
 				if(pplCount==1&&(listi2==null||f2!=null)&&f1!=null){
 					frame.dispose();
-					LastOrderForm LOF = new LastOrderForm(list, list2, f1, f2, on.getOrderNr());
+					LastOrderForm LOF = new LastOrderForm(list, list2, f1, f2, ordernr, ordernr2);
 					JFrame LastOrderFormWindow = LOF.getFrame();
 					LastOrderFormWindow.setVisible(true);
 				}
 				else if(f1!=null&&(listi2==null||f2!=null)&&f1!=null){
 					frame.dispose();
-					OrderForm OF = new OrderForm(list, list2, f1, f2, pplCount, 0, on.getOrderNr());
+					OrderForm OF = new OrderForm(list, list2, f1, f2, pplCount, 0, ordernr, ordernr2);
 					JFrame OrderFormWindow = OF.getFrame();
 					OrderFormWindow.setVisible(true);
 				}

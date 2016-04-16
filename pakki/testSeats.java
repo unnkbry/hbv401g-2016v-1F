@@ -11,7 +11,7 @@ public class testSeats {
 
 	@Before
 	public void setUp() throws Exception {
-		s=new Seats(6,6,1);
+		s=new Seats(1);
 	}
 
 	@After
@@ -22,8 +22,8 @@ public class testSeats {
 	@Test
 	public void testGetEmpty() {
 		String [][] e=s.getEmpty();
-		for(int n=0;n<5;n++){
-			for(int m=0;m<5;m++){
+		for(int n=0;n<e.length;n++){
+			for(int m=0;m<e[0].length;m++){
 				if(s.getSeatStatus(s.turnToString(n, m)))
 					assertEquals(s.turnToString(n,m), e[n][m]);
 				else
