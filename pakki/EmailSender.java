@@ -8,7 +8,7 @@ import javax.mail.Session;
 import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
-
+//Sends an email to the recipients with the subject "Flight Confirmation From DreamTeam Services"  
 public class EmailSender {
 	public static boolean sendMail(String from, String password, String message, String to[]) {
 		String host = "smtp.gmail.com";
