@@ -118,7 +118,7 @@ public class StartForm {
 		JLabel wrongFlight1Label = new JLabel("No available departure flights");
 		wrongFlight1Label.setFont(new Font("Tahoma", Font.PLAIN, 11));
 		wrongFlight1Label.setForeground(Color.RED);
-		wrongFlight1Label.setBounds(12, 209, 171, 22);
+		wrongFlight1Label.setBounds(12, 207, 171, 22);
 		frame.getContentPane().add(wrongFlight1Label);
 		wrongFlight1Label.setVisible(false);
 		
