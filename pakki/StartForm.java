@@ -142,7 +142,7 @@ public class StartForm {
 				boolean work1=false;
 				boolean work2=false;
 				if(d!=null){
-					list=fs.search(peopleCount,  d, arrivalAirport, departureAirport);
+					list=fs.search(peopleCount, d, arrivalAirport, departureAirport);
 					if(list.size()!=0)
 						work1=true;
 				}
