@@ -236,7 +236,7 @@ public class LastOrderForm {
 		frame.getContentPane().add(seat1Label);
 		
 		JLabel seat2Label = new JLabel("");
-		seat2Label.setBounds(364, 322, 56, 20);
+		seat2Label.setBounds(373, 317, 56, 20);
 		frame.getContentPane().add(seat2Label);
 		table.setCellSelectionEnabled(true);
 		ListSelectionModel cellSelectionModel = table.getSelectionModel();

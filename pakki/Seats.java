@@ -65,7 +65,7 @@ public class Seats{
 		int[]seat=new int[2];
 		seat[0]=Character.getNumericValue(i[0])*10+Character.getNumericValue(i[1])-1;
 		char [] Alphabet	= {'A','B','C','D','E','F'};
-		for(int n=0;n<5;n++){
+		for(int n=0;n<6;n++){
 			if(Alphabet[n]==i[2])				
 				seat[1]=n;
 		}
